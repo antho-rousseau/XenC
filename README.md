@@ -1,4 +1,4 @@
 XenC
 ====
 
-XenC data selection tool
+XenC: an open-source data selection tool for Natural Language Processing
