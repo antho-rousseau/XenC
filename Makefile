@@ -26,6 +26,7 @@ EXEC=bin/XenC
 # ----
 
 # ----
+EXECDIR=bin
 MODDIR=obj/modes
 UTIDIR=obj/utils
 # ----
@@ -65,4 +66,4 @@ mrproper: clean
 	rm $(EXEC)
 
 makedir:
-	mkdir -p $(MODDIR) $(UTIDIR)
+	mkdir -p $(EXECDIR) $(MODDIR) $(UTIDIR)
