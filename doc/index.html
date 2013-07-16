@@ -91,13 +91,15 @@
     
 	<H2>4 - Common usage examples</H2>
     Simplest example (monolingual cross-entropy):</BR>
-	<CODE>XenC -s fr -i indomain.fr -o outofdomain.fr -m 2</CODE></BR>
+	<CODE>XenC -s fr -i indomain.fr -o outofdomain.fr -m 2 --mono</CODE></BR>
 	This example takes in-domain and out-of-domain corpus in a given language.</BR></BR>
     Same example with eval:</BR>
-    <CODE>XenC -s fr -i indomain.fr -o outofdomain.fr -m 2 -d dev.fr -e</CODE></BR>
+    <CODE>XenC -s fr -i indomain.fr -o outofdomain.fr -m 2 --mono -d dev.fr -e</CODE></BR>
     This time we add a dev corpus and the switch to require evaluation mode after out-of-domain corpus filtering. Replace <CODE>-e</CODE> with <CODE>-b</CODE> if you want to compute the estimated best point along with eval.</BR></BR>
     Example with bilingual cross-entropy filtering and eval + best point computation:</BR>
     <CODE>XenC -s en -t fr -i indomain.en -o outofdomain.en --in-ttext indomain.fr --out-ttext outofdomain.fr -m 3 -d dev.en -b --threads 8</CODE></BR></BR>
+    Example with monolingual filtering on bilingual data (the reason for the mono switch):</BR>
+    <CODE>XenC -s en -t fr -i indomain.en -o outofdomain.en --in-ttext indomain.fr --out-ttext outofdomain.fr -m 2 --mono -d dev.en -b --threads 8</CODE></BR></BR>
     Some recommandations:</BR>
     - the more threads you use, the more memory you will consume when it comes to LMs estimation (due to some leaks in SRILM). Be careful.</BR>
     - strange results can occur when you use a very small in-domain corpus or when your out-of-domain corpus is too small or too close to the in-domain corpus.</BR>
