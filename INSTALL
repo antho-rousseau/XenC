@@ -1,0 +1,49 @@
+1 - 	Unpack. This should give a top-level directory with the subdirectories
+    	listed in README, as well as a few documentation files and a Makefile.
+    
+2 - 	You need a SunOS (Sparc or i386), Linux i386/x86_64 or Mac OSX platform 
+	to compile out of the box. Other platforms are untested.
+    
+3 - 	You need the following free third-party software to build XenC:
+
+		- gcc version 4.2.1 or higher (older versions might work, 
+		  but are untested)
+		- GNU make
+		- C shell
+		- gzip, to read/write compressed files
+		- boost version 1.52.0 or higher (may work with lower versions,
+		  untested)
+		- SRILM version 1.7.0 or higher (older versions won't work, since they are not thread-safe)
+
+4 - 	By default, the Makefile will look into the /usr directory for boost
+	(/usr/include/boost for includes, /usr/lib or /usr/lib64 for libraries), 
+	but you can specify variables on the make command line:
+	
+		- BOOST, for another root directory for includes/libs
+		- INCBOOST, for Boost includes directly
+		- LIBBOOST, for Boost libs directly
+
+	The (multithreaded) boost libraries used by XenC are : libboost_filesystem, 
+	libboost_iostreams, libboost_program_options, libboost_regex, libboost_system and libboost-thread.
+
+5 - 	By default, the Makefile will look into the /usr/local directory for SRILM
+	(/usr/local/include for includes, /usr/local/lib for libraries), but you 
+	can specify variables on the make command line:
+	
+		- SRILM, for another root directory for includes/libs
+		- INCSRILM, for SRILM includes directly
+		- LIBSRILM, for SRILM libs directly
+	
+	The SRILM libraries used by XenC are : libdstruct, libmisc
+	and liboolm.
+	
+6 - 	In the top-level directory, run:
+
+		make		or		make debug (with debug symbols)
+
+	optionally with one or more variables described in steps 4 and 5.
+
+
+7 - 	(Optional) To clean the obj directory of object files:
+
+		make clean

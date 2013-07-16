@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+	"http://www.w3.org/TR/html4/strict.dtd">
+	
+<HTML>
+<HEAD>
+	<TITLE>XenC - Documentation</TITLE>
+</HEAD>
+
+<BODY>
+	<H1>XenC - Documentation</H1>
+	
+	<H2>1 - Description</H2>
+	
+	XenC is a data selection tool aimed at Natural Language Processing.
+	<P>
+	It works by comparing cross-entropy scores from language models (LMs), estimated from an in-domain corpus and an out-of-domain corpus. The tool is based on the approach described in [Moore & Lewis 2010] and [Axelrod & al. 2011].
+	
+	<H2>2 - Options</H2>
+    <CODE>-s [ --source ] arg</CODE>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;source language (fr, en, ...)</BR>
+    <CODE>-t [ --target ] arg</CODE>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;target language (if relevant)</BR>
+    <CODE>-i [ --in-stext ] arg</CODE>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;in-domain source text filename (plain text or gzipped file)</BR>
+    <CODE>-o [ --out-stext ] arg</CODE>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;out-of-domain source text filename (plain text or gzipped file)</BR>
+    <CODE>-m [ --mode ] arg (=2)</CODE>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;filtering mode (1, 2, 3 or 4). Default is 2 (monolingual cross-entropy)</BR>
+    <CODE>-e [ --eval ]</CODE>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;add this switch to evaluate a filtered file after computation. Eval is always done on source language</BR>
+    <CODE>-b [ --best-point ]</CODE>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;add this switch to determinate the best point of a filtered file (eval option is implicit)</BR>
+    <CODE>-d [ --dev ] arg</CODE>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;source language dev file for eval or best point (all modes), if different from in-domain text</BR>
+    <CODE>--in-ttext arg</CODE>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;in-domain target text filename, if target language (plain text or gzipped file)</BR>
+    <CODE>--out-ttext arg</CODE>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;out-of-domain target text filename, if target language (plain text or gzipped file)</BR>
+    <CODE>--mono</CODE>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;switch to force monolingual mode (if no target language)</BR>
+    <CODE>--stem</CODE>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;switch to activate stem models computation and scoring from stem files (EXPERIMENTAL)</BR>
+    <CODE>--in-sstem arg</CODE>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;in-domain source stem filename (plain text or gzipped file)</BR>
+    <CODE>--in-tstem arg</CODE>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;in-domain target stem filename (plain text or gzipped file)</BR>
+    <CODE>--out-sstem arg</CODE>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;out-of-domain source stem filename (plain text or gzipped file)</BR>
+    <CODE>--out-tstem arg</CODE>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;out-of-domain target stem filename (plain text or gzipped file)</BR>
+    <CODE>--in-ptable arg</CODE>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;in-domain phrase table filename used in mode 4 scoring</BR>
+    <CODE>--out-ptable arg</CODE>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;out-of-domain phrase table filename used in mode 4 scoring</BR>
+    <CODE>--local</CODE>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;add a 7th score (local cross-entropy regarding the source phrase)</BR>
+    <CODE>--mean</CODE>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mean score from 3 OOD sample LMs instead of 1 in mode 2 & 3 (3 times slower + EXPERIMENTAL)</BR>
+    <CODE>--sim</CODE>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;add similarity measures to score computing (EXPERIMENTAL, mode 2 only)</BR>
+    <CODE>--sim-only</CODE>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;use only similarity measures (no cross-entropy)</BR>
+    <CODE>--vector-size arg (=150)</CODE>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;size of vector for similarity scores, default is 150 (WARNING: the more the slower)</BR>
+    <CODE>--step arg (=10)</CODE>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;percentage steps for evaluation. Default is 10 (100%, 90%, ...)</BR>
+    <CODE>--s-vocab arg</CODE>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;source language vocab filename for LMs estimation. Default is in-domain source text vocab</BR>
+    <CODE>--t-vocab arg</CODE>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;target language vocab filename for LMs estimation. Default is in-domain target text vocab</BR>
+    <CODE>--in-slm arg</CODE>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;in-domain source language model (LM). Will be estimated if not present</BR>
+    <CODE>--out-slm arg</CODE>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;out-of-domain source language model (LM). Will be estimated if not present</BR>
+    <CODE>--in-tlm arg</CODE>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;in-domain target language model (LM). Will be estimated if not present</BR>
+    <CODE>--out-tlm arg</CODE>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;out-of-domain target language model (LM). Will be estimated if not present</BR>
+    <CODE>--order arg (=4)</CODE>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;order for LMs. Default is 4</BR>
+    <CODE>--bin-lm arg (=1)</CODE>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;whether you want to estimate arpa.gz (0) or binary (1) LMs. Default is 1 (binary)</BR>
+    <CODE>--w-file arg</CODE>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;filename for weighting the final score (one value per line)</BR>
+    <CODE>--log</CODE>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;switch to consider weights in w-file as log values</BR>
+    <CODE>--rev</CODE>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;switch to require descending order sorted output</BR>
+    <CODE>--inv</CODE>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;switch to require inversed calibrated scores (1 - score)</BR>
+    <CODE>--threads arg (=2)</CODE>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;number of threads to run for various operations (eval, sim, ...). Default is 2</BR>
+    <CODE>--sorted-only</CODE>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;switch to save space & time by only outputing the sorted scores file</BR>
+    <CODE>-h [ --help ]</CODE>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;displays this help message</BR>
+    <CODE>-v [ --version ]</CODE>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;displays program version</BR>
+	<P>
+	
+	<H2>3 - Filtering modes</H2>
+	
+	For all modes, you must provide at least a source language, and in-domain and out-of-domain bitexts (or phrase tables for mode 4).</BR>
+    Bitexts MUST NOT contain tabs.</BR>
+    For every text file used, max words per line is 16384 and max chars per line is max words * 16.</BR>
+	<P>
+	Also, if no vocabularies and no language models are provided, they will be generated with the following parameters:</BR>
+	- vocabs:	vocabularies will be creatd from words of in-domain bitexts.</BR>
+	- LMs:		order 4, kn-int smoothing, 0-0-0-0 cut-offs, sblm (binary) output format.</BR>
+	<P>
+	1:</BR>
+	Simple source language perplexity filtering. (Gao & al. 2002)</BR> 
+	Will sort the out-of-domain bitext sentences (ascending order) based on perplexity scores given by a in-domain language model.
+	<P>
+	2:</BR>
+	Source language cross-entropy (Xen) difference filtering. (Moore & Lewis 2010)</BR>
+	Will sort the out-of-domain bitext sentences (ascending order) based on (in-source Xen - out-source Xen).
+	<P>
+	3:</BR>
+	Bilingual cross-entropy difference filtering. (Axelrod & al. 2011)</BR>
+	Will sort the out-of-domain bitext sentences (ascending order) based on (in-source Xen - out-source Xen) + (in-target Xen - out-target Xen).
+	<P>
+    4:</BR>
+	Phrase-table scoring mode. (EXPERIMENTAL)</BR>
+	Adds the cross-entropy score of each phrase pair in a phrase-table as a sixth feature of the table.</BR>
+    </BR>
+	You must provide:</BR>
+    - in-domain and out-of-domain phrase tables.</BR>
+    - source and target vocabularies.
+    <P>
+    
+	<H2>4 - Common usage examples</H2>
+    Simplest example (monolingual cross-entropy):</BR>
+	<CODE>XenC -s fr -i indomain.fr -o outofdomain.fr -m 2</CODE></BR>
+	This example takes in-domain and out-of-domain corpus in a given language.</BR></BR>
+    Same example with eval:</BR>
+    <CODE>XenC -s fr -i indomain.fr -o outofdomain.fr -m 2 -d dev.fr -e</CODE></BR>
+    This time we add a dev corpus and the switch to require evaluation mode after out-of-domain corpus filtering. Replace <CODE>-e</CODE> with <CODE>-b</CODE> if you want to compute the estimated best point along with eval.</BR></BR>
+    Example with bilingual cross-entropy filtering and eval + best point computation:</BR>
+    <CODE>XenC -s en -t fr -i indomain.en -o outofdomain.en --in-ttext indomain.fr --out-ttext outofdomain.fr -m 3 -d dev.en -b --threads 8</CODE></BR></BR>
+    Some recommandations:</BR>
+    - the more threads you use, the more memory you will consume when it comes to LMs estimation (due to some leaks in SRILM). Be careful.</BR>
+    - strange results can occur when you use a very small in-domain corpus or when your out-of-domain corpus is too small or too close to the in-domain corpus.</BR>
+    - stem, similarity and mean are experimental, no results can be guaranteed.</BR>
+    - for stems, you can use TreeTagger, which is quite efficient, along with the tagging script provided in the Moses package.
+	<P>
+	<H2>5 - Contact</H2>
+	<A HREF="mailto:anthony.rousseau@lium.univ-lemans.fr">anthony.rousseau@lium.univ-lemans.fr</A>
+</BODY>
+</HTML>

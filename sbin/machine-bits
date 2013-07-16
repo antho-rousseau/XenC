@@ -1,0 +1,11 @@
+#!/bin/csh -f
+
+set RESULT = (`uname -m | grep 64`)
+
+if ($RESULT == "") then
+	set MACHINE_BITS = 32
+else
+	set MACHINE_BITS = 64
+endif
+
+echo $MACHINE_BITS
