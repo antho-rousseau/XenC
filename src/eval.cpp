@@ -64,11 +64,17 @@ Eval::Eval(string distFile) {
             ifstream in(distFile.c_str(), ios::in);
             string line = "";
             
+            if (!in.is_open())
+                throw XenCommon::XenCEption("Error while opening file " + distFile);
+            
             while (getline(in, line)) {
                 string key = regex_replace(line, e1, "\\1", boost::match_default | boost::format_sed);
                 string value = regex_replace(line, e2, "\\1", boost::match_default | boost::format_sed);
                 ptrDist->operator[](toInt(key)) = toDouble(value);
             }
+            
+            if (in.bad())
+                throw XenCommon::XenCEption("Error while reading file " + distFile);
             
             in.close();
         }
