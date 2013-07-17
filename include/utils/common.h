@@ -152,6 +152,17 @@ template<typename A, typename B> multimap<B, A, greater<B> > flip_map(const map<
  */
 namespace XenCommon {
     /*
+     *  Exception handling
+     */
+    struct XenCEption : public std::exception
+    {
+        string s;
+        XenCEption(string ss) : s(ss) {}
+        virtual ~XenCEption() throw() {}
+        const char* what() const throw() { return s.c_str(); }
+    };
+    
+    /*
      *  Returns the word count of a string
      */
     inline int wordCount(const string& str) {
@@ -173,25 +184,32 @@ namespace XenCommon {
      *  (not so classy but hey!)
      */
     inline string getStdoutFromCommand(string cmd) {
-        string data;
-        FILE *stream;
-        int MAX_BUFFER = 65535;
-        char buffer[MAX_BUFFER];
-        cmd.append(" 2>&1");
-        stream = popen(cmd.c_str(), "r");
-        
-        if (!stream){
-            exit(1);
-        }
-        
-        while (!feof(stream)){
-            if (fgets(buffer, MAX_BUFFER, stream) != NULL){
-                data.append(buffer);
+        try {
+            string data;
+            FILE *stream;
+            int MAX_BUFFER = 65535;
+            char buffer[MAX_BUFFER];
+            cmd.append(" 2>&1");
+            stream = popen(cmd.c_str(), "r");
+            
+            if (!stream){
+                throw XenCEption("Can't open stream with popen()!");
             }
+            
+            while (!feof(stream)){
+                if (fgets(buffer, MAX_BUFFER, stream) != NULL){
+                    data.append(buffer);
+                }
+            }
+            
+            pclose(stream);
+            return data;
+        }
+        catch (XenCEption &e) {
+            throw;
         }
         
-        pclose(stream);
-        return data;
+        return "";
     }
 }
 

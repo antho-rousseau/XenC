@@ -132,9 +132,15 @@ int main(int argc, char* argv[]) {
     opt.inToks = 0;
     opt.outToks = 0;
     
-    if (opt.dev.compare("") == 0)
-        if (exists(opt.inSData))
+    if (opt.dev.compare("") == 0) {
+        if (exists(opt.inSData)) {
             opt.dev = opt.inSData;
+        }
+        else {
+            cerr << "You must at least specify a source in-domain corpus." << endl;
+            return 1;
+        }
+    }
     
     // -----------------------------------------------------
     // Create singletons & mode
@@ -199,77 +205,93 @@ int main(int argc, char* argv[]) {
 		cout << "Mode: " << opt.mode << endl;
 	}
 	else {
-		cout << endl << sC << endl;
-		exit (1);
+		cerr << endl << sC << endl;
+        sD->deleteInstance();
+        xOpt->deleteInstance();
+		return 1;
 	}
     // -----------------------------------------------------
 
-    // Normal mode
-	if (!xOpt->getEval()&& !xOpt->getBp()) {
-		int ret = mode->launch();
-        
-        if (ret == 0)
-            return 0;
-        else
-            exit(1);
-	}
-    // Eval or BP
-	else {
-		string sortedName = xOpt->getOutName() + ".sorted.gz";
-		string distName = xOpt->getOutName() + ".dist";
-		string bpName = xOpt->getOutName() + ".bp";
-        
-        cout << "Sorted output used: " + sortedName << endl;
-        
-        // -----------------------------------------------------
-        // Proceed to normal mode if not done before
-		if (!exists(sortedName)) {
+    try {
+        // Normal mode
+        if (!xOpt->getEval()&& !xOpt->getBp()) {
             int ret = mode->launch();
             
-            if (ret != 0)
-                exit(1);
-        }
-        // -----------------------------------------------------
-        
-        shared_ptr<XenFile> sorted = shared_ptr<XenFile>(new XenFile);
-        sorted->initialize(sortedName);
-        
-        sD->getXenResult()->initialize(sorted);
-        sD->getDevCorp()->initialize(xOpt->getDev(), xOpt->getSLang());
-        
-        // Eval
-		if (xOpt->getEval()) {
-			shared_ptr<Eval> ptrEval = shared_ptr<Eval>(new Eval);
-            
-            ptrEval->doEval(100, 0);
-            int oldStep = xOpt->getStep();
-            xOpt->setStep(2);
-            ptrEval->doEval(8, 0);
-            xOpt->setStep(oldStep);
-            
-            XenIO::writeEval(ptrEval, distName);
-		}
-        // BP
-		else if (xOpt->getBp()) {
-            shared_ptr<Eval> ptrEval;
-
-            if (exists(distName.c_str()))
-                ptrEval = shared_ptr<Eval>(new Eval(distName));
+            if (ret == 0) {
+                xOpt->deleteInstance();
+                sD->deleteInstance();
+                return 0;
+            }
             else {
-                ptrEval = shared_ptr<Eval>(new Eval);
+                xOpt->deleteInstance();
+                sD->deleteInstance();
+                return 1;
+            }
+        }
+        // Eval or BP
+        else {
+            string sortedName = xOpt->getOutName() + ".sorted.gz";
+            string distName = xOpt->getOutName() + ".dist";
+            string bpName = xOpt->getOutName() + ".bp";
+            
+            cout << "Sorted output used: " + sortedName << endl;
+            
+            // -----------------------------------------------------
+            // Proceed to normal mode if not done before
+            if (!exists(sortedName)) {
+                int ret = mode->launch();
+                
+                if (ret != 0) {
+                    cerr << "Something went wrong." << endl;
+                    xOpt->deleteInstance();
+                    sD->deleteInstance();
+                    return 1;
+                }
+            }
+            // -----------------------------------------------------
+            
+            shared_ptr<XenFile> sorted = shared_ptr<XenFile>(new XenFile);
+            sorted->initialize(sortedName);
+            
+            sD->getXenResult()->initialize(sorted);
+            sD->getDevCorp()->initialize(xOpt->getDev(), xOpt->getSLang());
+            
+            // Eval
+            if (xOpt->getEval()) {
+                shared_ptr<Eval> ptrEval = shared_ptr<Eval>(new Eval);
+                
                 ptrEval->doEval(100, 0);
                 int oldStep = xOpt->getStep();
                 xOpt->setStep(2);
                 ptrEval->doEval(8, 0);
                 xOpt->setStep(oldStep);
+                
                 XenIO::writeEval(ptrEval, distName);
             }
-
-            ptrEval->doBP();
-            XenIO::writeEval(ptrEval, bpName);
-		}
-		else { exit (1); }
-	}
+            // BP
+            else if (xOpt->getBp()) {
+                shared_ptr<Eval> ptrEval;
+                
+                if (exists(distName.c_str()))
+                    ptrEval = shared_ptr<Eval>(new Eval(distName));
+                else {
+                    ptrEval = shared_ptr<Eval>(new Eval);
+                    ptrEval->doEval(100, 0);
+                    int oldStep = xOpt->getStep();
+                    xOpt->setStep(2);
+                    ptrEval->doEval(8, 0);
+                    xOpt->setStep(oldStep);
+                    XenIO::writeEval(ptrEval, distName);
+                }
+                
+                ptrEval->doBP();
+                XenIO::writeEval(ptrEval, bpName);
+            }
+            else { return 1; }
+        }
+    } catch (XenCommon::XenCEption &e) {
+        throw;
+    }
     
     xOpt->deleteInstance();
     sD->deleteInstance();
@@ -300,8 +322,7 @@ string sanityCheck(XenOption* opt) {
         else if (opt->getInSData()->getFullPath().compare("") == 0) { return "Please specify a in-domain source data."; }
         else if (opt->getOutSData()->getFullPath().compare("") == 0 && opt->getMode() > 0) { return "Please specify a out-of-domain source data."; }
         else if (opt->getMode() == -1) { return "Please specify a mode."; }
-        else if (opt->getMode() > 4) { return "Mode should be 1, 2, 3 or 4."; }
-        else if (opt->getMode() == 0) { exit (1); }
+        else if (opt->getMode() > 4 || opt->getMode() == 0) { return "Mode should be 1, 2, 3 or 4."; }
     }
     
 	return "0";

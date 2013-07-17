@@ -56,25 +56,28 @@ Eval::Eval() {
 Eval::Eval(string distFile) {
     ptrDist = shared_ptr<EvalMap>(new EvalMap);
     
-	if (exists(distFile.c_str())) {
-		cout << "Loading dist file " + distFile << endl;
-		regex e1("(.*)\\t.*");
-		regex e2(".*\\t(.*)");
-		ifstream in(distFile.c_str(), ios::in);
-		string line = "";
-        
-		while (getline(in, line)) {
-			string key = regex_replace(line, e1, "\\1", boost::match_default | boost::format_sed);
-			string value = regex_replace(line, e2, "\\1", boost::match_default | boost::format_sed);
-            ptrDist->operator[](toInt(key)) = toDouble(value);
-		}
-        
-		in.close();
-	}
-	else {
-        cout << "Specified eval file " << distFile << " does not exists!" << endl;
-        exit (1);
-	}
+    try {
+        if (exists(distFile.c_str())) {
+            cout << "Loading dist file " + distFile << endl;
+            regex e1("(.*)\\t.*");
+            regex e2(".*\\t(.*)");
+            ifstream in(distFile.c_str(), ios::in);
+            string line = "";
+            
+            while (getline(in, line)) {
+                string key = regex_replace(line, e1, "\\1", boost::match_default | boost::format_sed);
+                string value = regex_replace(line, e2, "\\1", boost::match_default | boost::format_sed);
+                ptrDist->operator[](toInt(key)) = toDouble(value);
+            }
+            
+            in.close();
+        }
+        else {
+            throw XenCommon::XenCEption("Specified eval file " + distFile + " does not exists!");
+        }
+    } catch (XenCommon::XenCEption &e) {
+        throw;
+    }
 }
 
 /*

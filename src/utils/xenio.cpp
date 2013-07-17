@@ -80,36 +80,55 @@ void XenIO::writeMonoOutput(shared_ptr<Corpus> c, shared_ptr<Score> sc) {
             sortMap.insert(p);
         }
     
-    if (!opt->getSortOnly()) {
-        cout << "Writing scored output to " + scoredName << endl;
-
+    try {
+        if (!opt->getSortOnly()) {
+            cout << "Writing scored output to " + scoredName << endl;
+            
+            
+            filtering_ostream out;
+            out.push(gzip_compressor());
+            out.push(file_sink(scoredName.c_str(), ios_base::out | ios_base::binary));
+            out.setf(ios::fixed | ios::showpoint);
+            out.precision(15);
+            
+            if (!out.good())
+                throw XenCommon::XenCEption("Something went wrong in output stream...");
+            
+            for (unsigned int i = 0; i < c->getSize(); i++) {
+                if (c->getPrint(i) && sc->getPrint(i))
+                    out << toString(sc->getScore(i)) << '\t' << c->getLine(i) << endl;
+            
+                if (out.bad())
+                    throw XenCommon::XenCEption("Something went wrong in output stream...");
+            }
+            
+            out.flush();
+            out.reset();
+        }
+        
+        cout << "Writing sorted output to " + sortedName << endl;
+        
         filtering_ostream out;
         out.push(gzip_compressor());
-        out.push(file_sink(scoredName.c_str(), ios_base::out | ios_base::binary));
+        out.push(file_sink(sortedName.c_str(), ios_base::out | ios_base::binary));
         out.setf(ios::fixed | ios::showpoint);
         out.precision(15);
-
-        for (unsigned int i = 0; i < c->getSize(); i++)
-            if (c->getPrint(i) && sc->getPrint(i))
-                out << toString(sc->getScore(i)) << '\t' << c->getLine(i) << endl;
+        
+        if (!out.good())
+            throw XenCommon::XenCEption("Something went wrong in output stream...");
+        
+        for (multimap<double, string>::iterator it = sortMap.begin(); it != sortMap.end(); ++it) {
+            out << toString(it->first) << '\t' << it->second << endl;
+            
+            if (out.bad())
+                throw XenCommon::XenCEption("Something went wrong in output stream...");
+        }
 
         out.flush();
         out.reset();
+    } catch (XenCommon::XenCEption &e) {
+        throw;
     }
-
-	cout << "Writing sorted output to " + sortedName << endl;
-    
-    filtering_ostream out;
-    out.push(gzip_compressor());
-    out.push(file_sink(sortedName.c_str(), ios_base::out | ios_base::binary));
-    out.setf(ios::fixed | ios::showpoint);
-    out.precision(15);
-    
-    for (multimap<double, string>::iterator it = sortMap.begin(); it != sortMap.end(); ++it)
-        out << toString(it->first) << '\t' << it->second << endl;
-    
-    out.flush();
-    out.reset();
 }
 
 /*
@@ -129,36 +148,54 @@ void XenIO::writeBiOutput(shared_ptr<Corpus> sCorp, shared_ptr<Corpus> tCorp, sh
             sortMap.insert(p);
         }
     
-    if (!opt->getSortOnly()) {
-        cout << "Writing scored output to " + scoredName << endl;
-
+    try {
+        if (!opt->getSortOnly()) {
+            cout << "Writing scored output to " + scoredName << endl;
+            
+            filtering_ostream out;
+            out.push(gzip_compressor());
+            out.push(file_sink(scoredName.c_str(), ios_base::out | ios_base::binary));
+            out.setf(ios::fixed | ios::showpoint);
+            out.precision(15);
+            
+            if (!out.good())
+                throw XenCommon::XenCEption("Something went wrong in output stream...");
+            
+            for (unsigned int i = 0; i < sCorp->getSize(); i++) {
+                if (sCorp->getPrint(i) && tCorp->getPrint(i) && sc->getPrint(i))
+                    out << toString(sc->getScore(i)) << '\t' << sCorp->getLine(i) << '\t' << tCorp->getLine(i) << endl;
+                
+                if (out.bad())
+                    throw XenCommon::XenCEption("Something went wrong in output stream...");
+            }
+            
+            out.flush();
+            out.reset();
+        }
+        
+        cout << "Writing sorted output to " + sortedName << endl;
+        
         filtering_ostream out;
         out.push(gzip_compressor());
-        out.push(file_sink(scoredName.c_str(), ios_base::out | ios_base::binary));
+        out.push(file_sink(sortedName.c_str(), ios_base::out | ios_base::binary));
         out.setf(ios::fixed | ios::showpoint);
         out.precision(15);
-
-        for (unsigned int i = 0; i < sCorp->getSize(); i++)
-            if (sCorp->getPrint(i) && tCorp->getPrint(i) && sc->getPrint(i))
-                out << toString(sc->getScore(i)) << '\t' << sCorp->getLine(i) << '\t' << tCorp->getLine(i) << endl;
-
+        
+        if (!out.good())
+            throw XenCommon::XenCEption("Something went wrong in output stream...");
+        
+        for (multimap<double, string>::iterator it = sortMap.begin(); it != sortMap.end(); ++it) {
+            out << toString(it->first) << '\t' << it->second << endl;
+        
+            if (out.bad())
+                throw XenCommon::XenCEption("Something went wrong in output stream...");
+        }
+        
         out.flush();
         out.reset();
+    } catch (XenCommon::XenCEption &e) {
+        throw;
     }
-    
-	cout << "Writing sorted output to " + sortedName << endl;
-    
-    filtering_ostream out;
-    out.push(gzip_compressor());
-    out.push(file_sink(sortedName.c_str(), ios_base::out | ios_base::binary));
-    out.setf(ios::fixed | ios::showpoint);
-    out.precision(15);
-    
-    for (multimap<double, string>::iterator it = sortMap.begin(); it != sortMap.end(); ++it)
-        out << toString(it->first) << '\t' << it->second << endl;
-    
-    out.flush();
-    out.reset();
 }
 
 /*
@@ -180,27 +217,33 @@ void XenIO::writeNewPT(shared_ptr<PhraseTable> pT, shared_ptr<Score> sc) {
         }
     }
     
-    cout << "Writing new phrase-table to " + opt->getOutName() << endl;
-    string oF = opt->getOutName();
-    filtering_ostream out;
-    out.push(gzip_compressor());
-    out.push(file_sink(oF.c_str(), ios_base::out | ios_base::binary));
-    
-    if (!out) {
-        cout << "Can't write to " << opt->getOutName() + ".gz" << endl;
-		exit (1);
-    }
-    else {
+    try {
+        cout << "Writing new phrase-table to " + opt->getOutName() << endl;
+        
+        string oF = opt->getOutName();
+        
+        filtering_ostream out;
+        out.push(gzip_compressor());
+        out.push(file_sink(oF.c_str(), ios_base::out | ios_base::binary));
+        
+        if (!out.good())
+            throw XenCommon::XenCEption("Can't write to " + opt->getOutName() + ".gz");
+
         for (unsigned int i = 0; i < sc->getSize(); i++) {
             out << pT->getSource(i) << " ||| " << pT->getTarget(i) << " ||| " << pT->getScores(i) << " " << toString(sc->getScore(i));
             if (opt->getLocal())
                 out << " " << toString(sc2.getScore(i));
             out << " ||| " << pT->getAlignment(i) << " ||| " << pT->getCounts(i) << endl;
+            
+            if (out.bad())
+                throw XenCommon::XenCEption("Something went wrong in output stream...");
         }
+        
+        out.flush();
+        out.reset();
+    } catch (XenCommon::XenCEption &e) {
+        throw;
     }
-    
-    out.flush();
-    out.reset();
 }
 
 /*
@@ -213,16 +256,27 @@ string XenIO::writeSourcePhrases(shared_ptr<PhraseTable> pT) {
         cout << "Source phrases of table " << pT->getXenFile()->getFileName() << " already dumped, we continue." << endl;
     }
     else {
-        ofstream out(outName.c_str(), ios::out | ios::trunc);
-    
-        cout << "Writing source phrases of table " << pT->getXenFile()->getFileName() << "." << endl;
-    
-        for(unsigned int i = 0; i < pT->getSize(); i++)
-            out << pT->getSource(i) << endl;
-        
-        out.close();
-    
-        cout << "Done writing source phrases." << endl;
+        try {
+            ofstream out(outName.c_str(), ios::out | ios::trunc);
+            
+            if (!out.is_open())
+                throw XenCommon::XenCEption("Can't open " + outName + " for writing.");
+            
+            cout << "Writing source phrases of table " << pT->getXenFile()->getFileName() << "." << endl;
+            
+            for(unsigned int i = 0; i < pT->getSize(); i++) {
+                out << pT->getSource(i) << endl;
+            
+                if (out.bad())
+                    throw XenCommon::XenCEption("Error while writing file " + outName);
+            }
+            
+            out.close();
+            
+            cout << "Done writing source phrases." << endl;
+        } catch (XenCommon::XenCEption &e) {
+            throw;
+        }
     }
     
     return outName;
@@ -238,16 +292,28 @@ string XenIO::writeTargetPhrases(shared_ptr<PhraseTable> pT) {
         cout << "Target phrases of table " << pT->getXenFile()->getFileName() << " already dumped, we continue." << endl;
     }
     else {
-        ofstream out(outName.c_str(), ios::out | ios::trunc);
-    
-        cout << "Writing target phrases of table " << pT->getXenFile()->getFileName() << "." << endl;
-    
-        for(unsigned int i = 0; i < pT->getSize(); i++)
-            out << pT->getTarget(i) << endl;
+        try {
+            ofstream out(outName.c_str(), ios::out | ios::trunc);
+            
+            if (!out.is_open())
+                throw XenCommon::XenCEption("Can't open " + outName + " for writing.");
+
+            cout << "Writing target phrases of table " << pT->getXenFile()->getFileName() << "." << endl;
+            
+            for(unsigned int i = 0; i < pT->getSize(); i++) {
+                out << pT->getTarget(i) << endl;
+            
+                if (out.bad())
+                    throw XenCommon::XenCEption("Error while writing file " + outName);
+            }
+            
+            out.close();
+            
+            cout << "Done writing target phrases." << endl;
+        } catch (XenCommon::XenCEption &e) {
+            throw;
+        }
         
-        out.close();
-    
-        cout << "Done writing target phrases." << endl;
     }
     
     return outName;
@@ -257,14 +323,25 @@ string XenIO::writeTargetPhrases(shared_ptr<PhraseTable> pT) {
  *  Writes an eval/best point file
  */
 void XenIO::writeEval(shared_ptr<Eval> ptrEval, string distName) {
-    ofstream out(distName.c_str(), ios::out | ios::trunc);
-    
-    EvalMap em = ptrEval->getDist();
-    
-    for(EvalMap::iterator it = em.begin() ; it != em.end() ; ++it)
-        out << toString(it->first) << '\t' << toString0(it->second) << endl;
-    
-	out.close();
+    try {
+        ofstream out(distName.c_str(), ios::out | ios::trunc);
+        
+        if (!out.is_open())
+            throw XenCommon::XenCEption("Can't open " + distName + " for writing.");
+        
+        EvalMap em = ptrEval->getDist();
+        
+        for(EvalMap::iterator it = em.begin() ; it != em.end() ; ++it) {
+            out << toString(it->first) << '\t' << toString0(it->second) << endl;
+            
+            if (out.bad())
+                throw XenCommon::XenCEption("Error while writing file " + distName);
+        }
+        
+        out.close();
+    } catch (XenCommon::XenCEption &e) {
+        throw;
+    }
 }
 
 /*
@@ -272,15 +349,25 @@ void XenIO::writeEval(shared_ptr<Eval> ptrEval, string distName) {
  *  FOR DEBUG/TESTING
  */
 void XenIO::dumpSimilarity(shared_ptr<Corpus> c, shared_ptr<Similarity> sim) {
-    string outName = c->getXenFile()->getPrefix() + ".sim";
-    
-    ofstream out(outName.c_str(), ios::out | ios::trunc);
-    
-    for (unsigned int i = 0; i < c->getSize(); i++) {
-        out << sim->getSim(i) << '\t' << c->getLine(i) << endl;
+    try {
+        string outName = c->getXenFile()->getPrefix() + ".sim";
+        
+        ofstream out(outName.c_str(), ios::out | ios::trunc);
+        
+        if (!out.is_open())
+            throw XenCommon::XenCEption("Can't open " + outName + " for writing.");
+        
+        for (unsigned int i = 0; i < c->getSize(); i++) {
+            out << sim->getSim(i) << '\t' << c->getLine(i) << endl;
+            
+            if (out.bad())
+                throw XenCommon::XenCEption("Error while writing file " + outName);
+        }
+        
+        out.close();
+    } catch (XenCommon::XenCEption &e) {
+        throw;
     }
-    
-    out.close();
 }
 
 /*
@@ -292,51 +379,47 @@ vector<string> XenIO::read(shared_ptr<XenFile> file) {
     
     cout << "Reading file " + file->getFullPath() << endl;
     
-    if (!file->isGZ()) {
-        ifstream f (file->getFullPath().c_str());
-    
-        if (!f.is_open()) {
-            cout << "Error while opening file " + file->getFullPath() << endl;
-            exit(1);
-        }
-
-        while(getline(f, line))
-            ret.push_back(line);
-
-        if (f.bad()) {
-            cout << "Error while reading file " + file->getFullPath() << endl;
-            exit(1);
-        }
-    
-        f.close();
-    }
-    else {
-        ifstream f(file->getFullPath().c_str(), std::ios_base::in | std::ios_base::binary);
-        
-        if (!f.is_open()) {
-            cout << "Error while opening file " + file->getFullPath() << endl;
-            exit(1);
-        }
-        
-        try {
-            filtering_istream in;
-            in.push(gzip_decompressor());
-            in.push(f);
+    try {
+        if (!file->isGZ()) {
+            ifstream f (file->getFullPath().c_str());
             
-            while(getline(in, line))
+            if (!f.is_open())
+                throw XenCommon::XenCEption("Error while opening file " + file->getFullPath());
+            
+            while(getline(f, line))
                 ret.push_back(line);
             
-            if (f.bad()) {
-                cout << "Error while reading file " + file->getFullPath() << endl;
-                exit(1);
-            }
+            if (f.bad())
+                throw XenCommon::XenCEption("Error while reading file " + file->getFullPath());
             
             f.close();
         }
-        catch(const gzip_error& e) {
-            cout << e.what() << endl;
-            exit(1);
+        else {
+            ifstream f(file->getFullPath().c_str(), std::ios_base::in | std::ios_base::binary);
+            
+            if (!f.is_open())
+                throw XenCommon::XenCEption("Error while opening file " + file->getFullPath());
+            
+            try {
+                filtering_istream in;
+                in.push(gzip_decompressor());
+                in.push(f);
+                
+                while(getline(in, line))
+                    ret.push_back(line);
+                
+                if (f.bad())
+                    throw XenCommon::XenCEption("Error while reading file " + file->getFullPath());
+                
+                f.close();
+            }
+            catch(const gzip_error& e) {
+                cout << e.what() << endl;
+            }
         }
+    }
+    catch (XenCommon::XenCEption &e) {
+        throw;
     }
     
     cout << "Done reading file " + file->getFullPath() << endl;

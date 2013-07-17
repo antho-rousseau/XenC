@@ -37,15 +37,18 @@ void Corpus::initialize(shared_ptr<XenFile> data, string lg) {
     ptrFile = data;
     lang = lg;
     
-    if (exists(ptrFile->getFullPath().c_str()))
-		cout << "Specified corpus " << ptrFile->getFullPath() << " exists! We continue..." << endl;
-	else {
-		cout << "Specified corpus " << ptrFile->getFullPath() << " does not exists! Exiting." << endl;
-		exit (1);
-	}
-    
-    loadText();
-	wc = Corpus::wordCount();
+    try {
+        if (exists(ptrFile->getFullPath().c_str())) {
+            cout << "Specified corpus " << ptrFile->getFullPath() << " exists! We continue..." << endl;
+        
+            loadText();
+            wc = Corpus::wordCount();
+        }
+        else
+            throw XenCommon::XenCEption("Specified corpus " + ptrFile->getFullPath() + " does not exists! Exiting.");
+    } catch (XenCommon::XenCEption &e) {
+        throw;
+    }
 }
 
 /*
@@ -56,15 +59,18 @@ void Corpus::initialize(string data, string lg) {
     ptrFile->initialize(data);
     lang = lg;
     
-    if (exists(ptrFile->getFullPath().c_str()))
-		cout << "Specified corpus " << ptrFile->getFullPath() << " exists! We continue..." << endl;
-	else {
-		cout << "Specified corpus " << ptrFile->getFullPath() << " does not exists! Exiting." << endl;
-		exit (1);
-	}
-    
-    loadText();
-	wc = Corpus::wordCount();
+    try {
+        if (exists(ptrFile->getFullPath().c_str())) {
+            cout << "Specified corpus " << ptrFile->getFullPath() << " exists! We continue..." << endl;
+            
+            loadText();
+            wc = Corpus::wordCount();
+        }
+        else
+            throw XenCommon::XenCEption("Specified corpus " + ptrFile->getFullPath() + " does not exists! Exiting.");
+    } catch (XenCommon::XenCEption &e) {
+        throw;
+    }
 }
 
 /* 

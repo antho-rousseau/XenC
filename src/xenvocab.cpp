@@ -36,15 +36,19 @@ void XenVocab::initialize(shared_ptr<XenFile> file) {
 	ptrFile = file;
     ptrVocab = shared_ptr<Vocab>(new Vocab);
     
-	if (exists(ptrFile->getFullPath().c_str())) {
-		cout << "Using existing vocab " << ptrFile->getFullPath() << endl;
-        File file(ptrFile->getFullPath().c_str(), "r");
-        ptrVocab->read(file);
-	}
-	else {
-		cout << "Specified vocab " << ptrFile->getFullPath() << " does not exists!" << endl;
-		exit (1);
-	}
+    try {
+        if (exists(ptrFile->getFullPath().c_str())) {
+            cout << "Using existing vocab " << ptrFile->getFullPath() << endl;
+            
+            File file(ptrFile->getFullPath().c_str(), "r");
+            ptrVocab->read(file);
+        }
+        else {
+            throw XenCommon::XenCEption("Specified vocab " + ptrFile->getFullPath() + " does not exists!");
+        }
+    } catch (XenCommon::XenCEption &e) {
+        throw;
+    }
 }
 
 /*

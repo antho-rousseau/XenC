@@ -33,15 +33,19 @@ Wfile::Wfile() {
  *  Initialization from a XenFile
  */
 void Wfile::initialize(shared_ptr<XenFile> xf) {
-    if (exists(xf->getFullPath().c_str())) {
-		cout << "Using existing weights file " << xf->getFullPath() << endl;
-	}
-	else {
-		cout << "Specified weights file " << xf->getFullPath() << " does not exists!" << endl;
-		exit (1);
-	}
-    
-    ptrFile = xf;
+    try {
+        if (exists(xf->getFullPath().c_str())) {
+            cout << "Using existing weights file " << xf->getFullPath() << endl;
+            
+            ptrFile = xf;
+        }
+        else {
+            throw XenCommon::XenCEption("Specified weights file " + xf->getFullPath() + " does not exists!");
+        }
+    }
+    catch (XenCommon::XenCEption &e) {
+        throw;
+    }
 }
 
 /*

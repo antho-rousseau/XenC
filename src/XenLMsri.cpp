@@ -189,17 +189,19 @@ int XenLMsri::createLM() {
             
             unsigned int nbLines = (unsigned int)(ptrXR->getSize() / 100) * pc;
             
-            for (unsigned int i = 0; i < nbLines; i++) {
-                strcpy(str, ptrXR->getTextLine(i).c_str());
-                
-                int nw = ptrVocab->parseWords(str, vstr.get(), MAX_WORDS + 1);
-
-                if (nw == MAX_WORDS + 1) {
-                    fprintf(stderr, "Too many words in one hypothesis\n");
-                    exit(1);
+            try {
+                for (unsigned int i = 0; i < nbLines; i++) {
+                    strcpy(str, ptrXR->getTextLine(i).c_str());
+                    
+                    int nw = ptrVocab->parseWords(str, vstr.get(), MAX_WORDS + 1);
+                    
+                    if (nw == MAX_WORDS + 1)
+                        throw XenCommon::XenCEption("Too many words in one hypothesis.");
+                    
+                    USE_STATS(countSentence(vstr.get()));
                 }
-                
-                USE_STATS(countSentence(vstr.get()));
+            } catch (XenCommon::XenCEption &e) {
+                throw;
             }
         }
 
@@ -209,38 +211,43 @@ int XenLMsri::createLM() {
             ptrDiscounts.get()[i] = 0;
         }
 
-        for (i = 1; i <= order; i++) {
-            unsigned useorder = (i > MAX_ORDER) ? 0 : i;
-            Discount* discount = new ModKneserNey(gtmin[useorder], 0, 0);
-            assert(discount);
-            
-            if (discount) {
-                if (interpolate[0] || interpolate[useorder]) {
-                    discount->interpolate = true;
-                }
+        try {
+            for (i = 1; i <= order; i++) {
+                unsigned useorder = (i > MAX_ORDER) ? 0 : i;
+                Discount* discount = new ModKneserNey(gtmin[useorder], 0, 0);
+                assert(discount);
                 
-                if (!discount->estimate(*ptrNStats, i)) {
-                    cout << "Error in discount estimator for order " << i << "." << endl;
-                    exit(1);
+                if (discount) {
+                    if (interpolate[0] || interpolate[useorder]) {
+                        discount->interpolate = true;
+                    }
+                    
+                    if (!discount->estimate(*ptrNStats, i))
+                        throw XenCommon::XenCEption("Error in discount estimator for order " + toString(i) + ".");
+                    
+                    ptrDiscounts.get()[i-1] = discount;
                 }
-                
-                ptrDiscounts.get()[i-1] = discount;
             }
+        } catch (XenCommon::XenCEption &e) {
+            throw;
         }
         
         if (lmFile) {
             assert(ptrLM != 0);
             
-            if (!ptrLM->estimate(*ptrNStats, ptrDiscounts.get())) {
-                cout << "LM estimation failed." << endl;
-                exit(1);
+            try {
+                if (!ptrLM->estimate(*ptrNStats, ptrDiscounts.get())) {
+                    throw XenCommon::XenCEption("LM estimation failed.");
+                }
+            } catch (XenCommon::XenCEption &e) {
+                throw;
             }
         }
         
         cout << "LM estimation done." << endl;
     }
     
-    return(0);
+    return 0;
 }
 
 /*
@@ -257,11 +264,14 @@ int XenLMsri::loadLM() {
     USE_STATS(vocab) = *ptrVocab;
     USE_STATS(openVocab) = false;
     
-    File file(lmFile, "r");
-    
-    if (!ptrLM->read(file)) {
-        cout << "LM reading failed." << endl;
-        exit(1);
+    try {
+        File file(lmFile, "r");
+        
+        if (!ptrLM->read(file)) {
+            throw XenCommon::XenCEption("LM reading failed.");
+        }
+    } catch (XenCommon::XenCEption &e) {
+        throw;
     }
     
     return(0);
@@ -271,21 +281,23 @@ int XenLMsri::loadLM() {
  *  Writes a LM on disk
  */
 int XenLMsri::writeLM() {
-    if (!exists(lmFile)) {
-        if (writeBinaryLM) {
-            File file(lmFile, "wb");
-            if (!ptrLM->writeBinary(file)) {
-                cout << "LM binary writing failed." << endl;
-                exit(1);
+    try {
+        if (!exists(lmFile)) {
+            if (writeBinaryLM) {
+                File file(lmFile, "wb");
+                
+                if (!ptrLM->writeBinary(file))
+                    throw XenCommon::XenCEption("LM binary writing failed.");
+            }
+            else {
+                File file(lmFile, "w");
+                
+                if (!ptrLM->write(file))
+                    throw XenCommon::XenCEption("LM writing failed.");
             }
         }
-        else {
-            File file(lmFile, "w");
-            if (!ptrLM->write(file)) {
-                cout << "LM writing failed." << endl;
-                exit(1);
-            }
-        }
+    } catch (XenCommon::XenCEption &e) {
+        throw;
     }
     
     return (0);
@@ -300,19 +312,22 @@ string XenLMsri::getFileName() const {
 
 TextStats XenLMsri::getSentenceStats(string s) {
     TextStats tstats;
-    char str[MAX_CHARS];
-    VocabString vstr[MAX_WORDS + 1];
     
-    strcpy(str, s.c_str());
-    
-    int nw = ptrVocab->parseWords(str, vstr, MAX_WORDS + 1);
-    
-    if (nw == MAX_WORDS + 1) {
-        fprintf(stderr, "Too many words in one hypothesis\n");
-        exit(1);
+    try {
+        char str[MAX_CHARS];
+        VocabString vstr[MAX_WORDS + 1];
+        
+        strcpy(str, s.c_str());
+        
+        int nw = ptrVocab->parseWords(str, vstr, MAX_WORDS + 1);
+        
+        if (nw == MAX_WORDS + 1)
+            throw XenCommon::XenCEption("Too many words in one hypothesis.");
+        
+        ptrLM->sentenceProb(vstr, tstats);
+    } catch (XenCommon::XenCEption &e) {
+        throw;
     }
-    
-    ptrLM->sentenceProb(vstr, tstats);
     
     return tstats;
 }

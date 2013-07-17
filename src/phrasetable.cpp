@@ -39,25 +39,29 @@ void PhraseTable::initialize(shared_ptr<XenFile> data) {
     dlm = " ||| ";
     lineSpl = *new Splitter("", dlm);
     
-    if (exists(ptrFile->getFullPath().c_str())) {
-        string cmd = "";
-        if (ptrFile->isGZ())
-            cmd = "zcat " + ptrFile->getFullPath() + " | wc -l";
-        else
-            cmd = "wc -l " + ptrFile->getFullPath();
-        
-        num = toInt(XenCommon::getStdoutFromCommand(cmd));
-        
-		cout << "Specified phrase-table " << ptrFile->getFullPath() << " exists! We continue..." << endl;
-        cout << "Size = " << num << endl;
-        
-        if (opt->getLocal())
-            mergePhrasesBySource();
+    try {
+        if (exists(ptrFile->getFullPath().c_str())) {
+            string cmd = "";
+            if (ptrFile->isGZ())
+                cmd = "zcat " + ptrFile->getFullPath() + " | wc -l";
+            else
+                cmd = "wc -l " + ptrFile->getFullPath();
+            
+            num = toInt(XenCommon::getStdoutFromCommand(cmd));
+            
+            cout << "Specified phrase-table " << ptrFile->getFullPath() << " exists! We continue..." << endl;
+            cout << "Size = " << num << endl;
+            
+            if (opt->getLocal())
+                mergePhrasesBySource();
+        }
+        else {
+            throw XenCommon::XenCEption("Specified phrase-table " + ptrFile->getFullPath() + " does not exists! Exiting.");
+        }
     }
-	else {
-		cout << "Specified phrase-table " << ptrFile->getFullPath() << " does not exists! Exiting." << endl;
-		exit (1);
-	}
+    catch (XenCommon::XenCEption &e) {
+        throw;
+    }
 }
 
 /*
