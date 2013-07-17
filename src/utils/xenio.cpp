@@ -184,11 +184,21 @@ void XenIO::writeBiOutput(shared_ptr<Corpus> sCorp, shared_ptr<Corpus> tCorp, sh
         if (!out.good())
             throw XenCommon::XenCEption("Something went wrong in output stream...");
         
-        for (multimap<double, string>::iterator it = sortMap.begin(); it != sortMap.end(); ++it) {
-            out << toString(it->first) << '\t' << it->second << endl;
-        
-            if (out.bad())
-                throw XenCommon::XenCEption("Something went wrong in output stream...");
+        if (opt->getRev()) {
+            for (multimap<double, string>::reverse_iterator it = sortMap.rbegin(); it != sortMap.rend(); ++it) {
+                out << toString(it->first) << '\t' << it->second << endl;
+                
+                if (out.bad())
+                    throw XenCommon::XenCEption("Something went wrong in output stream...");
+            }
+        }
+        else {
+            for (multimap<double, string>::iterator it = sortMap.begin(); it != sortMap.end(); ++it) {
+                out << toString(it->first) << '\t' << it->second << endl;
+                
+                if (out.bad())
+                    throw XenCommon::XenCEption("Something went wrong in output stream...");
+            }
         }
         
         out.flush();
