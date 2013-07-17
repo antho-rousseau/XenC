@@ -9,7 +9,6 @@
 		- gcc version 4.2.1 or higher (older versions might work, 
 		  but are untested)
 		- GNU make
-		- C shell
 		- gzip, to read/write compressed files
 		- boost version 1.52.0 or higher (may work with lower versions,
 		  untested)
