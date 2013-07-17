@@ -23,7 +23,7 @@
 		- LIBBOOST, for Boost libs directly
 
 	The (multithreaded) boost libraries used by XenC are : libboost_filesystem, 
-	libboost_iostreams, libboost_program_options, libboost_regex, libboost_system and libboost-thread.
+	libboost_iostreams, libboost_program_options, libboost_regex, libboost_system and libboost_thread.
 
 5 - 	By default, the Makefile will look into the /usr/local directory for SRILM
 	(/usr/local/include for includes, /usr/local/lib for libraries), but you 
