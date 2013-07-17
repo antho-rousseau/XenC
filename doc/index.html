@@ -104,7 +104,8 @@
     - the more threads you use, the more memory you will consume when it comes to LMs estimation (due to some leaks in SRILM). Be careful.</BR>
     - strange results can occur when you use a very small in-domain corpus or when your out-of-domain corpus is too small or too close to the in-domain corpus.</BR>
     - stem, similarity and mean are experimental, no results can be guaranteed.</BR>
-    - for stems, you can use TreeTagger, which is quite efficient, along with the tagging script provided in the Moses package.
+    - for stems, you can use TreeTagger, which is quite efficient, along with the tagging script provided in the Moses package.</BR>
+    - to save some memory, it might be useful to split the whole process in two command lines, by first performing the selection, then by adding the <CODE>-e</CODE> or <CODE>-b</CODE> switch to the very same command line.
 	<P>
 	<H2>5 - Contact</H2>
 	<A HREF="mailto:anthony.rousseau@lium.univ-lemans.fr">anthony.rousseau@lium.univ-lemans.fr</A>
