@@ -228,7 +228,7 @@ int XenLMsri::createLM() {
                     }
                     
                     if (!dcnt->estimate(*ptrNStats, i))
-                        throw XenCommon::XenCEption("SRILM says: \"Error in discount estimator for order " + XenCommon::toString(i) + "\". Data too small for ModKN (0)? Try GT (1) or WB (2) as discounting method.");
+                        throw XenCommon::XenCEption("SRILM says: \"Error in discount estimator for order " + toString(i) + "\". Data too small for ModKN (0)? Try GT (1) or WB (2) as discounting method.");
                     
                     ptrDiscounts.get()[i-1] = dcnt;
                 }
