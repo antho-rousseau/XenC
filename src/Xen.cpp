@@ -318,7 +318,7 @@ string sanityCheck(XenOption* opt) {
     }
     else {
         if (opt->getSLang().compare("") == 0) { return "Please specify a source language."; }
-        else if (opt->getTLang().compare("") == 0 && (!opt->getMono() || opt->getMode() == 3)) { return "Please specify a target language."; }
+        else if (opt->getTLang().compare("") == 0 && (!opt->getMono() || opt->getMode() == 3)) { return "Please specify a target language (or add the --mono option)."; }
         else if (opt->getInSData()->getFileName().compare("") == 0) { return "Please specify an in-domain source data."; }
         else if (opt->getOutSData()->getFileName().compare("") == 0 && opt->getMode() > 0) { return "Please specify an out-of-domain source data."; }
         else if (opt->getInTData()->getFileName().compare("") == 0 && opt->getMode() == 3) { return "Please specify an in-domain target data."; }
