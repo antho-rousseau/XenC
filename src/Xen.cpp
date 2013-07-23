@@ -62,6 +62,7 @@ int main(int argc, char* argv[]) {
         ("in-tlm", po::value<string>(&opt.inTLM)->default_value(""), "in-domain target language model (LM). Will be estimated if not present")
         ("out-tlm", po::value<string>(&opt.outTLM)->default_value(""), "out-of-domain target language model (LM). Will be estimated if not present")
         ("order", po::value<int>(&opt.order)->default_value(4), "order for LMs. Default is 4")
+        ("discount", po::value<int>(&opt.discount)->default_value(0), "discounting method for LM estimation. Default is modified KneserNey (0). 1 is GoodTuring, 2 is WittenBell.")
         ("bin-lm", po::value<int>(&opt.binLM)->default_value(1), "whether you want to estimate arpa.gz (0) or binary (1) LMs. Default is 1 (binary)")
         ("w-file", po::value<string>(&opt.wFile)->default_value(""), "filename for weighting the final score (one value per line)")
         ("log", po::value<bool>(&opt.log)->zero_tokens()->default_value(false), "switch to consider weights in w-file as log values")

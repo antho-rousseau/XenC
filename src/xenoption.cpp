@@ -217,6 +217,10 @@ int XenOption::getOrder() const {
     return opt->order;
 }
 
+int XenOption::getDiscount() const {
+    return opt->discount;
+}
+
 string XenOption::getCutoff() const {
     return opt->cutoff;
 }

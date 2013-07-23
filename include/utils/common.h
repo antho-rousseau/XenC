@@ -67,6 +67,7 @@ typedef struct _Options {
 	string wFile;
 	string dev;
 	int order;
+    int discount;
 	string cutoff;
 	string smooth;
     int binLM;

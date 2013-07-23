@@ -71,9 +71,10 @@ class XenLMsri {
         char* textFile;
         char* lmFile;
         unsigned order;
-        int interpolate[10];
-        int kndiscount[10];
-        unsigned gtmin[10];
+        int discount;
+        int interpolate[MAX_ORDER + 1];
+        unsigned gtmin[MAX_ORDER + 1];
+        unsigned gtmax[MAX_ORDER + 1];
         int writeBinaryLM;
         int keepunk;
         

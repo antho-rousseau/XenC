@@ -65,6 +65,7 @@ public:
 	shared_ptr<XenFile> getWFile();
 	shared_ptr<XenFile> getDev();
 	int getOrder() const;
+    int getDiscount() const;
 	string getCutoff() const;
 	string getSmooth() const;
     int getBinLM() const;

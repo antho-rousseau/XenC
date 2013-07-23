@@ -29,6 +29,16 @@ XenLMsri::XenLMsri() {
     XenOption* opt = XenOption::getInstance();
 
     order = opt->getOrder();
+    discount = opt->getDiscount();
+    writeBinaryLM = opt->getBinLM();
+    
+    for (int i = 0; i < MAX_ORDER + 1; i++)
+        gtmin[i] = 0;
+    
+    gtmax[0] = 5; gtmax[1] = 1;
+    
+    for (int i = 2; i < MAX_ORDER + 1; i++)
+        gtmax[i] = 7;
     
     ptrCorp = shared_ptr<Corpus>(new Corpus);
     ptrVoc = shared_ptr<XenVocab>(new XenVocab);
@@ -49,8 +59,7 @@ void XenLMsri::initialize(shared_ptr<Corpus> c, shared_ptr<XenVocab> v) {
 
     ptrCorp = c;
     ptrVoc = v;
-    
-    order = opt->getOrder();
+
     keepunk = 1;
     
     ptrVocab->operator=(*ptrVoc->getVocab());
@@ -59,7 +68,6 @@ void XenLMsri::initialize(shared_ptr<Corpus> c, shared_ptr<XenVocab> v) {
     ptrXR = shared_ptr<XenResult>(new XenResult);
     pc = 0;
     
-    writeBinaryLM = opt->getBinLM();
     interpolate[0] = 1;
     
     textFile = new char[ptrCorp->getXenFile()->getFullPath().length() + 1];
@@ -67,11 +75,6 @@ void XenLMsri::initialize(shared_ptr<Corpus> c, shared_ptr<XenVocab> v) {
 
     lmFile = new char[makeLMname(opt).length() + 1];
     strcpy(lmFile, makeLMname(opt).c_str());
-    
-    for (unsigned int i = 1; i <= order; i++) {
-        kndiscount[i] = 1;
-        gtmin[i] = 0;
-    }
     
     setlocale(LC_CTYPE, "");
     setlocale(LC_COLLATE, "");
@@ -81,12 +84,9 @@ void XenLMsri::initialize(shared_ptr<Corpus> c, shared_ptr<XenVocab> v) {
  *  Initialization from a XenFile & a XenVocab
  */
 void XenLMsri::initialize(shared_ptr<XenFile> f, shared_ptr<XenVocab> v) {
-    XenOption* opt = XenOption::getInstance();
-
     ptrCorp = shared_ptr<Corpus>(new Corpus);
     ptrVoc = v;
     
-    order = opt->getOrder();
     keepunk = 1;
     
     ptrVocab->operator=(*ptrVoc->getVocab());
@@ -95,18 +95,12 @@ void XenLMsri::initialize(shared_ptr<XenFile> f, shared_ptr<XenVocab> v) {
     ptrXR = shared_ptr<XenResult>(new XenResult);
     pc = 0;
 
-    writeBinaryLM = opt->getBinLM();
     interpolate[0] = 1;
     
     textFile = NULL;
     
     lmFile = new char[f->getFullPath().length() + 1];
     strcpy(lmFile, f->getFullPath().c_str());
-    
-    for (unsigned int i = 1; i <= order; i++) {
-        kndiscount[i] = 1;
-        gtmin[i] = 0;
-    }
     
     setlocale(LC_CTYPE, "");
     setlocale(LC_COLLATE, "");
@@ -116,12 +110,9 @@ void XenLMsri::initialize(shared_ptr<XenFile> f, shared_ptr<XenVocab> v) {
  *  Initialization from a XenResult (for eval)
  */
 void XenLMsri::initialize(shared_ptr<XenResult> ptrXenRes, shared_ptr<XenVocab> v, int p, string name) {
-    XenOption* opt = XenOption::getInstance();
-
     ptrCorp = shared_ptr<Corpus>(new Corpus);
     ptrVoc = v;
     
-    order = opt->getOrder();
     keepunk = 1;
     
     ptrVocab->operator=(*ptrVoc->getVocab());
@@ -130,18 +121,12 @@ void XenLMsri::initialize(shared_ptr<XenResult> ptrXenRes, shared_ptr<XenVocab> 
     ptrXR = ptrXenRes;
     pc = p;
     
-    writeBinaryLM = opt->getBinLM();
     interpolate[0] = 1;
     
     textFile = NULL;
     
     lmFile = new char[name.length() + 1];
     strcpy(lmFile, name.c_str());
-    
-    for (unsigned int i = 1; i <= order; i++) {
-        kndiscount[i] = 1;
-        gtmin[i] = 0;
-    }
     
     setlocale(LC_CTYPE, "");
     setlocale(LC_COLLATE, "");
@@ -214,18 +199,38 @@ int XenLMsri::createLM() {
         try {
             for (i = 1; i <= order; i++) {
                 unsigned useorder = (i > MAX_ORDER) ? 0 : i;
-                Discount* discount = new ModKneserNey(gtmin[useorder], 0, 0);
-                assert(discount);
+                Discount* dcnt = 0;
                 
-                if (discount) {
+                switch (discount) {
+                    case 0:
+                        dcnt = new ModKneserNey(gtmin[useorder], 0, 0);
+                        break;
+                        
+                    case 1:
+                        dcnt = new GoodTuring(gtmin[useorder], gtmax[useorder]);
+                        break;
+                        
+                    case 2:
+                        dcnt = new WittenBell(gtmin[useorder]);
+                        break;
+                        
+                    default:
+                        std::cout << "Discounting method ID must be 0 (ModKneserNey), 1 (GoodTuring) or 2 (WittenBell). Using default (ModKneserNey)." << std::endl;
+                        dcnt = new ModKneserNey(gtmin[useorder], 0, 0);
+                        break;
+                }
+                
+                assert(dcnt);
+                
+                if (dcnt) {
                     if (interpolate[0] || interpolate[useorder]) {
-                        discount->interpolate = true;
+                        dcnt->interpolate = true;
                     }
                     
-                    if (!discount->estimate(*ptrNStats, i))
-                        throw XenCommon::XenCEption("Error in discount estimator for order " + toString(i) + ".");
+                    if (!dcnt->estimate(*ptrNStats, i))
+                        throw XenCommon::XenCEption("SRILM says: \"Error in discount estimator for order " + XenCommon::toString(i) + "\". Data too small for ModKN (0)? Try GT (1) or WB (2) as discounting method.");
                     
-                    ptrDiscounts.get()[i-1] = discount;
+                    ptrDiscounts.get()[i-1] = dcnt;
                 }
             }
         } catch (XenCommon::XenCEption &e) {
