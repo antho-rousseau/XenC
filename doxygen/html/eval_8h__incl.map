@@ -1,0 +1,9 @@
+<map id="include/eval.h" name="include/eval.h">
+<area shape="rect" id="node4" href="$common_8h.html" title="File containing all common classes/structures/functions of many classes of XenC." alt="" coords="277,408,381,435"/>
+<area shape="rect" id="node43" href="$corpus_8h.html" title="Class handling corpus&#45;related functionalities." alt="" coords="275,259,345,285"/>
+<area shape="rect" id="node45" href="$xenoption_8h.html" title="Singleton class handling XenC options accessors/mutators." alt="" coords="113,259,199,285"/>
+<area shape="rect" id="node46" href="$_xen_l_msri_8h.html" title="Class handling SRI LM estimation, loading, querying..." alt="" coords="446,184,529,211"/>
+<area shape="rect" id="node50" href="$ppl_8h.html" title="Class handling the perplexity/cross&#45;entropy computations." alt="" coords="556,95,607,121"/>
+<area shape="rect" id="node49" href="$xenresult_8h.html" title="Class handling a XenC sorted result file for evaluation/best point." alt="" coords="604,259,687,285"/>
+<area shape="rect" id="node44" href="$xenfile_8h.html" title="Class providing some basic functions around files." alt="" coords="261,333,328,360"/>
+</map>

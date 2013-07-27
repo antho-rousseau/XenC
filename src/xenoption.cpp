@@ -1,23 +1,28 @@
-/*
- * This file is part of the cross-entropy tool for data selection (XenC)
- * aimed at speech recognition and statistical machine translation.
+/**
+ *  @file xenoption.cpp
+ *  @brief Singleton class handling XenC options accessors/mutators
+ *  @author Anthony Rousseau
+ *  @version 1.0.0
+ *  @date 27 July 2013
+ */
+
+/*  This file is part of the cross-entropy tool for data selection (XenC)
+ *  aimed at speech recognition and statistical machine translation.
  *
- * Copyright 2013, Anthony Rousseau, LIUM, University of Le Mans, France
+ *  Copyright 2013, Anthony Rousseau, LIUM, University of Le Mans, France
  *
- * The XenC tool is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 3 as
- * published by the Free Software Foundation
+ *  The XenC tool is free software; you can redistribute it and/or modify it
+ *  under the terms of the GNU General Public License version 3 as
+ *  published by the Free Software Foundation
  *
- * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
- * for more details.
+ *  This library is distributed in the hope that it will be useful, but WITHOUT
+ *  ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ *  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
+ *  for more details.
  *
- * You should have received a copy of the GNU General Public License
- * along with this library; if not, write to the Free Software Foundation,
- * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
- *
- * $Id: xenoption.cpp, v 1.0 PUBLIC RELEASE 2013/07/16 rousseau Exp $
+ *  You should have received a copy of the GNU General Public License
+ *  along with this library; if not, write to the Free Software Foundation,
+ *  Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
 #include "xenoption.h"
@@ -50,58 +55,58 @@ XenOption::XenOption() {
 XenOption::XenOption(LPOptions o) {
     opt = o;
     
-    inSD = shared_ptr<XenFile>(new XenFile);
+    inSD = boost::make_shared<XenFile>();
     inSD->initialize(opt->inSData);
     
-    outSD = shared_ptr<XenFile>(new XenFile);
+    outSD = boost::make_shared<XenFile>();
 	outSD->initialize(opt->outSData);
     
-    inTD = shared_ptr<XenFile>(new XenFile);
+    inTD = boost::make_shared<XenFile>();
     inTD->initialize(opt->inTData);
     
-    outTD = shared_ptr<XenFile>(new XenFile);
+    outTD = boost::make_shared<XenFile>();
     outTD->initialize(opt->outTData);
     
-    inSS = shared_ptr<XenFile>(new XenFile);
+    inSS = boost::make_shared<XenFile>();
     inSS->initialize(opt->inSStem);
     
-    outSS = shared_ptr<XenFile>(new XenFile);
+    outSS = boost::make_shared<XenFile>();
 	outSS->initialize(opt->outSStem);
     
-    inTS = shared_ptr<XenFile>(new XenFile);
+    inTS = boost::make_shared<XenFile>();
     inTS->initialize(opt->inTStem);
     
-    outTS = shared_ptr<XenFile>(new XenFile);
+    outTS = boost::make_shared<XenFile>();
     outTS->initialize(opt->outTStem);
     
-    inPT = shared_ptr<XenFile>(new XenFile);
+    inPT = boost::make_shared<XenFile>();
     inPT->initialize(opt->iPTable);
     
-    outPT = shared_ptr<XenFile>(new XenFile);
+    outPT = boost::make_shared<XenFile>();
     outPT->initialize(opt->oPTable);
     
-    sVoc = shared_ptr<XenFile>(new XenFile);
+    sVoc = boost::make_shared<XenFile>();
     sVoc->initialize(opt->sVocab);
     
-    tVoc = shared_ptr<XenFile>(new XenFile);
+    tVoc = boost::make_shared<XenFile>();
 	tVoc->initialize(opt->tVocab);
     
-    inSLM = shared_ptr<XenFile>(new XenFile);
+    inSLM = boost::make_shared<XenFile>();
 	inSLM->initialize(opt->inSLM);
     
-    outSLM = shared_ptr<XenFile>(new XenFile);
+    outSLM = boost::make_shared<XenFile>();
 	outSLM->initialize(opt->outSLM);
     
-    inTLM = shared_ptr<XenFile>(new XenFile);
+    inTLM = boost::make_shared<XenFile>();
 	inTLM->initialize(opt->inTLM);
     
-    outTLM = shared_ptr<XenFile>(new XenFile);
+    outTLM = boost::make_shared<XenFile>();
 	outTLM->initialize(opt->outTLM);
     
-    wFile = shared_ptr<XenFile>(new XenFile);
+    wFile = boost::make_shared<XenFile>();
 	wFile->initialize(opt->wFile);
     
-    dev = shared_ptr<XenFile>(new XenFile);
+    dev = boost::make_shared<XenFile>();
 	dev->initialize(opt->dev);
 }
 
@@ -109,51 +114,51 @@ XenOption::~XenOption() {
 
 }
 
-string XenOption::getSLang() const {
+std::string XenOption::getSLang() const {
     return opt->sLang;
 }
 
-string XenOption::getTLang() const {
+std::string XenOption::getTLang() const {
     return opt->tLang;
 }
 
-shared_ptr<XenFile> XenOption::getInSData() {
+boost::shared_ptr<XenFile> XenOption::getInSData() const {
     return inSD;
 }
 
-shared_ptr<XenFile> XenOption::getOutSData() {
+boost::shared_ptr<XenFile> XenOption::getOutSData() const {
     return outSD;
 }
 
-shared_ptr<XenFile> XenOption::getInTData() {
+boost::shared_ptr<XenFile> XenOption::getInTData() const {
     return inTD;
 }
 
-shared_ptr<XenFile> XenOption::getOutTData() {
+boost::shared_ptr<XenFile> XenOption::getOutTData() const {
     return outTD;
 }
 
-shared_ptr<XenFile> XenOption::getInSStem() {
+boost::shared_ptr<XenFile> XenOption::getInSStem() const {
     return inSS;
 }
 
-shared_ptr<XenFile> XenOption::getOutSStem() {
+boost::shared_ptr<XenFile> XenOption::getOutSStem() const {
     return outSS;
 }
 
-shared_ptr<XenFile> XenOption::getInTStem() {
+boost::shared_ptr<XenFile> XenOption::getInTStem() const {
     return inTS;
 }
 
-shared_ptr<XenFile> XenOption::getOutTStem() {
+boost::shared_ptr<XenFile> XenOption::getOutTStem() const {
     return outTS;
 }
 
-shared_ptr<XenFile> XenOption::getInPTable() {
+boost::shared_ptr<XenFile> XenOption::getInPTable() const {
     return inPT;
 }
 
-shared_ptr<XenFile> XenOption::getOutPTable() {
+boost::shared_ptr<XenFile> XenOption::getOutPTable() const {
     return outPT;
 }
 
@@ -181,35 +186,35 @@ int XenOption::getVecSize() const {
     return opt->vecSize;
 }
 
-shared_ptr<XenFile> XenOption::getSVocab() {
+boost::shared_ptr<XenFile> XenOption::getSVocab() const {
     return sVoc;
 }
 
-shared_ptr<XenFile> XenOption::getTVocab() {
+boost::shared_ptr<XenFile> XenOption::getTVocab() const {
     return tVoc;
 }
 
-shared_ptr<XenFile> XenOption::getInSLM() {
+boost::shared_ptr<XenFile> XenOption::getInSLM() const {
     return inSLM;
 }
 
-shared_ptr<XenFile> XenOption::getOutSLM() {
+boost::shared_ptr<XenFile> XenOption::getOutSLM() const {
     return outSLM;
 }
 
-shared_ptr<XenFile> XenOption::getInTLM() {
+boost::shared_ptr<XenFile> XenOption::getInTLM() const {
     return inTLM;
 }
 
-shared_ptr<XenFile> XenOption::getOutTLM() {
+boost::shared_ptr<XenFile> XenOption::getOutTLM() const {
     return outTLM;
 }
 
-shared_ptr<XenFile> XenOption::getWFile() {
+boost::shared_ptr<XenFile> XenOption::getWFile() const {
     return wFile;
 }
 
-shared_ptr<XenFile> XenOption::getDev() {
+boost::shared_ptr<XenFile> XenOption::getDev() const {
     return dev;
 }
 
@@ -219,14 +224,6 @@ int XenOption::getOrder() const {
 
 int XenOption::getDiscount() const {
     return opt->discount;
-}
-
-string XenOption::getCutoff() const {
-    return opt->cutoff;
-}
-
-string XenOption::getSmooth() const {
-    return opt->smooth;
 }
 
 int XenOption::getBinLM() const {
@@ -269,11 +266,11 @@ int XenOption::getStep() const {
     return opt->step;
 }
 
-string XenOption::getOutName() const {
+std::string XenOption::getOutName() const {
     return opt->outName;
 }
 
-string XenOption::getName() const {
+std::string XenOption::getName() const {
     return opt->name;
 }
 
@@ -285,18 +282,10 @@ bool XenOption::getSortOnly() const {
     return opt->sortOnly;
 }
 
-void XenOption::setSampleSize(int sS) {
-    opt->sampleSize = sS;
+void XenOption::setSampleSize(int size) {
+    opt->sampleSize = size;
 }
 
-void XenOption::setEval(bool ev) {
-    opt->eval = ev;
-}
-
-void XenOption::setBp(bool bp) {
-    opt->bp = bp;
-}
-
-void XenOption::setStep(int st) {
-    opt->step = st;
+void XenOption::setStep(int step) {
+    opt->step = step;
 }

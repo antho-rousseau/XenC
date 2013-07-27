@@ -1,0 +1,7 @@
+<map id="XenCommon::Splitter::reset" name="XenCommon::Splitter::reset">
+<area shape="rect" id="node2" href="$class_phrase_table.html#afed99089344b3b9c294b68e1357e9e13" title="Accessor to the nth source phrase." alt="" coords="200,5,357,32"/>
+<area shape="rect" id="node3" href="$class_phrase_table.html#af502a1c69356c10e50bc9768bee72991" title="Accessor to the nth target phrase." alt="" coords="202,56,355,83"/>
+<area shape="rect" id="node4" href="$class_phrase_table.html#a1a6951601e23324b860140ccf88059e7" title="Accessor to the nth scores for the source/target phrase pair." alt="" coords="200,107,357,133"/>
+<area shape="rect" id="node5" href="$class_phrase_table.html#a52792d5aceb6355f8e52672e4d4e2570" title="Accessor to the nth alignments for the source/target phrase pair." alt="" coords="193,157,365,184"/>
+<area shape="rect" id="node6" href="$class_phrase_table.html#a5cdec93022f04bc65e3e315efcb85186" title="Accessor to the nth counts for the source/target phrase pair." alt="" coords="199,208,358,235"/>
+</map>

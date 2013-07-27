@@ -1,0 +1,5 @@
+<map id="PPL::calcPPLCorpus" name="PPL::calcPPLCorpus">
+<area shape="rect" id="node2" href="$class_xen_option.html#a97ad096aee729b4d8ae993b1381d4eec" title="Accessor to the instance of the singleton XenOption object." alt="" coords="198,5,351,32"/>
+<area shape="rect" id="node3" href="$class_xen_option.html#a1e63941bf583b329394def43e580bbd6" title="Accessor to the requested number of threads." alt="" coords="199,56,350,83"/>
+<area shape="rect" id="node4" href="$ppl_8h.html#a10d981ed9e68dd85332f35a8ab4c5147" title="Thread&#45;safe perplexity computation function." alt="" coords="226,107,323,133"/>
+</map>

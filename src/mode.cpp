@@ -1,47 +1,39 @@
-/*
- * This file is part of the cross-entropy tool for data selection (XenC)
- * aimed at speech recognition and statistical machine translation.
+/**
+ *  @file mode.cpp
+ *  @brief Abstract class defining the filtering modes architecture
+ *  @author Anthony Rousseau
+ *  @version 1.0.0
+ *  @date 27 July 2013
+ */
+
+/*  This file is part of the cross-entropy tool for data selection (XenC)
+ *  aimed at speech recognition and statistical machine translation.
  *
- * Copyright 2013, Anthony Rousseau, LIUM, University of Le Mans, France
+ *  Copyright 2013, Anthony Rousseau, LIUM, University of Le Mans, France
  *
- * The XenC tool is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 3 as
- * published by the Free Software Foundation
+ *  The XenC tool is free software; you can redistribute it and/or modify it
+ *  under the terms of the GNU General Public License version 3 as
+ *  published by the Free Software Foundation
  *
- * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
- * for more details.
+ *  This library is distributed in the hope that it will be useful, but WITHOUT
+ *  ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ *  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
+ *  for more details.
  *
- * You should have received a copy of the GNU General Public License
- * along with this library; if not, write to the Free Software Foundation,
- * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
- *
- * $Id: mode.cpp, v 1.0 PUBLIC RELEASE 2013/07/16 rousseau Exp $
+ *  You should have received a copy of the GNU General Public License
+ *  along with this library; if not, write to the Free Software Foundation,
+ *  Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
 #include "mode.h"
 
-/*
- *  Pure virtual destructor
- */
 Mode::~Mode() {
     
 }
 
-//  ---------
-//  Protected
-//  ---------
-
-/*
- *  Computes the size of the sample which will be used for
- *  out-of-domain LM estimation
- */
-void Mode::findSampleSize(shared_ptr<Corpus> iC, shared_ptr<Corpus> oC) {
-    XenOption* opt = XenOption::getInstance();
-    
-	int iW = iC->getWC();
-	int oW = oC->getWC();
+int Mode::findSampleSize(boost::shared_ptr<Corpus> idCorp, boost::shared_ptr<Corpus> oodCorp) {
+    int iW = idCorp->getWC();
+	int oW = oodCorp->getWC();
     
 	double res = (double)iW / (double)oW * 100;
 	int i = (int)(res + 0.5f);
@@ -49,37 +41,33 @@ void Mode::findSampleSize(shared_ptr<Corpus> iC, shared_ptr<Corpus> oC) {
 	if (i == 0) { i = 1; }
 	if (i > 100) { i = 100; }
     
-	opt->setSampleSize(i);
+	return i;
 }
 
-/*
- *  Extracts the previously computed sample size from
- *  the OOD corpus
- */
-Corpus Mode::extractSample(shared_ptr<Corpus> c, int sS, bool mean) {
-	double res = (double)c->getWC() * ((double)sS / 100);
+Corpus Mode::extractSample(boost::shared_ptr<Corpus> ptrCorp, int sSize, bool mean) {
+	double res = (double)ptrCorp->getWC() * ((double)sSize / 100);
 	int max = (int)(res + 0.5f);
     
-    string rnd = "";
+    std::string rnd = "";
     
     if (mean) {
-        srand ((unsigned int)time(NULL));
-        rnd = toString0(rand() % 10000);
+        std::srand ((unsigned int)std::time(NULL));
+        rnd = XenCommon::toString0(std::rand() % 10000);
     }
     
-	string sampleName = c->getXenFile()->getPrefix() + rnd + "-sample" + toString(sS);
-	string outFile = sampleName + "." + c->getLang();
+    std::string sampleName = ptrCorp->getXenFile()->getPrefix() + rnd + "-sample" + XenCommon::toString(sSize);
+    std::string outFile = sampleName + "." + ptrCorp->getLang();
     
-    if (!exists(outFile.c_str())) {
-        srand((unsigned int)time(NULL));
+    if (!boost::filesystem::exists(outFile.c_str())) {
+        std::srand((unsigned int)std::time(NULL));
         
-        ofstream out(outFile.c_str(), ios::out | ios::trunc);
+        std::ofstream out(outFile.c_str(), std::ios::out | std::ios::trunc);
         
         int count = 0;
         
         while (count < max) {
-            string line = c->getLine(rand() % c->getSize());
-            out << line << endl;
+            std::string line = ptrCorp->getLine(std::rand() % ptrCorp->getSize());
+            out << line << std::endl;
             int n = XenCommon::wordCount(line);
             count += (n + 1);
         }
@@ -87,11 +75,11 @@ Corpus Mode::extractSample(shared_ptr<Corpus> c, int sS, bool mean) {
         out.close();
     }
     else {
-        cout << "Sample file " << outFile << " already exists, reusing." << endl;
+        std::cout << "Sample file " << outFile << " already exists, reusing." << std::endl;
     }
     
 	Corpus r;
-    r.initialize(outFile, c->getLang());
-
+    r.initialize(outFile, ptrCorp->getLang());
+    
 	return r;
 }

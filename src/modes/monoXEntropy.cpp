@@ -1,23 +1,28 @@
-/*
- * This file is part of the cross-entropy tool for data selection (XenC)
- * aimed at speech recognition and statistical machine translation.
+/**
+ *  @file monoXEntropy.cpp
+ *  @brief Derived class to handle filtering mode 2: monolingual cross-entropy
+ *  @author Anthony Rousseau
+ *  @version 1.0.0
+ *  @date 27 July 2013
+ */
+
+/*  This file is part of the cross-entropy tool for data selection (XenC)
+ *  aimed at speech recognition and statistical machine translation.
  *
- * Copyright 2013, Anthony Rousseau, LIUM, University of Le Mans, France
+ *  Copyright 2013, Anthony Rousseau, LIUM, University of Le Mans, France
  *
- * The XenC tool is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 3 as
- * published by the Free Software Foundation
+ *  The XenC tool is free software; you can redistribute it and/or modify it
+ *  under the terms of the GNU General Public License version 3 as
+ *  published by the Free Software Foundation
  *
- * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
- * for more details.
+ *  This library is distributed in the hope that it will be useful, but WITHOUT
+ *  ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ *  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
+ *  for more details.
  *
- * You should have received a copy of the GNU General Public License
- * along with this library; if not, write to the Free Software Foundation,
- * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
- *
- * $Id: monoXEntropy.cpp, v 1.0 PUBLIC RELEASE 2013/07/16 rousseau Exp $
+ *  You should have received a copy of the GNU General Public License
+ *  along with this library; if not, write to the Free Software Foundation,
+ *  Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
 #include "monoXEntropy.h"
@@ -30,13 +35,6 @@ MonoXEntropy::~MonoXEntropy() {
 
 }
 
-//  ------
-//  Public
-//  ------
-
-/*
- *  Launches operations for this mode
- */
 int MonoXEntropy::launch() {
     XenOption* opt = XenOption::getInstance();
     StaticData* sD = StaticData::getInstance();
@@ -69,9 +67,9 @@ int MonoXEntropy::launch() {
         
         // Init out-of-domain source LM
         if (opt->getOutSLM()->getFileName().compare("") == 0) {
-            Mode::findSampleSize(sD->getSourceCorps()->getPtrInCorp(), sD->getSourceCorps()->getPtrOutCorp());
+            opt->setSampleSize(Mode::findSampleSize(sD->getSourceCorps()->getPtrInCorp(), sD->getSourceCorps()->getPtrOutCorp()));
             
-            shared_ptr<Corpus> ptrOutLMCorp(new Corpus(Mode::extractSample(sD->getSourceCorps()->getPtrOutCorp(), opt->getSampleSize(), opt->getMean())));
+            boost::shared_ptr<Corpus> ptrOutLMCorp = boost::make_shared<Corpus>(Mode::extractSample(sD->getSourceCorps()->getPtrOutCorp(), opt->getSampleSize(), opt->getMean()));
             sD->getSourceLMs()->getPtrOutLM()->initialize(ptrOutLMCorp, sD->getVocabs()->getPtrSourceVoc());
             sD->getSourceLMs()->getPtrOutLM()->createLM();
             sD->getSourceLMs()->getPtrOutLM()->writeLM();
@@ -82,33 +80,34 @@ int MonoXEntropy::launch() {
         }
         
         // Check for LM estimation OK
-        if (!exists(sD->getSourceLMs()->getPtrInLM()->getFileName())) {
-            cout << "Error: LM file " + sD->getSourceLMs()->getPtrInLM()->getFileName() + " does not exists!" << endl;
+        if (!boost::filesystem::exists(sD->getSourceLMs()->getPtrInLM()->getFileName())) {
+            std::cout << "Error: LM file " + sD->getSourceLMs()->getPtrInLM()->getFileName() + " does not exists!" << std::endl;
             return 1;
         }
-        if (!exists(sD->getSourceLMs()->getPtrOutLM()->getFileName())) {
-            cout << "Error: LM file " + sD->getSourceLMs()->getPtrOutLM()->getFileName() + " does not exists!" << endl;
+        
+        if (!boost::filesystem::exists(sD->getSourceLMs()->getPtrOutLM()->getFileName())) {
+            std::cout << "Error: LM file " + sD->getSourceLMs()->getPtrOutLM()->getFileName() + " does not exists!" << std::endl;
             return 1;
         }
         
         // Init Mean LMs if needed
         if (opt->getMean()) {
-            shared_ptr<Corpus> ptrOutLMCorp2(new Corpus(Mode::extractSample(sD->getSourceCorps()->getPtrOutCorp(), opt->getSampleSize(), opt->getMean())));
+            boost::shared_ptr<Corpus> ptrOutLMCorp2 = boost::make_shared<Corpus>(Mode::extractSample(sD->getSourceCorps()->getPtrOutCorp(), opt->getSampleSize(), opt->getMean()));
             sD->getMeanSourceLMs()->getPtrOutLM2()->initialize(ptrOutLMCorp2, sD->getVocabs()->getPtrSourceVoc());
             sD->getMeanSourceLMs()->getPtrOutLM2()->createLM();
             sD->getMeanSourceLMs()->getPtrOutLM2()->writeLM();
             
-            shared_ptr<Corpus> ptrOutLMCorp3(new Corpus(Mode::extractSample(sD->getSourceCorps()->getPtrOutCorp(), opt->getSampleSize(), opt->getMean())));
+            boost::shared_ptr<Corpus> ptrOutLMCorp3 = boost::make_shared<Corpus>(Mode::extractSample(sD->getSourceCorps()->getPtrOutCorp(), opt->getSampleSize(), opt->getMean()));
             sD->getMeanSourceLMs()->getPtrOutLM3()->initialize(ptrOutLMCorp3, sD->getVocabs()->getPtrSourceVoc());
             sD->getMeanSourceLMs()->getPtrOutLM3()->createLM();
             sD->getMeanSourceLMs()->getPtrOutLM3()->writeLM();
             
-            if (!exists(sD->getMeanSourceLMs()->getPtrOutLM2()->getFileName())) {
-                cout << "Error: LM file " + sD->getMeanSourceLMs()->getPtrOutLM2()->getFileName() + " does not exists!" << endl;
+            if (!boost::filesystem::exists(sD->getMeanSourceLMs()->getPtrOutLM2()->getFileName())) {
+                std::cout << "Error: LM file " + sD->getMeanSourceLMs()->getPtrOutLM2()->getFileName() + " does not exists!" << std::endl;
                 return 1;
             }
-            if (!exists(sD->getMeanSourceLMs()->getPtrOutLM3()->getFileName())) {
-                cout << "Error: LM file " + sD->getMeanSourceLMs()->getPtrOutLM3()->getFileName() + " does not exists!" << endl;
+            if (!boost::filesystem::exists(sD->getMeanSourceLMs()->getPtrOutLM3()->getFileName())) {
+                std::cout << "Error: LM file " + sD->getMeanSourceLMs()->getPtrOutLM3()->getFileName() + " does not exists!" << std::endl;
                 return 1;
             }
         }
@@ -124,14 +123,14 @@ int MonoXEntropy::launch() {
             sD->getStemSourceLMs()->getPtrInLM()->createLM();
             sD->getStemSourceLMs()->getPtrInLM()->writeLM();
             
-            Mode::findSampleSize(sD->getStemSourceCorps()->getPtrInCorp(), sD->getStemSourceCorps()->getPtrOutCorp());
-            shared_ptr<Corpus> ptrOutSourceStemCorp(new Corpus(Mode::extractSample(sD->getStemSourceCorps()->getPtrOutCorp(), opt->getSampleSize(), false)));
+            opt->setSampleSize(Mode::findSampleSize(sD->getStemSourceCorps()->getPtrInCorp(), sD->getStemSourceCorps()->getPtrOutCorp()));
+            boost::shared_ptr<Corpus> ptrOutSourceStemCorp = boost::make_shared<Corpus>(Mode::extractSample(sD->getStemSourceCorps()->getPtrOutCorp(), opt->getSampleSize(), false));
             sD->getStemSourceLMs()->getPtrOutLM()->initialize(ptrOutSourceStemCorp, sD->getStemVocabs()->getPtrSourceVoc());
             sD->getStemSourceLMs()->getPtrOutLM()->createLM();
             sD->getStemSourceLMs()->getPtrOutLM()->writeLM();
             
-            if (!exists(sD->getStemSourceLMs()->getPtrInLM()->getFileName())) { cout << "Error: LM file " + sD->getStemSourceLMs()->getPtrInLM()->getFileName() + " does not exists!" << endl; return 1; }
-            if (!exists(sD->getStemSourceLMs()->getPtrOutLM()->getFileName())) { cout << "Error: LM file " + sD->getStemSourceLMs()->getPtrOutLM()->getFileName() + " does not exists!" << endl; return 1; }
+            if (!boost::filesystem::exists(sD->getStemSourceLMs()->getPtrInLM()->getFileName())) { std::cout << "Error: LM file " + sD->getStemSourceLMs()->getPtrInLM()->getFileName() + " does not exists!" << std::endl; return 1; }
+            if (!boost::filesystem::exists(sD->getStemSourceLMs()->getPtrOutLM()->getFileName())) { std::cout << "Error: LM file " + sD->getStemSourceLMs()->getPtrOutLM()->getFileName() + " does not exists!" << std::endl; return 1; }
         }
         
         // Init all PPL objects
@@ -174,7 +173,7 @@ int MonoXEntropy::launch() {
             }
             
             if (opt->getWFile()->getFileName().compare("") != 0)
-                res = res * sD->getWeightsFile()->getScore(i);
+                res = res * sD->getWeightsFile()->getWeight(i);
             
             sD->getScHold()->getPtrScXenC()->addScore(res);
         }
@@ -182,7 +181,7 @@ int MonoXEntropy::launch() {
     
     // Fill score holder for similarity if needed
     if (opt->getSim() || opt->getSimOnly()) {
-        for (int i = 0; i < sD->getSim()->getSize(); i++)
+        for (unsigned int i = 0; i < sD->getSim()->getSize(); i++)
             sD->getScHold()->getPtrScSimil()->addScore(sD->getSim()->getSim(i));
         
         sD->getScHold()->getPtrScSimil()->inverse();
@@ -190,13 +189,13 @@ int MonoXEntropy::launch() {
     
     // Scores combination if needed ==> NEEDS TESTING
     if (opt->getSimOnly()) { // Similarity alone (calibrate or not??? NEEDS TESTING)
-        cout << "Scoring with similarity only." << endl;
+        std::cout << "Scoring with similarity only." << std::endl;
         
         for (unsigned int i = 0; i < sD->getScHold()->getPtrScSimil()->getSize(); i++)
             sD->getScHold()->getPtrScores()->addScore(sD->getScHold()->getPtrScSimil()->getScore(i));
     }
     else if (opt->getSim()) { // Cross-entropy and similarity combination
-        cout << "Scoring with cross-entropy and similarity combination." << endl;
+        std::cout << "Scoring with cross-entropy and similarity combination." << std::endl;
         
         sD->getScHold()->getPtrScXenC()->calibrate(); // Needed for combination? Not sure... More tests needed
         
@@ -206,7 +205,7 @@ int MonoXEntropy::launch() {
         sD->getScHold()->getPtrScores()->calibrate();
     }
     else { // Cross-entropy alone
-        cout << "Scoring with cross-entropy only." << endl;
+        std::cout << "Scoring with cross-entropy only." << std::endl;
         
         for (unsigned int i = 0; i < sD->getScHold()->getPtrScXenC()->getSize(); i++)
             sD->getScHold()->getPtrScores()->addScore(sD->getScHold()->getPtrScXenC()->getScore(i));
@@ -218,17 +217,17 @@ int MonoXEntropy::launch() {
     
     // Result writing
 	if (opt->getTLang().compare("") == 0) {
-        cout << "NB Scores: " + toString(sD->getScHold()->getPtrScores()->getSize()) + " NB Source corp (unclean): " + toString(sD->getSourceCorps()->getPtrOutCorp()->getSize()) << endl;
+        std::cout << "NB Scores: " + XenCommon::toString(sD->getScHold()->getPtrScores()->getSize()) + " NB Source corp (unclean): " + XenCommon::toString(sD->getSourceCorps()->getPtrOutCorp()->getSize()) << std::endl;
         XenIO::cleanCorpusMono(sD->getSourceCorps()->getPtrOutCorp(), sD->getScHold()->getPtrScores());
-        cout << "NB Scores: " + toString(sD->getScHold()->getPtrScores()->getSize()) + " NB Source corp (clean): " + toString(sD->getSourceCorps()->getPtrOutCorp()->getSize()) << endl;
+        std::cout << "NB Scores: " + XenCommon::toString(sD->getScHold()->getPtrScores()->getSize()) + " NB Source corp (clean): " + XenCommon::toString(sD->getSourceCorps()->getPtrOutCorp()->getSize()) << std::endl;
         XenIO::writeMonoOutput(sD->getSourceCorps()->getPtrOutCorp(), sD->getScHold()->getPtrScores());
     }
 	else {
-		shared_ptr<Corpus> ptrOTCorp(new Corpus);
+        boost::shared_ptr<Corpus> ptrOTCorp = make_shared<Corpus>();
         ptrOTCorp->initialize(opt->getOutTData(), opt->getTLang());
-        cout << "NB Scores: " + toString(sD->getScHold()->getPtrScores()->getSize()) + " NB Source corp (unclean): " + toString(sD->getSourceCorps()->getPtrOutCorp()->getSize()) + " NB Target corp (unclean): " + toString(ptrOTCorp->getSize()) << endl;
+        std::cout << "NB Scores: " + XenCommon::toString(sD->getScHold()->getPtrScores()->getSize()) + " NB Source corp (unclean): " + XenCommon::toString(sD->getSourceCorps()->getPtrOutCorp()->getSize()) + " NB Target corp (unclean): " + XenCommon::toString(ptrOTCorp->getSize()) << std::endl;
         XenIO::cleanCorpusBi(sD->getSourceCorps()->getPtrOutCorp(), ptrOTCorp, sD->getScHold()->getPtrScores());
-        cout << "NB Scores: " + toString(sD->getScHold()->getPtrScores()->getSize()) + " NB Source corp (clean): " + toString(sD->getSourceCorps()->getPtrOutCorp()->getSize()) + " NB Target corp (clean): " + toString(ptrOTCorp->getSize()) << endl;
+        std::cout << "NB Scores: " + XenCommon::toString(sD->getScHold()->getPtrScores()->getSize()) + " NB Source corp (clean): " + XenCommon::toString(sD->getSourceCorps()->getPtrOutCorp()->getSize()) + " NB Target corp (clean): " + XenCommon::toString(ptrOTCorp->getSize()) << std::endl;
         XenIO::writeBiOutput(sD->getSourceCorps()->getPtrOutCorp(), ptrOTCorp, sD->getScHold()->getPtrScores());
 	}
 

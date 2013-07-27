@@ -1,108 +1,61 @@
-/*
- * This file is part of the cross-entropy tool for data selection (XenC)
- * aimed at speech recognition and statistical machine translation.
+/**
+ *  @file eval.cpp
+ *  @brief Class handling evaluation system
+ *  @author Anthony Rousseau
+ *  @version 1.0.0
+ *  @date 27 July 2013
+ */
+
+/*  This file is part of the cross-entropy tool for data selection (XenC)
+ *  aimed at speech recognition and statistical machine translation.
  *
- * Copyright 2013, Anthony Rousseau, LIUM, University of Le Mans, France
+ *  Copyright 2013, Anthony Rousseau, LIUM, University of Le Mans, France
  *
- * The XenC tool is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 3 as
- * published by the Free Software Foundation
+ *  The XenC tool is free software; you can redistribute it and/or modify it
+ *  under the terms of the GNU General Public License version 3 as
+ *  published by the Free Software Foundation
  *
- * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
- * for more details.
+ *  This library is distributed in the hope that it will be useful, but WITHOUT
+ *  ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ *  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
+ *  for more details.
  *
- * You should have received a copy of the GNU General Public License
- * along with this library; if not, write to the Free Software Foundation,
- * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
- *
- * $Id: eval.cpp, v 1.0 PUBLIC RELEASE 2013/07/16 rousseau Exp $
+ *  You should have received a copy of the GNU General Public License
+ *  along with this library; if not, write to the Free Software Foundation,
+ *  Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
 #include "eval.h"
 #include "utils/StaticData.h"
 
-/*
- *  Threaded function to handle parallel evaluation of final sorted file
- */
-void taskEval(int pc, shared_ptr<XenResult> ptrXR, shared_ptr<XenVocab> ptrVoc, shared_ptr<Corpus> ptrDevCorp, shared_ptr<EvalMap> ptrDist) {
-    cout << "Starting eval " + toString(pc) + " percent." << endl;
+void taskEval(int pc, boost::shared_ptr<XenResult> ptrXR, boost::shared_ptr<XenVocab> ptrVoc, boost::shared_ptr<Corpus> ptrDevCorp, boost::shared_ptr<EvalMap> ptrDist) {
+    std::cout << "Starting eval " + XenCommon::toString(pc) + " percent." << std::endl;
     
-    shared_ptr<XenLMsri> ptrLM(new XenLMsri);
+    boost::shared_ptr<XenLMsri> ptrLM = boost::make_shared<XenLMsri>();
     ptrLM->initialize(ptrXR, ptrVoc, pc);
     ptrLM->createLM();
     
-    shared_ptr<PPL> ptrPPL(new PPL);
+    boost::shared_ptr<PPL> ptrPPL = boost::make_shared<PPL>();
     ptrPPL->initialize(ptrDevCorp, ptrLM);
     
     ptrDist->operator[](pc) = ptrPPL->getCorpPPL();
     
-    cout << "Eval " + toString(pc) + " percent done." << endl;
+    std::cout << "Eval " + XenCommon::toString(pc) + " percent done, PPL = " + XenCommon::toString(ptrPPL->getCorpPPL()) + "." << std::endl;
 }
 
-/*
- *  Constructor from a XenResult
- *  (sorted file from filtering)
- */
 Eval::Eval() {
-    ptrDist = shared_ptr<EvalMap>(new EvalMap);
+    ptrDist = boost::make_shared<EvalMap>();
 }
 
-/*
- *  Constructor from a XenResult & an existing distfile
- *  (usually for best point estimation)
- */
-Eval::Eval(string distFile) {
-    ptrDist = shared_ptr<EvalMap>(new EvalMap);
-    
-    try {
-        if (exists(distFile.c_str())) {
-            cout << "Loading dist file " + distFile << endl;
-            regex e1("(.*)\\t.*");
-            regex e2(".*\\t(.*)");
-            ifstream in(distFile.c_str(), ios::in);
-            string line = "";
-            
-            if (!in.is_open())
-                throw XenCommon::XenCEption("Error while opening file " + distFile);
-            
-            while (getline(in, line)) {
-                string key = regex_replace(line, e1, "\\1", boost::match_default | boost::format_sed);
-                string value = regex_replace(line, e2, "\\1", boost::match_default | boost::format_sed);
-                ptrDist->operator[](toInt(key)) = toDouble(value);
-            }
-            
-            if (in.bad())
-                throw XenCommon::XenCEption("Error while reading file " + distFile);
-            
-            in.close();
-        }
-        else {
-            throw XenCommon::XenCEption("Specified eval file " + distFile + " does not exists!");
-        }
-    } catch (XenCommon::XenCEption &e) {
-        throw;
-    }
+Eval::Eval(std::string distFile) {
+    ptrDist = XenIO::readDist(distFile);
 }
 
-/*
- *  Destructor
- */
 Eval::~Eval() {
-
+    
 }
 
-//  ------
-//  Public
-//  ------
-
-/*
- *  Main threaded eval loop
- *  If you find yourself out of memory,
- *  consider using only one or two threads.
- */
-void Eval::doEval(int h, int l) {
+void Eval::doEval(int high, int low) {
     XenOption* opt = XenOption::getInstance();
     StaticData* sD = StaticData::getInstance();
     
@@ -111,28 +64,25 @@ void Eval::doEval(int h, int l) {
     
     pool threadPool(opt->getThreads());
     
-	int pc = h;
+	int pc = high;
     if (pc == 0) { pc = opt->getStep(); }
     
-	while (pc >= l && pc >= opt->getStep()) {
+	while (pc >= low && pc >= opt->getStep()) {
         EvalMap::iterator found = ptrDist->find(pc);
         if (found == ptrDist->end())
             threadPool.schedule(boost::bind(taskEval, pc, sD->getXenResult(), sD->getVocabs()->getPtrSourceVoc(), sD->getDevCorp(), ptrDist));
-            
+        
         pc -= opt->getStep();
 	}
     
     threadPool.wait();
     
-	cout << "Evaluation done." << endl;
+    std::cout << "Evaluation done." << std::endl;
 }
 
-/*
- *  Best point estimation routine
- */
 void Eval::doBP() {
     XenOption* opt = XenOption::getInstance();
-
+    
 	double lower = 999999999999;
 	int lBound = 0;
 	int hBound = 0;
@@ -149,7 +99,7 @@ void Eval::doBP() {
         }
     
 	opt->setStep(opt->getStep() / 2);
-	cout << "Requiring eval from " + toString(hBound) + " to " + toString(lBound) + " with step " + toString(opt->getStep()) << endl;
+    std::cout << "Requiring eval from " + XenCommon::toString(hBound) + " to " + XenCommon::toString(lBound) + " with step " + XenCommon::toString(opt->getStep()) << std::endl;
 	doEval(hBound, lBound);
     
 	if (opt->getStep() > 1) {
@@ -157,9 +107,6 @@ void Eval::doBP() {
 	}
 }
 
-/*
- *  Returns the evaluation distribution
- */
-EvalMap Eval::getDist() const {
-	return *ptrDist;
+boost::shared_ptr<EvalMap> Eval::getDist() const {
+	return ptrDist;
 }

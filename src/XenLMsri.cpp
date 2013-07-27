@@ -22,9 +22,6 @@
 
 #include "XenLMsri.h"
 
-/*
- *  Default constructor
- */
 XenLMsri::XenLMsri() {
     XenOption* opt = XenOption::getInstance();
 
@@ -40,115 +37,95 @@ XenLMsri::XenLMsri() {
     for (int i = 2; i < MAX_ORDER + 1; i++)
         gtmax[i] = 7;
     
-    ptrCorp = shared_ptr<Corpus>(new Corpus);
-    ptrVoc = shared_ptr<XenVocab>(new XenVocab);
-    ptrXR = shared_ptr<XenResult>(new XenResult);
-    ptrVocab = shared_ptr<Vocab>(new Vocab);
-    ptrNStats = shared_ptr<NgramStats>(new NgramStats(*ptrVocab, order));
-    ptrDiscounts = shared_array<Discount*>(new Discount*[order]);
-    ptrLM = shared_ptr<Ngram>(new Ngram(*ptrVocab, order));
     textFile = NULL;
     lmFile = NULL;
+    
+    pc = 0;
 }
 
-/*
- *  Initialization from a Corpus & a XenVocab
- */
-void XenLMsri::initialize(shared_ptr<Corpus> c, shared_ptr<XenVocab> v) {
+void XenLMsri::initialize(boost::shared_ptr<Corpus> ptrCorp, boost::shared_ptr<XenVocab> ptrVoc) {
     XenOption* opt = XenOption::getInstance();
-
-    ptrCorp = c;
-    ptrVoc = v;
-
-    keepunk = 1;
     
-    ptrVocab->operator=(*ptrVoc->getVocab());
-    ptrVocab->unkIsWord() = keepunk ? true : false;
+    this->ptrCorp = ptrCorp;
+    this->ptrVoc = ptrVoc;
+
+    ptrVocab = ptrVoc->getVocab();
+    ptrVocab->unkIsWord() = true;
     
-    ptrXR = shared_ptr<XenResult>(new XenResult);
+    ptrNStats = boost::shared_ptr<NgramStats>(new NgramStats(*ptrVocab, order));
+    ptrDiscounts = boost::shared_array<Discount*>(new Discount*[order]);
+    ptrLM = boost::shared_ptr<Ngram>(new Ngram(*ptrVocab, order));
+
+    ptrXR = boost::make_shared<XenResult>();    //!< No use for a XenResult here
     pc = 0;
-    
-    interpolate[0] = 1;
     
     textFile = new char[ptrCorp->getXenFile()->getFullPath().length() + 1];
-    strcpy(textFile, ptrCorp->getXenFile()->getFullPath().c_str());
+    std::strcpy(textFile, ptrCorp->getXenFile()->getFullPath().c_str());
 
-    lmFile = new char[makeLMname(opt).length() + 1];
-    strcpy(lmFile, makeLMname(opt).c_str());
+    std::string name = makeLMname(opt);
+    lmFile = new char[name.length() + 1];
+    std::strcpy(lmFile, name.c_str());
     
-    setlocale(LC_CTYPE, "");
-    setlocale(LC_COLLATE, "");
+    std::setlocale(LC_CTYPE, "");
+    std::setlocale(LC_COLLATE, "");
 }
 
-/*
- *  Initialization from a XenFile & a XenVocab
- */
-void XenLMsri::initialize(shared_ptr<XenFile> f, shared_ptr<XenVocab> v) {
-    ptrCorp = shared_ptr<Corpus>(new Corpus);
-    ptrVoc = v;
+void XenLMsri::initialize(boost::shared_ptr<XenFile> ptrFile, boost::shared_ptr<XenVocab> ptrVoc) {
+    ptrCorp = boost::make_shared<Corpus>();     //!< No use for a corpus here
+    this->ptrVoc = ptrVoc;
     
-    keepunk = 1;
-    
-    ptrVocab->operator=(*ptrVoc->getVocab());
-    ptrVocab->unkIsWord() = keepunk ? true : false;
+    ptrVocab = ptrVoc->getVocab();
+    ptrVocab->unkIsWord() = true;
 
-    ptrXR = shared_ptr<XenResult>(new XenResult);
+    ptrNStats = boost::shared_ptr<NgramStats>(new NgramStats(*ptrVocab, order));
+    ptrDiscounts = boost::shared_array<Discount*>(new Discount*[order]);
+    ptrLM = boost::shared_ptr<Ngram>(new Ngram(*ptrVocab, order));
+    
+    ptrXR = boost::make_shared<XenResult>();    //!< No use for a XenResult here
     pc = 0;
 
-    interpolate[0] = 1;
+    textFile = new char[1];
+    std::strcpy(textFile, "");
     
-    textFile = NULL;
+    lmFile = new char[ptrFile->getFullPath().length() + 1];
+    std::strcpy(lmFile, ptrFile->getFullPath().c_str());
     
-    lmFile = new char[f->getFullPath().length() + 1];
-    strcpy(lmFile, f->getFullPath().c_str());
-    
-    setlocale(LC_CTYPE, "");
-    setlocale(LC_COLLATE, "");
+    std::setlocale(LC_CTYPE, "");
+    std::setlocale(LC_COLLATE, "");
 }
 
-/*
- *  Initialization from a XenResult (for eval)
- */
-void XenLMsri::initialize(shared_ptr<XenResult> ptrXenRes, shared_ptr<XenVocab> v, int p, string name) {
-    ptrCorp = shared_ptr<Corpus>(new Corpus);
-    ptrVoc = v;
+void XenLMsri::initialize(boost::shared_ptr<XenResult> ptrXenRes, boost::shared_ptr<XenVocab> ptrVoc, int pc, std::string name) {
+    ptrCorp = boost::make_shared<Corpus>();     //!< No use for a corpus here
+    this->ptrVoc = ptrVoc;
     
-    keepunk = 1;
+    ptrVocab = ptrVoc->getVocab();
+    ptrVocab->unkIsWord() = true;
     
-    ptrVocab->operator=(*ptrVoc->getVocab());
-    ptrVocab->unkIsWord() = keepunk ? true : false;
+    ptrNStats = boost::shared_ptr<NgramStats>(new NgramStats(*ptrVocab, order));
+    ptrDiscounts = boost::shared_array<Discount*>(new Discount*[order]);
+    ptrLM = boost::shared_ptr<Ngram>(new Ngram(*ptrVocab, order));
     
     ptrXR = ptrXenRes;
-    pc = p;
-    
-    interpolate[0] = 1;
-    
-    textFile = NULL;
+    this->pc = pc;
+
+    textFile = new char[1];
+    std::strcpy(textFile, "");
     
     lmFile = new char[name.length() + 1];
-    strcpy(lmFile, name.c_str());
+    std::strcpy(lmFile, name.c_str());
     
-    setlocale(LC_CTYPE, "");
-    setlocale(LC_COLLATE, "");
+    std::setlocale(LC_CTYPE, "");
+    std::setlocale(LC_COLLATE, "");
 }
 
-/*
- *  Destructor
- */
 XenLMsri::~XenLMsri() {
-
+    delete[] lmFile;
+    delete[] textFile;
 }
 
-//  ------
-//  Public
-//  ------
-
-/*
- *  Estimates a new LM in memory
- */
 int XenLMsri::createLM() {
-    if (exists(lmFile))
-        cout << "LM file already here, reusing..." << endl;
+    if (boost::filesystem::exists(lmFile))
+        std::cout << "LM file already here, reusing..." << std::endl;
     else {
         assert(ptrVocab);
         
@@ -160,23 +137,22 @@ int XenLMsri::createLM() {
 
         // LM estimation from a file
         if (ptrXR->getSize() == 0) {
-            cout << "Estimating LM from file on disk..." << endl;
+            std::cout << "Estimating LM from file on disk..." << std::endl;
             
             File file(textFile, "r");
             USE_STATS(countFile(file, 0));
         }
         // LM estimation from a vector of strings in memory
         else {
-            cout << "Estimating LM from data in memory..." << endl;
-            
-            char str[MAX_CHARS];
-            shared_array<VocabString> vstr = shared_array<VocabString>(new VocabString[MAX_WORDS + 1]);
-            
-            unsigned int nbLines = (unsigned int)(ptrXR->getSize() / 100) * pc;
+            std::cout << "Estimating LM from data in memory..." << std::endl;
             
             try {
+                char str[MAX_CHARS];
+                boost::shared_array<VocabString> vstr = boost::shared_array<VocabString>(new VocabString[MAX_WORDS + 1]);
+                unsigned int nbLines = (unsigned int)(ptrXR->getSize() / 100) * pc;
+                
                 for (unsigned int i = 0; i < nbLines; i++) {
-                    strcpy(str, ptrXR->getTextLine(i).c_str());
+                    std::strcpy(str, ptrXR->getTextLine(i).c_str());
                     
                     int nw = ptrVocab->parseWords(str, vstr.get(), MAX_WORDS + 1);
                     
@@ -223,12 +199,10 @@ int XenLMsri::createLM() {
                 assert(dcnt);
                 
                 if (dcnt) {
-                    if (interpolate[0] || interpolate[useorder]) {
-                        dcnt->interpolate = true;
-                    }
+                    dcnt->interpolate = true;
                     
                     if (!dcnt->estimate(*ptrNStats, i))
-                        throw XenCommon::XenCEption("SRILM says: \"Error in discount estimator for order " + toString(i) + "\". Data too small for ModKN (0)? Try GT (1) or WB (2) as discounting method.");
+                        throw XenCommon::XenCEption("SRILM says: \"Error in discount estimator for order " + XenCommon::toString(i) + "\". Data too small for ModKN (0)? Try GT (1) or WB (2) as discounting method.");
                     
                     ptrDiscounts.get()[i-1] = dcnt;
                 }
@@ -249,19 +223,16 @@ int XenLMsri::createLM() {
             }
         }
         
-        cout << "LM estimation done." << endl;
+        std::cout << "LM estimation done." << std::endl;
     }
     
     return 0;
 }
 
-/*
- *  Loads a LM into memory
- */
 int XenLMsri::loadLM() {
     assert(ptrVocab);
     
-    ptrVocab->unkIsWord() = keepunk ? true : false;
+    ptrVocab->unkIsWord() = true;
     
     #define USE_STATS(what) (ptrNStats->what)
     assert(ptrNStats != 0);
@@ -279,15 +250,12 @@ int XenLMsri::loadLM() {
         throw;
     }
     
-    return(0);
+    return 0;
 }
 
-/*
- *  Writes a LM on disk
- */
 int XenLMsri::writeLM() {
     try {
-        if (!exists(lmFile)) {
+        if (!boost::filesystem::exists(lmFile)) {
             if (writeBinaryLM) {
                 File file(lmFile, "wb");
                 
@@ -305,24 +273,21 @@ int XenLMsri::writeLM() {
         throw;
     }
     
-    return (0);
+    return 0;
 }
 
-/*
- *  Returns the LM file name
- */
-string XenLMsri::getFileName() const {
+std::string XenLMsri::getFileName() const {
     return lmFile;
 }
 
-TextStats XenLMsri::getSentenceStats(string s) {
+TextStats XenLMsri::getSentenceStats(std::string sent) {
     TextStats tstats;
     
     try {
         char str[MAX_CHARS];
         VocabString vstr[MAX_WORDS + 1];
         
-        strcpy(str, s.c_str());
+        std::strcpy(str, sent.c_str());
         
         int nw = ptrVocab->parseWords(str, vstr, MAX_WORDS + 1);
         
@@ -337,25 +302,45 @@ TextStats XenLMsri::getSentenceStats(string s) {
     return tstats;
 }
 
-TextStats XenLMsri::getDocumentStats(shared_ptr<Corpus> c) {
+TextStats XenLMsri::getDocumentStats(boost::shared_ptr<Corpus> ptrCorp) {
     TextStats documentStats;
     
-    for (unsigned int i = 0; i < c->getSize(); i++) {
-        documentStats.increment(getSentenceStats(c->getLine(i)));
+    for (unsigned int i = 0; i < ptrCorp->getSize(); i++) {
+        documentStats.increment(getSentenceStats(ptrCorp->getLine(i)));
     }
     
     return documentStats;
 }
 
-//  -------
-//  Private
-//  -------
-
-/*
- *  Constructs the LM name from the program options
- */
-string XenLMsri::makeLMname(XenOption* opt) {
-    string ret = opt->getInSData()->getDirName() + "/" + ptrCorp->getXenFile()->getPrefix() + "." + ptrVoc->getXenFile()->getPrefix() + "." + toString(opt->getOrder()) + "g." + opt->getSmooth() + "." + opt->getCutoff() + ".";
+std::string XenLMsri::makeLMname(XenOption* opt) {
+    //!< Common name
+    std::string ret = opt->getInSData()->getDirName() + "/" + ptrCorp->getXenFile()->getPrefix() + "." + ptrVoc->getXenFile()->getPrefix() + "." + XenCommon::toString(opt->getOrder()) + "g.";
+    
+    //!< Discounting method
+    switch (discount) {
+        case 0:
+            ret = ret + "kn-int.";
+            break;
+            
+        case 1:
+            ret = ret + "gt-int.";
+            break;
+            
+        case 2:
+            ret = ret + "wb-int.";
+            break;
+            
+        default:
+            ret = ret + "kn-int.";
+            break;
+    }
+    
+    //!< Cut-offs
+    for (unsigned int i = 1; i < order; i++)
+        ret = ret + "0-";
+    ret = ret + "0.";
+    
+    //!< Output format (extension)
     if (opt->getBinLM()) { ret = ret + "sblm"; }
     else { ret = ret + "arpa.gz"; }
     

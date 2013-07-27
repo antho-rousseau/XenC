@@ -1,0 +1,7 @@
+<map id="XenIO::writeBiOutput" name="XenIO::writeBiOutput">
+<area shape="rect" id="node2" href="$class_xen_option.html#a97ad096aee729b4d8ae993b1381d4eec" title="Accessor to the instance of the singleton XenOption object." alt="" coords="198,5,351,32"/>
+<area shape="rect" id="node3" href="$class_xen_option.html#a6b020f1c16f0e0699a5ea7e06a0f593d" title="Accessor to the output name for the filtered files." alt="" coords="195,56,355,83"/>
+<area shape="rect" id="node4" href="$class_xen_option.html#acf6b028eb04afc2c9a6fe9a16ea6af3a" title="Accessor to whether we output the scored file." alt="" coords="197,107,352,133"/>
+<area shape="rect" id="node5" href="$namespace_xen_common.html#ad4f4868634e46d6ee82e57d343a77abe" title="Template converting a value into a string with a precision of 20." alt="" coords="203,157,346,184"/>
+<area shape="rect" id="node6" href="$class_xen_option.html#a1b9f650f28eee13014332ac9ac6dd0ec" title="Accessor to the reversed filtered output state." alt="" coords="210,208,339,235"/>
+</map>

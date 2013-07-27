@@ -1,44 +1,43 @@
-/*
- * This file is part of the cross-entropy tool for data selection (XenC)
- * aimed at speech recognition and statistical machine translation.
+/**
+ *  @file xenvocab.cpp
+ *  @brief Class handling a XenC vocabulary
+ *  @author Anthony Rousseau
+ *  @version 1.0.0
+ *  @date 27 July 2013
+ */
+
+/*  This file is part of the cross-entropy tool for data selection (XenC)
+ *  aimed at speech recognition and statistical machine translation.
  *
- * Copyright 2013, Anthony Rousseau, LIUM, University of Le Mans, France
+ *  Copyright 2013, Anthony Rousseau, LIUM, University of Le Mans, France
  *
- * The XenC tool is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 3 as
- * published by the Free Software Foundation
+ *  The XenC tool is free software; you can redistribute it and/or modify it
+ *  under the terms of the GNU General Public License version 3 as
+ *  published by the Free Software Foundation
  *
- * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
- * for more details.
+ *  This library is distributed in the hope that it will be useful, but WITHOUT
+ *  ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ *  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
+ *  for more details.
  *
- * You should have received a copy of the GNU General Public License
- * along with this library; if not, write to the Free Software Foundation,
- * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
- *
- * $Id: xenvocab.cpp, v 1.0 PUBLIC RELEASE 2013/07/16 rousseau Exp $
+ *  You should have received a copy of the GNU General Public License
+ *  along with this library; if not, write to the Free Software Foundation,
+ *  Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
 #include "xenvocab.h"
 
-/*
- *  Default constructor
- */
 XenVocab::XenVocab() {
 
 }
 
-/*
- *  Initialization from a XenFile
- */
-void XenVocab::initialize(shared_ptr<XenFile> file) {
-	ptrFile = file;
-    ptrVocab = shared_ptr<Vocab>(new Vocab);
+void XenVocab::initialize(boost::shared_ptr<XenFile> ptrFile) {
+	this->ptrFile = ptrFile;
+    ptrVocab = boost::make_shared<Vocab>();
     
     try {
-        if (exists(ptrFile->getFullPath().c_str())) {
-            cout << "Using existing vocab " << ptrFile->getFullPath() << endl;
+        if (boost::filesystem::exists(ptrFile->getFullPath().c_str())) {
+            std::cout << "Using existing vocab " << ptrFile->getFullPath() << std::endl;
             
             File file(ptrFile->getFullPath().c_str(), "r");
             ptrVocab->read(file);
@@ -51,112 +50,77 @@ void XenVocab::initialize(shared_ptr<XenFile> file) {
     }
 }
 
-/*
- *  Initialization from a Corpus
- */
-void XenVocab::initialize(shared_ptr<Corpus> ptrCorp) {
-	ptrFile = shared_ptr<XenFile>(new XenFile);
+void XenVocab::initialize(boost::shared_ptr<Corpus> ptrCorp) {
+	ptrFile = boost::make_shared<XenFile>();
     ptrFile->initialize(ptrCorp->getXenFile()->getPrefix() + ptrCorp->getLang() + ".vocab");
-	ptrVocab = shared_ptr<Vocab>(new Vocab);
+	ptrVocab = boost::make_shared<Vocab>();
     
     makeVocab(ptrCorp);
     
-	if (exists(ptrFile->getFullPath().c_str())) {
-		cout << "Using existing vocab " << ptrFile->getFullPath() << endl;
+	if (boost::filesystem::exists(ptrFile->getFullPath().c_str())) {
+        std::cout << "Using existing vocab " << ptrFile->getFullPath() << std::endl;
 	}
 	else {
-		cout << "Dumping vocab " << ptrFile->getFullPath() << endl;
+        std::cout << "Dumping vocab " << ptrFile->getFullPath() << std::endl;
         
 		writeVocab();
         
-        cout << "Vocab file " + ptrFile->getFullPath() + " has been dumped." << endl;
+        std::cout << "Vocab file " + ptrFile->getFullPath() + " has been dumped." << std::endl;
 	}
 }
 
-/*
- *  Initialization from a XenResult
- */
-void XenVocab::initialize(shared_ptr<XenResult> ptrXR) {
+void XenVocab::initialize(boost::shared_ptr<XenResult> ptrXenRes) {
     XenOption* opt = XenOption::getInstance();
     
-	ptrFile = shared_ptr<XenFile>(new XenFile);
-    ptrFile->initialize(ptrXR->getXenFile()->getPrefix() + opt->getSLang() + ".vocab");
-	ptrVocab = shared_ptr<Vocab>(new Vocab);
+	ptrFile = boost::make_shared<XenFile>();
+    ptrFile->initialize(ptrXenRes->getXenFile()->getPrefix() + opt->getSLang() + ".vocab");
+	ptrVocab = boost::make_shared<Vocab>();
     
-    makeVocab(ptrXR);
+    makeVocab(ptrXenRes);
     
-	if (exists(ptrFile->getFullPath().c_str())) {
-		cout << "Using existing vocab " << ptrFile->getFullPath() << endl;
+	if (boost::filesystem::exists(ptrFile->getFullPath().c_str())) {
+        std::cout << "Using existing vocab " << ptrFile->getFullPath() << std::endl;
 	}
 	else {
-		cout << "Dumping vocab " << ptrFile->getFullPath() << endl;
+        std::cout << "Dumping vocab " << ptrFile->getFullPath() << std::endl;
         
 		writeVocab();
         
-        cout << "Vocab file " + ptrFile->getFullPath() + " has been dumped." << endl;
+        std::cout << "Vocab file " + ptrFile->getFullPath() + " has been dumped." << std::endl;
 	}
 }
 
-/*
- *  Destructor
- */
 XenVocab::~XenVocab() {
 
 }
 
-//  ------
-//  Public
-//  ------
-
-/*
- *  Returns the size of the vocabulary
- */
-int XenVocab::getSize() const {
-    return (int)ptrVocab->numWords();
+unsigned int XenVocab::getSize() const {
+    return (unsigned int)ptrVocab->numWords();
 }
 
-/*
- *  Returns the XenFile associated to the vocab
- */
-shared_ptr<XenFile> XenVocab::getXenFile() {
+boost::shared_ptr<XenFile> XenVocab::getXenFile() const {
     return ptrFile;
 }
 
-/*
- *  Returns the SRI Vocab object
- */
-shared_ptr<Vocab> XenVocab::getVocab() {
+boost::shared_ptr<Vocab> XenVocab::getVocab() const {
     return ptrVocab;
 }
 
-/*
- *  Returns the map containing the vocab
- */
-map<string, int> XenVocab::getXenVocab() {
+std::map<std::string, int> XenVocab::getXenVocab() const {
     return voc;
 }
 
-//  -------
-//  Private
-//  -------
-
-/*
- *  Dumps the vocab from a corpus to the disk
- */
 void XenVocab::writeVocab() {
 	File file(ptrFile->getFullPath().c_str(), "w");
     ptrVocab->write(file);
 }
 
-/*
- *  Creates and fills the vocab from a Corpus
- */
-void XenVocab::makeVocab(shared_ptr<Corpus> ptrCorp) {
+void XenVocab::makeVocab(boost::shared_ptr<Corpus> ptrCorp) {
     for (unsigned int i = 0; i < ptrCorp->getSize(); i++) {
-        vector<string> lWords;
-        string line = ptrCorp->getLine(i);
+        std::vector<std::string> lWords;
+        std::string line = ptrCorp->getLine(i);
         
-        split(lWords, line, is_any_of(" "));
+        boost::split(lWords, line, boost::is_any_of(" "));
         
         for (unsigned int j = 0; j < lWords.size(); j++) {
             ptrVocab->addWord(lWords[j].c_str());
@@ -165,15 +129,12 @@ void XenVocab::makeVocab(shared_ptr<Corpus> ptrCorp) {
     }
 }
 
-/*
- *  Creates and fills the vocab from a XenResult
- */
-void XenVocab::makeVocab(shared_ptr<XenResult> ptrXR) {
-    for (unsigned int i = 0; i < ptrXR->getSize(); i++) {
-        vector<string> lWords;
-        string line = ptrXR->getTextLine(i);
+void XenVocab::makeVocab(boost::shared_ptr<XenResult> ptrXenRes) {
+    for (unsigned int i = 0; i < ptrXenRes->getSize(); i++) {
+        std::vector<std::string> lWords;
+        std::string line = ptrXenRes->getTextLine(i);
         
-        split(lWords, line, is_any_of(" "));
+        boost::split(lWords, line, boost::is_any_of(" "));
         
         for (unsigned int j = 0; j < lWords.size(); j++) {
             ptrVocab->addWord(lWords[j].c_str());

@@ -1,0 +1,31 @@
+<map id="PTScoring::launch" name="PTScoring::launch">
+<area shape="rect" id="node2" href="$class_xen_option.html#a97ad096aee729b4d8ae993b1381d4eec" title="Accessor to the instance of the singleton XenOption object." alt="" coords="425,5,578,32"/>
+<area shape="rect" id="node3" href="$class_static_data.html#a3cc0816b2220ee3f827cdd00971e010d" title="Accessor to the instance of the singleton StaticData object." alt="" coords="193,309,346,336"/>
+<area shape="rect" id="node4" href="$class_static_data.html#a0a84fa1648aed88951cf2870a9f39b4d" title="Accessor to the vocabularies." alt="" coords="194,360,345,387"/>
+<area shape="rect" id="node5" href="$class_xen_option.html#a74178ef5302c1bf213822ae474c58806" title="Accessor to the source language vocabulary file." alt="" coords="193,411,345,437"/>
+<area shape="rect" id="node6" href="$class_xen_option.html#aa38a1233cc2bcd024964fbc54d5abe5e" title="Accessor to the target language vocabulary file." alt="" coords="194,461,345,488"/>
+<area shape="rect" id="node7" href="$class_static_data.html#a9ee9e79863b9c59329eca4de52d9e922" title="Accessor to the phrase&#45;tables." alt="" coords="194,512,345,539"/>
+<area shape="rect" id="node8" href="$class_xen_option.html#a76d6e094092486278bd7f7714d54a3b9" title="Accessor to the in&#45;domain phrase&#45;table file." alt="" coords="191,563,347,589"/>
+<area shape="rect" id="node9" href="$class_xen_option.html#a5e3d99b1c17f5dc609344c7918335d23" title="Accessor to the out&#45;of&#45;domain phrase&#45;table file." alt="" coords="186,613,353,640"/>
+<area shape="rect" id="node10" href="$class_static_data.html#a60a4636843c37cbb31780ec4d185a06d" title="Accessor to the source language Corpus Pair." alt="" coords="180,664,359,691"/>
+<area shape="rect" id="node11" href="$class_xen_i_o.html#addbb2a484ad95b288569048af23bd70e" title="Writes a phrase&#45;table&#39;s source phrases." alt="" coords="181,715,358,741"/>
+<area shape="rect" id="node12" href="$class_xen_option.html#a9886771703c5b8866be587f50193ac9d" title="Accessor to the source language." alt="" coords="198,765,341,792"/>
+<area shape="rect" id="node13" href="$class_static_data.html#a9724b144aa1153213b07d3dd2a8eb8f4" title="Accessor to the target language Corpus." alt="" coords="182,816,357,843"/>
+<area shape="rect" id="node14" href="$class_xen_i_o.html#a8c440586a535369a714351601f253477" title="Writes a phrase&#45;table&#39;s target phrases." alt="" coords="183,867,356,893"/>
+<area shape="rect" id="node15" href="$class_xen_option.html#aaaec9eadf81b57f24f4833be2ff2350a" title="Accessor to the target language." alt="" coords="199,917,340,944"/>
+<area shape="rect" id="node16" href="$class_static_data.html#a3104f8fe8394b6456f12f8ddca6a3f07" title="Accessor to the source language models." alt="" coords="185,968,354,995"/>
+<area shape="rect" id="node17" href="$class_static_data.html#aef3249073b82399cc35d243c4ac5d63c" title="Accessor to the target language models." alt="" coords="187,1019,352,1045"/>
+<area shape="rect" id="node18" href="$class_static_data.html#a292e282fda19f6ee5d7fc770c66f4ddc" title="Accessor to the source language PPL objects." alt="" coords="181,1069,357,1096"/>
+<area shape="rect" id="node19" href="$class_static_data.html#affcc848e67faaf5f649295724e4c59c0" title="Accessor to the target language PPL objects." alt="" coords="183,1120,355,1147"/>
+<area shape="rect" id="node20" href="$class_xen_option.html#a9eb5309135ec46b588dcc98c196303ea" title="Accessor to the weights file." alt="" coords="201,1171,337,1197"/>
+<area shape="rect" id="node21" href="$class_static_data.html#a629e38d09dd808708b0be118b7f9a6d0" title="Accessor to the weights file." alt="" coords="185,1221,354,1248"/>
+<area shape="rect" id="node22" href="$class_static_data.html#a0209ea694e46c5eb62e68a17b7eca7d1" title="Accessor to the ScoreHolder object." alt="" coords="197,1272,342,1299"/>
+<area shape="rect" id="node23" href="$class_xen_option.html#a0fa3ea5f0f0cfed980710a9cf73917d9" title="Accessor to the local score for phrase&#45;table scoring execution state." alt="" coords="434,56,569,83"/>
+<area shape="rect" id="node24" href="$class_source_phrase.html#a1d21a7401aec2170e1495a9891505f27" title="Accessor to the size of the target phrases associated to the source phrase." alt="" coords="177,1323,362,1349"/>
+<area shape="rect" id="node25" href="$class_source_phrase.html#aac3e475efcc4c258024a8aee5dc45f6d" title="Accessor to the vector of cross&#45;entropy scores for the target phrases." alt="" coords="411,259,592,285"/>
+<area shape="rect" id="node26" href="$namespace_xen_common.html#ad4f4868634e46d6ee82e57d343a77abe" title="Template converting a value into a string with a precision of 20." alt="" coords="430,309,573,336"/>
+<area shape="rect" id="node27" href="$class_xen_i_o.html#a6c32040f72b5d39ead7b08874beb65a3" title="Writes a new rescored phrase&#45;table." alt="" coords="203,157,336,184"/>
+<area shape="rect" id="node28" href="$class_score.html#ab8c94c90380d2e17d16d311d298f997c" title="Adds a score to the vector of doubles." alt="" coords="444,107,559,133"/>
+<area shape="rect" id="node29" href="$class_xen_option.html#a6b020f1c16f0e0699a5ea7e06a0f593d" title="Accessor to the output name for the filtered files." alt="" coords="421,157,581,184"/>
+<area shape="rect" id="node30" href="$class_score.html#a6933beacc22a83a62181fea9c04a76e3" title="Accessor to the nth score." alt="" coords="447,208,556,235"/>
+</map>

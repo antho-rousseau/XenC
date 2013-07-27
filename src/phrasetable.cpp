@@ -1,56 +1,57 @@
-/*
- * This file is part of the cross-entropy tool for data selection (XenC)
- * aimed at speech recognition and statistical machine translation.
+/**
+ *  @file phrasetable.cpp
+ *  @brief Class handling phrase-table related functionalities
+ *  @author Anthony Rousseau
+ *  @version 1.0.0
+ *  @date 27 July 2013
+ */
+
+/*  This file is part of the cross-entropy tool for data selection (XenC)
+ *  aimed at speech recognition and statistical machine translation.
  *
- * Copyright 2013, Anthony Rousseau, LIUM, University of Le Mans, France
+ *  Copyright 2013, Anthony Rousseau, LIUM, University of Le Mans, France
  *
- * The XenC tool is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 3 as
- * published by the Free Software Foundation
+ *  The XenC tool is free software; you can redistribute it and/or modify it
+ *  under the terms of the GNU General Public License version 3 as
+ *  published by the Free Software Foundation
  *
- * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
- * for more details.
+ *  This library is distributed in the hope that it will be useful, but WITHOUT
+ *  ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ *  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
+ *  for more details.
  *
- * You should have received a copy of the GNU General Public License
- * along with this library; if not, write to the Free Software Foundation,
- * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
- *
- * $Id: phrasetable.cpp, v 1.0 PUBLIC RELEASE 2013/07/16 rousseau Exp $
+ *  You should have received a copy of the GNU General Public License
+ *  along with this library; if not, write to the Free Software Foundation,
+ *  Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
 #include "phrasetable.h"
 #include "utils/xenio.h"
 
-/*
- *  Default constructor
- */
 PhraseTable::PhraseTable() {
-    
+    size = 0;
 }
 
-/*
- *  Initialization from an already instanciated XenFile
- */
-void PhraseTable::initialize(shared_ptr<XenFile> data) {
+void PhraseTable::initialize(boost::shared_ptr<XenFile> ptrData) {
     XenOption* opt = XenOption::getInstance();
-	ptrFile = data;
+	ptrFile = ptrData;
     dlm = " ||| ";
-    lineSpl = *new Splitter("", dlm);
+    lineSpl = *new XenCommon::Splitter("", dlm);
     
     try {
-        if (exists(ptrFile->getFullPath().c_str())) {
-            string cmd = "";
+        if (boost::filesystem::exists(ptrFile->getFullPath().c_str())) {
+            std::string cmd = "";
             if (ptrFile->isGZ())
                 cmd = "zcat " + ptrFile->getFullPath() + " | wc -l";
             else
                 cmd = "wc -l " + ptrFile->getFullPath();
             
-            num = toInt(XenCommon::getStdoutFromCommand(cmd));
+            size = XenCommon::toInt(XenCommon::getStdoutFromCommand(cmd));
             
-            cout << "Specified phrase-table " << ptrFile->getFullPath() << " exists! We continue..." << endl;
-            cout << "Size = " << num << endl;
+            std::cout << "Specified phrase-table " << ptrFile->getFullPath() << " exists! We continue..." << std::endl;
+            std::cout << "Size = " << size << std::endl;
+            
+            loadTable();
             
             if (opt->getLocal())
                 mergePhrasesBySource();
@@ -64,123 +65,65 @@ void PhraseTable::initialize(shared_ptr<XenFile> data) {
     }
 }
 
-/*
- *  Destructor
- */
 PhraseTable::~PhraseTable() {
 
 }
 
-//  ------
-//  Public
-//  ------
-
-/*
- *  Returns the associated XenFile
- */
-XenFile* PhraseTable::getXenFile() {
-    return &*ptrFile;
+boost::shared_ptr<XenFile> PhraseTable::getXenFile() const {
+    return ptrFile;
 }
 
-/*
- *  Returns the nth source phrase
- */
-string PhraseTable::getSource(int n) {
-    if (ptrPhPairs->empty()) { loadTable(); }
+std::string PhraseTable::getSource(int n) {
     lineSpl.reset(ptrPhPairs->operator[](n), dlm);
     return lineSpl[0];
 }
 
-/*
- *  Returns the nth target phrase
- */
-string PhraseTable::getTarget(int n) {
-    if (ptrPhPairs->empty()) { loadTable(); }
+std::string PhraseTable::getTarget(int n) {
     lineSpl.reset(ptrPhPairs->operator[](n), dlm);
     return lineSpl[1];
 }
 
-/*
- *  Returns the nth scores list
- */
-string PhraseTable::getScores(int n) {
-    if (ptrPhPairs->empty()) { loadTable(); }
+std::string PhraseTable::getScores(int n) {
     lineSpl.reset(ptrPhPairs->operator[](n), dlm);
     return lineSpl[2];
 }
 
-/*
- *  Returns the nth aligment info
- */
-string PhraseTable::getAlignment(int n) {
-    if (ptrPhPairs->empty()) { loadTable(); }
+std::string PhraseTable::getAlignment(int n) {
     lineSpl.reset(ptrPhPairs->operator[](n), dlm);
     return lineSpl[3];
 }
 
-/*
- *  Returns the nth counts info
- */
-string PhraseTable::getCounts(int n) {
-    if (ptrPhPairs->empty()) { loadTable(); }
+std::string PhraseTable::getCounts(int n) {
     lineSpl.reset(ptrPhPairs->operator[](n), dlm);
     return lineSpl[4];
 }
 
-/*
- *  Returns a vector containing all sources phrases
- *  and their associated target phrases, scores,
- *  alignments and counts
- */
-vector<SourcePhrase> PhraseTable::getSrcPhrases() {
+std::vector<SourcePhrase> PhraseTable::getSrcPhrases() {
     if (ptrSrcPhrases->empty()) { mergePhrasesBySource(); }
     return *ptrSrcPhrases;
 }
 
-/*
- *  Sets a new vector of source phrases
- */
 void PhraseTable::setSrcPhrases(vector<SourcePhrase> vSP) {
-    ptrSrcPhrases = shared_ptr<vector<SourcePhrase> >(new vector<SourcePhrase>(vSP));
+    ptrSrcPhrases = boost::make_shared<vector<SourcePhrase> >(vSP);
 }
 
-/*
- *  Returns the phrase table size
- */
-unsigned int PhraseTable::getSize() {
-    if (ptrPhPairs->empty()) { loadTable(); }
+unsigned int PhraseTable::getSize() const {
     return (unsigned int)ptrPhPairs->size();
 }
 
-//  -------
-//  Private
-//  -------
-
-/*
- *  Reads the phrase table file and
- *  loads it into memory
- */
 void PhraseTable::loadTable() {
     if (ptrPhPairs->empty()) {
-        ptrPhPairs = shared_ptr<vector<string> >(new vector<string>(XenIO::read(ptrFile)));
+        ptrPhPairs = boost::make_shared<vector<string> >(XenIO::read(ptrFile));
         
-        cout << "Table size = " << ptrPhPairs->size() << endl;
+        std::cout << "Table size = " << ptrPhPairs->size() << std::endl;
         
-        if (ptrPhPairs->size() == num + 1)
+        if (ptrPhPairs->size() == size + 1)
             ptrPhPairs->pop_back();
     }
 }
 
-/*
- *  Merges the phrase table elements by
- *  source phrase in a dedicated structure
- *  (see SourcePhrase.h/cpp), including
- *  target phrases, scores, alignments and counts
- */
 void PhraseTable::mergePhrasesBySource() {
-    cout << "Merging phrases by source." << endl;
-    
-    if (ptrPhPairs->empty()) { loadTable(); }
+    std::cout << "Merging phrases by source." << std::endl;
     
     for (unsigned int i = 0; i < ptrPhPairs->size(); i++) {
         SourcePhrase src(getSource(i));
@@ -200,5 +143,5 @@ void PhraseTable::mergePhrasesBySource() {
         i = j - 1;
     }
     
-    cout << "Phrases have been merged by source." << endl;
+    std::cout << "Phrases have been merged by source." << std::endl;
 }

@@ -1,0 +1,10 @@
+<map id="src/xenresult.cpp" name="src/xenresult.cpp">
+<area shape="rect" id="node2" href="$xenresult_8h.html" title="Class handling a XenC sorted result file for evaluation/best point." alt="" coords="5469,260,5551,287"/>
+<area shape="rect" id="node18" href="$xenio_8h.html" title="Class handling all input/output operations of XenC." alt="" coords="5251,80,5337,107"/>
+<area shape="rect" id="node6" href="$common_8h.html" title="File containing all common classes/structures/functions of many classes of XenC." alt="" coords="5311,424,5415,451"/>
+<area shape="rect" id="node15" href="$xenfile_8h.html" title="Class providing some basic functions around files." alt="" coords="5489,349,5555,376"/>
+<area shape="rect" id="node19" href="$eval_8h.html" title="Class handling evaluation system." alt="" coords="3006,163,3062,189"/>
+<area shape="rect" id="node46" href="$score_8h.html" title="Class holding the XenC scores representation." alt="" coords="5117,260,5179,287"/>
+<area shape="rect" id="node45" href="$xenoption_8h.html" title="Singleton class handling XenC options accessors/mutators." alt="" coords="5307,260,5393,287"/>
+<area shape="rect" id="node47" href="$similarity_8h.html" title="Class taking care of all the similarity measure computations." alt="" coords="5357,163,5435,189"/>
+</map>

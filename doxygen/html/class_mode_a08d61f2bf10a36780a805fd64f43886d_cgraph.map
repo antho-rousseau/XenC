@@ -1,0 +1,7 @@
+<map id="Mode::extractSample" name="Mode::extractSample">
+<area shape="rect" id="node2" href="$class_corpus.html#aa91047a62e185b5bb09ba3e5ed651b5a" title="Accessor to the number of tokens of the Corpus." alt="" coords="221,5,331,32"/>
+<area shape="rect" id="node3" href="$namespace_xen_common.html#a3b2d08955355a35d07efd74c466b91d1" title="Template converting a value into a string with no precision." alt="" coords="201,56,351,83"/>
+<area shape="rect" id="node4" href="$namespace_xen_common.html#ad4f4868634e46d6ee82e57d343a77abe" title="Template converting a value into a string with a precision of 20." alt="" coords="205,107,347,133"/>
+<area shape="rect" id="node5" href="$namespace_xen_common.html#a256a94d06d5072213efb1c50412f64bd" title="Computes the word count of a string." alt="" coords="195,157,357,184"/>
+<area shape="rect" id="node6" href="$class_corpus.html#a36c00f8d5dca53085d3d912cefdd2de8" title="Initialization function from an already instanciated XenFile." alt="" coords="220,208,332,235"/>
+</map>

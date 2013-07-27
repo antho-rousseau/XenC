@@ -1,66 +1,147 @@
-/*
- * This file is part of the cross-entropy tool for data selection (XenC)
- * aimed at speech recognition and statistical machine translation.
- *
- * Copyright 2013, Anthony Rousseau, LIUM, University of Le Mans, France
- *
- * The XenC tool is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 3 as
- * published by the Free Software Foundation
- *
- * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
- * for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this library; if not, write to the Free Software Foundation,
- * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
- *
- * $Id: xenvocab.h, v 1.0 PUBLIC RELEASE 2013/07/16 rousseau Exp $
+/**
+ *  @file xenvocab.h
+ *  @brief Class handling a XenC vocabulary
+ *  @author Anthony Rousseau
+ *  @version 1.0.0
+ *  @date 27 July 2013
  */
 
-/*
- *  Class to handle the XenC vocabulary
+/*  This file is part of the cross-entropy tool for data selection (XenC)
+ *  aimed at speech recognition and statistical machine translation.
+ *
+ *  Copyright 2013, Anthony Rousseau, LIUM, University of Le Mans, France
+ *
+ *  The XenC tool is free software; you can redistribute it and/or modify it
+ *  under the terms of the GNU General Public License version 3 as
+ *  published by the Free Software Foundation
+ *
+ *  This library is distributed in the hope that it will be useful, but WITHOUT
+ *  ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ *  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
+ *  for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with this library; if not, write to the Free Software Foundation,
+ *  Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
 #ifndef XENVOCAB_H_
 #define XENVOCAB_H_
 
 #include <boost/algorithm/string.hpp>
+#include <boost/shared_ptr.hpp>
+#include <boost/make_shared.hpp>
 
 #include "utils/common.h"
-
 #include "corpus.h"
 #include "xenresult.h"
 #include "xenoption.h"
 
-// SRILM include
-#include "Vocab.h"
+#include "Vocab.h"  //!< Include SRILM Vocab.h
 
 using namespace boost;
+using namespace boost::filesystem;
 
+/**
+ *  @class XenVocab
+ *  @brief Class handling a XenC vocabulary
+ */
 class XenVocab {
-    public:
-        XenVocab();
-        void initialize(shared_ptr<XenFile>);
-        void initialize(shared_ptr<Corpus>);
-        void initialize(shared_ptr<XenResult>);
-        ~XenVocab();
-        // --------------------
-        shared_ptr<Vocab> getVocab();
-        map<string, int> getXenVocab();
-        shared_ptr<XenFile> getXenFile();
-        int getSize() const;
+public:
+    /**
+     *  @fn XenVocab ()
+     *  @brief Default constructor
+     */
+    XenVocab();
     
-    private:
-        shared_ptr<XenFile> ptrFile;
-        shared_ptr<Vocab> ptrVocab;
-        map<string, int> voc;
-        // -------------------------
-        void writeVocab();
-        void makeVocab(shared_ptr<Corpus>);
-        void makeVocab(shared_ptr<XenResult>);
+    /**
+     *  @fn void initialize (boost::shared_ptr<XenFile> ptrFile)
+     *  @brief Initialization function from an already instantiated XenFile
+     *
+     *  @param ptrFile :    the vocabulary file
+     */
+    void initialize(boost::shared_ptr<XenFile> ptrFile);
+    
+    /**
+     *  @fn void initialize (boost::shared_ptr<Corpus> ptrCorp)
+     *  @brief Initialization function from a Corpus
+     *
+     *  @param ptrCorp :    the Corpus to extract the vocabulary from
+     */
+    void initialize(boost::shared_ptr<Corpus> ptrCorp);
+    
+    /**
+     *  @fn void initialize (boost::shared_ptr<XenResult> ptrXenRes)
+     *  @brief Initialization function from a sorted result file
+     *
+     *  @param ptrXenRes :  the sorted result file to extract the vocabulary from
+     */
+    void initialize(boost::shared_ptr<XenResult> ptrXenRes);
+    
+    /**
+     *  @fn ~XenVocab ()
+     *  @brief Default destructor
+     */
+    ~XenVocab();
+
+    /**
+     *  @fn boost::shared_ptr<Vocab> getVocab ()
+     *  @brief Accessor to the SRILM Vocab object
+     *
+     *  @return the SRILM Vocab object
+     */
+    boost::shared_ptr<Vocab> getVocab() const;
+    
+    /**
+     *  @fn std::map<std::string, int> getXenVocab()
+     *  @brief Accessor to the XenC vocabulary object
+     *
+     *  @return the XenC vocabulary object
+     */
+    std::map<std::string, int> getXenVocab() const;
+    
+    /**
+     *  @fn boost::shared_ptr<XenFile> getXenFile ()
+     *  @brief Accessor to the vocabulary file
+     *
+     *  @return the vocabulary file
+     */
+    boost::shared_ptr<XenFile> getXenFile() const;
+    
+    /**
+     *  @fn unsigned int getSize () const
+     *  @brief Accessor to the size of the vocabulary text
+     *
+     *  @return the size of the vocabulary text
+     */
+    unsigned int getSize() const;
+    
+private:
+    boost::shared_ptr<XenFile> ptrFile;     //!< Shared pointer on the vocabulary file
+    boost::shared_ptr<Vocab> ptrVocab;      //!< Shared pointer on the SRILM Vocab object
+    std::map<std::string, int> voc;         //!< Map holding the XenC vocabulary
+
+    /**
+     *  @fn void writeVocab ()
+     *  @brief Writes a vocabulary on disk
+     */
+    void writeVocab();
+    
+    /**
+     *  @fn void makeVocab (boost::shared_ptr<Corpus> ptrCorp)
+     *  @brief Generates a vocabulary from a Corpus
+     *
+     *  @param ptrCorp :    the Corpus to generate the vocabulary from
+     */
+    void makeVocab(boost::shared_ptr<Corpus> ptrCorp);
+    
+    /**
+     *  @fn void makeVocab (boost::shared_ptr<Corpus> ptrCorp)
+     *  @brief Generates a vocabulary from a sorted result file
+     *
+     *  @param ptrXenRes :    the sorted result file to generate the vocabulary from
+     */
+    void makeVocab(boost::shared_ptr<XenResult> ptrXenRes);
 };
 
 #endif

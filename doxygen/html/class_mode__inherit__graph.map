@@ -1,0 +1,6 @@
+<map id="Mode" name="Mode">
+<area shape="rect" id="node2" href="$class_bi_x_entropy.html" title="Filtering mode 3: bilingual cross&#45;entropy." alt="" coords="5,80,91,107"/>
+<area shape="rect" id="node3" href="$class_mono_x_entropy.html" title="Filtering mode 2: monolingual cross&#45;entropy." alt="" coords="115,80,221,107"/>
+<area shape="rect" id="node4" href="$class_p_t_scoring.html" title="Filtering mode 4: phrase&#45;table cross&#45;entropy." alt="" coords="246,80,324,107"/>
+<area shape="rect" id="node5" href="$class_simple_p_p_l.html" title="Filtering mode 1: simple perplexity." alt="" coords="349,80,435,107"/>
+</map>

@@ -1,46 +1,48 @@
-/*
- * This file is part of the cross-entropy tool for data selection (XenC)
- * aimed at speech recognition and statistical machine translation.
+/**
+ *  @file wfile.cpp
+ *  @brief Class handling a file with values intended at weighting XenC scores
+ *  @author Anthony Rousseau
+ *  @version 1.0.0
+ *  @date 27 July 2013
+ */
+
+/*  This file is part of the cross-entropy tool for data selection (XenC)
+ *  aimed at speech recognition and statistical machine translation.
  *
- * Copyright 2013, Anthony Rousseau, LIUM, University of Le Mans, France
+ *  Copyright 2013, Anthony Rousseau, LIUM, University of Le Mans, France
  *
- * The XenC tool is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 3 as
- * published by the Free Software Foundation
+ *  The XenC tool is free software; you can redistribute it and/or modify it
+ *  under the terms of the GNU General Public License version 3 as
+ *  published by the Free Software Foundation
  *
- * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
- * for more details.
+ *  This library is distributed in the hope that it will be useful, but WITHOUT
+ *  ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ *  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
+ *  for more details.
  *
- * You should have received a copy of the GNU General Public License
- * along with this library; if not, write to the Free Software Foundation,
- * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
- *
- * $Id: wfile.cpp, v 1.0 PUBLIC RELEASE 2013/07/16 rousseau Exp $
+ *  You should have received a copy of the GNU General Public License
+ *  along with this library; if not, write to the Free Software Foundation,
+ *  Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
 #include "wfile.h"
 
-/*
- *  Default constructor
- */
 Wfile::Wfile() {
     
 }
 
-/*
- *  Initialization from a XenFile
- */
-void Wfile::initialize(shared_ptr<XenFile> xf) {
+void Wfile::initialize(boost::shared_ptr<XenFile> ptrFile) {
     try {
-        if (exists(xf->getFullPath().c_str())) {
-            cout << "Using existing weights file " << xf->getFullPath() << endl;
+        if (boost::filesystem::exists(ptrFile->getFullPath().c_str())) {
+            std::cout << "Using existing weights file " << ptrFile->getFullPath() << std::endl;
             
-            ptrFile = xf;
+            this->ptrFile = ptrFile;
+            
+            loadWeights();
+            calibrate();
         }
         else {
-            throw XenCommon::XenCEption("Specified weights file " + xf->getFullPath() + " does not exists!");
+            throw XenCommon::XenCEption("Specified weights file " + ptrFile->getFullPath() + " does not exists!");
         }
     }
     catch (XenCommon::XenCEption &e) {
@@ -48,55 +50,27 @@ void Wfile::initialize(shared_ptr<XenFile> xf) {
     }
 }
 
-/*
- *  Destructor
- */
 Wfile::~Wfile() {
     
 }
 
-//  ------
-//  Public
-//  ------
-
-/*
- *  Returns the nth score from the weight file
- */
-double Wfile::getScore(int n) {
-    if (ptrWeights->size() == 0) { loadWeights(); }
-    
+double Wfile::getWeight(int n) {
     return ptrWeights->operator[](n);
 }
 
-/*
- *  Returns the size of the weights list
- */
 unsigned int Wfile::getSize() const {
     return (unsigned int)ptrWeights->size();
 }
 
-//  -------
-//  Private
-//  -------
-
-/*
- *  Loads the weights from the file
- */
 void Wfile::loadWeights() {
-    vector<string> tmp = XenIO::read(ptrFile);
+    std::vector<std::string> tmp = XenIO::read(ptrFile);
     
-    for (unsigned int i = 0; i < tmp.size(); i++) {
-        ptrWeights->push_back(toDouble(tmp[i]));
-    }
-    
-    calibrate();
+    for (unsigned int i = 0; i < tmp.size(); i++)
+        ptrWeights->push_back(XenCommon::toDouble(tmp[i]));
 }
 
-/*
- *  Calibrates the weights from 0 to 1
- */
 void Wfile::calibrate() {
-	cout << "Starting weights calibration." << endl;
+    std::cout << "Starting weights calibration." << std::endl;
     
 	double min = 0;
 	double max = 0;
@@ -110,5 +84,5 @@ void Wfile::calibrate() {
 		ptrWeights->operator[](i) = ((ptrWeights->operator[](i) - min) / (max - min));
 	}
     
-	cout << "Weights calibration complete." << endl;
+    std::cout << "Weights calibration complete." << std::endl;
 }

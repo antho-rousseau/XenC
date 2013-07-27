@@ -1,23 +1,28 @@
-/*
- * This file is part of the cross-entropy tool for data selection (XenC)
- * aimed at speech recognition and statistical machine translation.
+/**
+ *  @file ptScoring.cpp
+ *  @brief Derived class to handle filtering mode 4: phrase-table cross-entropy
+ *  @author Anthony Rousseau
+ *  @version 1.0.0
+ *  @date 27 July 2013
+ */
+
+/*  This file is part of the cross-entropy tool for data selection (XenC)
+ *  aimed at speech recognition and statistical machine translation.
  *
- * Copyright 2013, Anthony Rousseau, LIUM, University of Le Mans, France
+ *  Copyright 2013, Anthony Rousseau, LIUM, University of Le Mans, France
  *
- * The XenC tool is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 3 as
- * published by the Free Software Foundation
+ *  The XenC tool is free software; you can redistribute it and/or modify it
+ *  under the terms of the GNU General Public License version 3 as
+ *  published by the Free Software Foundation
  *
- * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
- * for more details.
+ *  This library is distributed in the hope that it will be useful, but WITHOUT
+ *  ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ *  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
+ *  for more details.
  *
- * You should have received a copy of the GNU General Public License
- * along with this library; if not, write to the Free Software Foundation,
- * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
- *
- * $Id: ptScoring.cpp, v 1.0 PUBLIC RELEASE 2013/07/16 rousseau Exp $
+ *  You should have received a copy of the GNU General Public License
+ *  along with this library; if not, write to the Free Software Foundation,
+ *  Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
 #include "ptScoring.h"
@@ -30,13 +35,6 @@ PTScoring::~PTScoring() {
     
 }
 
-//  ------
-//  Public
-//  ------
-
-/*
- *  Launches operations for this mode
- */
 int PTScoring::launch() {
     XenOption* opt = XenOption::getInstance();
     StaticData* sD = StaticData::getInstance();
@@ -57,30 +55,34 @@ int PTScoring::launch() {
     sD->getTargetLMs()->getPtrInLM()->initialize(sD->getTargetCorps()->getPtrInCorp(), sD->getVocabs()->getPtrTargetVoc());
     sD->getTargetLMs()->getPtrOutLM()->initialize(sD->getTargetCorps()->getPtrOutCorp(), sD->getVocabs()->getPtrTargetVoc());
     
-    if (!exists(sD->getSourceLMs()->getPtrInLM()->getFileName())) {
-        cout << "Error: LM file " + sD->getSourceLMs()->getPtrInLM()->getFileName() + " does not exists!" << endl;
+    if (!boost::filesystem::exists(sD->getSourceLMs()->getPtrInLM()->getFileName())) {
+        std::cout << "Error: LM file " + sD->getSourceLMs()->getPtrInLM()->getFileName() + " does not exists!" << std::endl;
         return 1;
     }
-	if (!exists(sD->getSourceLMs()->getPtrOutLM()->getFileName())) {
-        cout << "Error: LM file " + sD->getSourceLMs()->getPtrOutLM()->getFileName() + " does not exists!" << endl;
+	if (!boost::filesystem::exists(sD->getSourceLMs()->getPtrOutLM()->getFileName())) {
+        std::cout << "Error: LM file " + sD->getSourceLMs()->getPtrOutLM()->getFileName() + " does not exists!" << std::endl;
         return 1;
     }
-	if (!exists(sD->getTargetLMs()->getPtrInLM()->getFileName())) {
-        cout << "Error: LM file " + sD->getTargetLMs()->getPtrInLM()->getFileName() + " does not exists!" << endl;
+	if (!boost::filesystem::exists(sD->getTargetLMs()->getPtrInLM()->getFileName())) {
+        std::cout << "Error: LM file " + sD->getTargetLMs()->getPtrInLM()->getFileName() + " does not exists!" << std::endl;
         return 1;
     }
-	if (!exists(sD->getTargetLMs()->getPtrOutLM()->getFileName())) {
-        cout << "Error: LM file " + sD->getTargetLMs()->getPtrOutLM()->getFileName() + " does not exists!" << endl;
+	if (!boost::filesystem::exists(sD->getTargetLMs()->getPtrOutLM()->getFileName())) {
+        std::cout << "Error: LM file " + sD->getTargetLMs()->getPtrOutLM()->getFileName() + " does not exists!" << std::endl;
         return 1;
     }
     
     sD->getSourcePPLs()->getPtrInPPL()->initialize(sD->getPTPairs()->getPtrOutPT(), sD->getSourceLMs()->getPtrInLM(), true);
+    sD->getSourcePPLs()->getPtrInPPL()->calcPPLPhraseTable();
     sD->getSourcePPLs()->getPtrOutPPL()->initialize(sD->getPTPairs()->getPtrOutPT(), sD->getSourceLMs()->getPtrOutLM(), true);
+    sD->getSourcePPLs()->getPtrOutPPL()->calcPPLPhraseTable();
     sD->getTargetPPLs()->getPtrInPPL()->initialize(sD->getPTPairs()->getPtrOutPT(), sD->getTargetLMs()->getPtrInLM(), false);
+    sD->getTargetPPLs()->getPtrInPPL()->calcPPLPhraseTable();
     sD->getTargetPPLs()->getPtrOutPPL()->initialize(sD->getPTPairs()->getPtrOutPT(), sD->getTargetLMs()->getPtrOutLM(), false);
+    sD->getTargetPPLs()->getPtrOutPPL()->calcPPLPhraseTable();
 
     //---- Global scores ----
-    cout << "Computing global scores." << endl;
+    std::cout << "Computing global scores." << std::endl;
     
     if (opt->getWFile()->getFileName().compare("") != 0)
         sD->getWeightsFile()->initialize(opt->getWFile());
@@ -91,7 +93,7 @@ int PTScoring::launch() {
 		double res = resS + resT;
         
         if (opt->getWFile()->getFileName().compare("") != 0)
-            res = res * sD->getWeightsFile()->getScore(i);
+            res = res * sD->getWeightsFile()->getWeight(i);
         
 		sD->getScHold()->getPtrScores()->addScore(res);
 	}
@@ -102,8 +104,8 @@ int PTScoring::launch() {
     
     if (opt->getLocal()) {
         //---- Local scores ----
-        cout << "Computing local scores." << endl;
-        vector<SourcePhrase> srcPh = sD->getPTPairs()->getPtrOutPT()->getSrcPhrases();
+        std::cout << "Computing local scores." << std::endl;
+        std::vector<SourcePhrase> srcPh = sD->getPTPairs()->getPtrOutPT()->getSrcPhrases();
         
         int offset = 0;
         
@@ -133,10 +135,10 @@ int PTScoring::launch() {
         //----------------------
     }
     
-    cout << "NB Scores: " + toString(sD->getScHold()->getPtrScores()->getSize()) + " NB Phrase-table: " + toString(sD->getPTPairs()->getPtrOutPT()->getSize()) << endl;
+    std::cout << "NB Scores: " + XenCommon::toString(sD->getScHold()->getPtrScores()->getSize()) + " NB Phrase-table: " + XenCommon::toString(sD->getPTPairs()->getPtrOutPT()->getSize()) << std::endl;
     
-    if (toString(sD->getScHold()->getPtrScores()->getSize()) != toString(sD->getPTPairs()->getPtrOutPT()->getSize())) {
-        cout << "Not the same number of scores, exiting." << endl;
+    if (XenCommon::toString(sD->getScHold()->getPtrScores()->getSize()) != XenCommon::toString(sD->getPTPairs()->getPtrOutPT()->getSize())) {
+        std::cout << "Not the same number of scores, exiting." << std::endl;
         return 1;
     }
     
