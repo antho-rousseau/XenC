@@ -7,6 +7,7 @@ Subdirectories:
 
 		bin/			executable
 		doc/			documentation
+		doxygen/		doxygen API documentation (HTML and PDF)
 		include/		header files
 		obj/			compiled object files
 		sbin/			utilities for make
