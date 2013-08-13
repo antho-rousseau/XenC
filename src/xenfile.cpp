@@ -1,5 +1,5 @@
 /**
- *  @file xenfile.h
+ *  @file xenfile.cpp
  *  @brief Class providing some basic functions around files
  *  @author Anthony Rousseau
  *  @version 1.0.0
