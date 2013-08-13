@@ -27,6 +27,8 @@
 
 #include "Xen.h"
 
+const string version = "1.1.0";
+
 int main(int argc, char* argv[]) {
     po::options_description desc("XenC options", 200);
     Options opt;
@@ -82,7 +84,7 @@ int main(int argc, char* argv[]) {
             po::store(po::parse_command_line(argc, argv, desc), vm);
             
             if (vm.count("help") || argc == 1) {
-                std::cout << "XenC version 1.0 PUBLIC RELEASE. Copyright 2013, Anthony Rousseau, LIUM, University of Le Mans, France." << std::endl << std::endl;
+                std::cout << "XenC version " + version + " PUBLIC RELEASE. Copyright 2013, Anthony Rousseau, LIUM, University of Le Mans, France." << std::endl << std::endl;
                 
                 std::cout << desc << std::endl;
                 
@@ -116,7 +118,7 @@ int main(int argc, char* argv[]) {
             }
             
             if (vm.count("version")) {
-                std::cout << "XenC version 1.0 PUBLIC RELEASE. Copyright 2013, Anthony Rousseau, LIUM, University of Le Mans, France." << std::endl;
+                std::cout << "XenC version " + version + " PUBLIC RELEASE. Copyright 2013, Anthony Rousseau, LIUM, University of Le Mans, France." << std::endl;
                 return 0;
             }
             
