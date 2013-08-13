@@ -2,8 +2,8 @@
  *  @file xenvocab.cpp
  *  @brief Class handling a XenC vocabulary
  *  @author Anthony Rousseau
- *  @version 1.0.0
- *  @date 27 July 2013
+ *  @version 1.1.0
+ *  @date 13 August 2013
  */
 
 /*  This file is part of the cross-entropy tool for data selection (XenC)
@@ -69,6 +69,25 @@ void XenVocab::initialize(boost::shared_ptr<Corpus> ptrCorp) {
 	}
 }
 
+void XenVocab::initialize(boost::shared_ptr<Corpus> ptrInCorp, boost::shared_ptr<Corpus> ptrOutCorp) {
+    ptrFile = boost::make_shared<XenFile>();
+    ptrFile->initialize(ptrInCorp->getXenFile()->getPrefix() + "-" + ptrOutCorp->getXenFile()->getPrefix() + ptrInCorp->getLang() + ".vocab");
+	ptrVocab = boost::make_shared<Vocab>();
+    
+    makeVocab(ptrInCorp, ptrOutCorp);
+    
+	if (boost::filesystem::exists(ptrFile->getFullPath().c_str())) {
+        std::cout << "Using existing vocab " << ptrFile->getFullPath() << std::endl;
+	}
+	else {
+        std::cout << "Dumping vocab " << ptrFile->getFullPath() << std::endl;
+        
+		writeVocab();
+        
+        std::cout << "Vocab file " + ptrFile->getFullPath() + " has been dumped." << std::endl;
+	}
+}
+
 void XenVocab::initialize(boost::shared_ptr<XenResult> ptrXenRes) {
     XenOption* opt = XenOption::getInstance();
     
@@ -119,6 +138,32 @@ void XenVocab::makeVocab(boost::shared_ptr<Corpus> ptrCorp) {
     for (unsigned int i = 0; i < ptrCorp->getSize(); i++) {
         std::vector<std::string> lWords;
         std::string line = ptrCorp->getLine(i);
+        
+        boost::split(lWords, line, boost::is_any_of(" "));
+        
+        for (unsigned int j = 0; j < lWords.size(); j++) {
+            ptrVocab->addWord(lWords[j].c_str());
+            voc[lWords[j]] = 1;
+        }
+    }
+}
+
+void XenVocab::makeVocab(boost::shared_ptr<Corpus> ptrInCorp, boost::shared_ptr<Corpus> ptrOutCorp) {
+    for (unsigned int i = 0; i < ptrInCorp->getSize(); i++) {
+        std::vector<std::string> lWords;
+        std::string line = ptrInCorp->getLine(i);
+        
+        boost::split(lWords, line, boost::is_any_of(" "));
+        
+        for (unsigned int j = 0; j < lWords.size(); j++) {
+            ptrVocab->addWord(lWords[j].c_str());
+            voc[lWords[j]] = 1;
+        }
+    }
+    
+    for (unsigned int i = 0; i < ptrOutCorp->getSize(); i++) {
+        std::vector<std::string> lWords;
+        std::string line = ptrOutCorp->getLine(i);
         
         boost::split(lWords, line, boost::is_any_of(" "));
         

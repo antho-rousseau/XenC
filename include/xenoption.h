@@ -2,8 +2,8 @@
  *  @file xenoption.h
  *  @brief Singleton class handling XenC options accessors/mutators
  *  @author Anthony Rousseau
- *  @version 1.0.0
- *  @date 27 July 2013
+ *  @version 1.1.0
+ *  @date 13 August 2013
  */
 
 /*  This file is part of the cross-entropy tool for data selection (XenC)
@@ -224,6 +224,14 @@ public:
      *  @return the target language vocabulary file
      */
 	boost::shared_ptr<XenFile> getTVocab() const;
+    
+    /**
+     *  @fn bool getFullVocab () const
+     *  @brief Accessor to the global vocabulary execution state
+     *
+     *  @return true if we use a global vocabulary instead of only in-domain
+     */
+    bool getFullVocab() const;
     
     /**
      *  @fn boost::shared_ptr<XenFile> getInSLM ()

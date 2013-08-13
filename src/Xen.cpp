@@ -2,8 +2,8 @@
  *  @file Xen.cpp
  *  @brief Main file of XenC, controls execution
  *  @author Anthony Rousseau
- *  @version 1.0.0
- *  @date 27 July 2013
+ *  @version 1.1.0
+ *  @date 13 August 2013
  */
 
 /*  This file is part of the cross-entropy tool for data selection (XenC)
@@ -59,6 +59,7 @@ int main(int argc, char* argv[]) {
         ("step", po::value<int>(&opt.step)->default_value(10), "percentage steps for evaluation. Default is 10 (100%, 90%, ...)")
         ("s-vocab", po::value<std::string>(&opt.sVocab)->default_value(""), "source language vocab filename for LMs estimation. Default is in-domain source text vocab")
         ("t-vocab", po::value<std::string>(&opt.tVocab)->default_value(""), "target language vocab filename for LMs estimation. Default is in-domain target text vocab")
+        ("full-vocab", po::value<bool>(&opt.fullVoc)->zero_tokens()->default_value(false), "use in-domain + out-of-domain vocabularies instead of in-domain only")
         ("in-slm", po::value<std::string>(&opt.inSLM)->default_value(""), "in-domain source language model (LM). Will be estimated if not present")
         ("out-slm", po::value<std::string>(&opt.outSLM)->default_value(""), "out-of-domain source language model (LM). Will be estimated if not present")
         ("in-tlm", po::value<std::string>(&opt.inTLM)->default_value(""), "in-domain target language model (LM). Will be estimated if not present")

@@ -2,8 +2,8 @@
  *  @file xenvocab.h
  *  @brief Class handling a XenC vocabulary
  *  @author Anthony Rousseau
- *  @version 1.0.0
- *  @date 27 July 2013
+ *  @version 1.1.0
+ *  @date 13 August 2013
  */
 
 /*  This file is part of the cross-entropy tool for data selection (XenC)
@@ -71,6 +71,15 @@ public:
     void initialize(boost::shared_ptr<Corpus> ptrCorp);
     
     /**
+     *  @fn void initialize (boost::shared_ptr<Corpus> ptrInCorp, boost::shared_ptr<Corpus> ptrOutCorp)
+     *  @brief Initialization function from two Corpus
+     *
+     *  @param ptrInCorp  :     the in-domain Corpus to extract the vocabulary from
+     *  @param ptrOutCorp :     the out-of-domain Corpus to extract the vocabulary from
+     */
+    void initialize(boost::shared_ptr<Corpus> ptrInCorp, boost::shared_ptr<Corpus> ptrOutCorp);
+    
+    /**
      *  @fn void initialize (boost::shared_ptr<XenResult> ptrXenRes)
      *  @brief Initialization function from a sorted result file
      *
@@ -134,6 +143,14 @@ private:
      *  @param ptrCorp :    the Corpus to generate the vocabulary from
      */
     void makeVocab(boost::shared_ptr<Corpus> ptrCorp);
+    
+    /**
+     *  @fn void makeVocab (boost::shared_ptr<Corpus> ptrCorp)
+     *  @brief Generates a vocabulary from a Corpus
+     *
+     *  @param ptrCorp :    the Corpus to generate the vocabulary from
+     */
+    void makeVocab(boost::shared_ptr<Corpus> ptrInCorp, boost::shared_ptr<Corpus> ptrOutCorp);
     
     /**
      *  @fn void makeVocab (boost::shared_ptr<Corpus> ptrCorp)

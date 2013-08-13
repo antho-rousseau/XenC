@@ -2,8 +2,8 @@
  *  @file simplePPL.cpp
  *  @brief Derived class to handle filtering mode 1: simple perplexity
  *  @author Anthony Rousseau
- *  @version 1.0.0
- *  @date 27 July 2013
+ *  @version 1.1.0
+ *  @date 13 August 2013
  */
 
 /*  This file is part of the cross-entropy tool for data selection (XenC)
@@ -42,8 +42,14 @@ int SimplePPL::launch() {
     sD->getSourceCorps()->getPtrInCorp()->initialize(opt->getInSData(), opt->getSLang());
     sD->getSourceCorps()->getPtrOutCorp()->initialize(opt->getOutSData(), opt->getSLang());
     
-    if (opt->getSVocab()->getFileName().compare("") == 0) { sD->getVocabs()->getPtrSourceVoc()->initialize(sD->getSourceCorps()->getPtrInCorp()); }
-	else { sD->getVocabs()->getPtrSourceVoc()->initialize(opt->getSVocab()); }
+    if (opt->getSVocab()->getFileName().compare("") == 0) {
+        if (opt->getFullVocab())
+            sD->getVocabs()->getPtrSourceVoc()->initialize(sD->getSourceCorps()->getPtrInCorp(), sD->getSourceCorps()->getPtrOutCorp());
+        else
+            sD->getVocabs()->getPtrSourceVoc()->initialize(sD->getSourceCorps()->getPtrInCorp());
+    }
+    else
+        sD->getVocabs()->getPtrSourceVoc()->initialize(opt->getSVocab());
     
     if (opt->getInSLM()->getFileName().compare("") == 0) {
         sD->getSourceLMs()->getPtrInLM()->initialize(sD->getSourceCorps()->getPtrInCorp(), sD->getVocabs()->getPtrSourceVoc());

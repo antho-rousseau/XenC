@@ -2,8 +2,8 @@
  *  @file StaticData.cpp
  *  @brief File handling all data objects used by XenC in a static way
  *  @author Anthony Rousseau
- *  @version 1.0.0
- *  @date 27 July 2013
+ *  @version 1.1.0
+ *  @date 13 August 2013
  */
 
 /*  This file is part of the cross-entropy tool for data selection (XenC)

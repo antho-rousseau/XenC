@@ -2,8 +2,8 @@
  *  @file common.h
  *  @brief File containing all common classes/structures/functions of many classes of XenC
  *  @author Anthony Rousseau
- *  @version 1.0.0
- *  @date 27 July 2013
+ *  @version 1.1.0
+ *  @date 13 August 2013
  */
 
 /*  This file is part of the cross-entropy tool for data selection (XenC)
@@ -64,6 +64,7 @@ typedef struct _Options {
     int vecSize;            //!< The vector size for similarity
 	std::string sVocab;     //!< The source language vocabulary
 	std::string tVocab;     //!< The target language vocabulary
+    bool fullVoc;           //!< Indicates if a global vocabulary is requested (instead of only in-domain)
 	std::string inSLM;      //!< The in-domain source language model
 	std::string outSLM;     //!< The out-of-domain source language model
 	std::string inTLM;      //!< The in-domain target language model
