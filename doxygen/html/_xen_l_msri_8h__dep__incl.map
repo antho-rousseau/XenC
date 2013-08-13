@@ -2,7 +2,7 @@
 <area shape="rect" id="node2" href="$eval_8h.html" title="Class handling evaluation system." alt="" coords="351,155,449,181"/>
 <area shape="rect" id="node23" href="$ppl_8h.html" title="Class handling the perplexity/cross&#45;entropy computations." alt="" coords="849,80,940,107"/>
 <area shape="rect" id="node5" href="$_static_data_8h.html" title="File handling all data objects used by XenC in a static way." alt="" coords="637,379,795,405"/>
-<area shape="rect" id="node25" href="$_xen_l_msri_8cpp.html" title="src/XenLMsri.cpp" alt="" coords="1055,80,1173,107"/>
+<area shape="rect" id="node25" href="$_xen_l_msri_8cpp.html" title="Class handling SRI LM estimation, loading, querying..." alt="" coords="1055,80,1173,107"/>
 <area shape="rect" id="node3" href="$xenio_8h.html" title="Class handling all input/output operations of XenC." alt="" coords="335,229,464,256"/>
 <area shape="rect" id="node7" href="$_xen_8h.html" title="Main file of XenC, controls execution." alt="" coords="407,528,503,555"/>
 <area shape="rect" id="node16" href="$eval_8cpp.html" title="Class handling evaluation system." alt="" coords="144,453,235,480"/>

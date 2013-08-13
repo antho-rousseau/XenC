@@ -25,7 +25,7 @@
 <area shape="rect" id="node11" href="$mono_x_entropy_8cpp.html" title="Derived class to handle filtering mode 2: monolingual cross&#45;entropy." alt="" coords="696,677,888,704"/>
 <area shape="rect" id="node13" href="$pt_scoring_8cpp.html" title="Derived class to handle filtering mode 4: phrase&#45;table cross&#45;entropy." alt="" coords="1255,677,1416,704"/>
 <area shape="rect" id="node15" href="$simple_p_p_l_8cpp.html" title="Derived class to handle filtering mode 1: simple perplexity." alt="" coords="1448,677,1619,704"/>
-<area shape="rect" id="node26" href="$_xen_l_msri_8cpp.html" title="src/XenLMsri.cpp" alt="" coords="554,229,672,256"/>
+<area shape="rect" id="node26" href="$_xen_l_msri_8cpp.html" title="Class handling SRI LM estimation, loading, querying..." alt="" coords="554,229,672,256"/>
 <area shape="rect" id="node25" href="$ppl_8cpp.html" title="Class handling the perplexity/cross&#45;entropy computations." alt="" coords="748,304,833,331"/>
 <area shape="rect" id="node30" href="$xenvocab_8cpp.html" title="Class handling a XenC vocabulary." alt="" coords="906,155,1029,181"/>
 <area shape="rect" id="node29" href="$similarity_8cpp.html" title="Class taking care of all the similarity measure computations." alt="" coords="1061,229,1173,256"/>

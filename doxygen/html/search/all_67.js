@@ -15,6 +15,7 @@ var searchData=
   ['getext',['getExt',['../class_xen_file.html#a38a855c54140058820b4bd7cd770b245',1,'XenFile']]],
   ['getfilename',['getFileName',['../class_xen_file.html#a497bf6ae8ffb922e79ce5022a688636e',1,'XenFile::getFileName()'],['../class_xen_l_msri.html#a73a14a57beafb3cf36ce23515e997065',1,'XenLMsri::getFileName()']]],
   ['getfullpath',['getFullPath',['../class_xen_file.html#a14321a000f5284d9c52d9f304e116f95',1,'XenFile']]],
+  ['getfullvocab',['getFullVocab',['../class_xen_option.html#a02ab4cb865a93cf7c48f76f68f7b6ae9',1,'XenOption']]],
   ['getinptable',['getInPTable',['../class_xen_option.html#a76d6e094092486278bd7f7714d54a3b9',1,'XenOption']]],
   ['getinsdata',['getInSData',['../class_xen_option.html#a17723ab17afa712bfc7a9539719abf94',1,'XenOption']]],
   ['getinslm',['getInSLM',['../class_xen_option.html#a1eb0d4f4b3d29749f6ac70e71c9fa01b',1,'XenOption']]],

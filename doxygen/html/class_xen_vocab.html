@@ -108,6 +108,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a46654e58adf192668637404f277fd5e5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_xen_vocab.html#a46654e58adf192668637404f277fd5e5">initialize</a> (boost::shared_ptr&lt; <a class="el" href="class_corpus.html">Corpus</a> &gt; ptrCorp)</td></tr>
 <tr class="memdesc:a46654e58adf192668637404f277fd5e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialization function from a <a class="el" href="class_corpus.html" title="Corpus-related functionalities.">Corpus</a>.  <a href="#a46654e58adf192668637404f277fd5e5">More...</a><br/></td></tr>
 <tr class="separator:a46654e58adf192668637404f277fd5e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2a5fb3a986880f9ba773c71d20582557"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_xen_vocab.html#a2a5fb3a986880f9ba773c71d20582557">initialize</a> (boost::shared_ptr&lt; <a class="el" href="class_corpus.html">Corpus</a> &gt; ptrInCorp, boost::shared_ptr&lt; <a class="el" href="class_corpus.html">Corpus</a> &gt; ptrOutCorp)</td></tr>
+<tr class="memdesc:a2a5fb3a986880f9ba773c71d20582557"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialization function from two <a class="el" href="class_corpus.html" title="Corpus-related functionalities.">Corpus</a>.  <a href="#a2a5fb3a986880f9ba773c71d20582557">More...</a><br/></td></tr>
+<tr class="separator:a2a5fb3a986880f9ba773c71d20582557"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a53227b7f5482e32f4c99bcfe9039a2dd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_xen_vocab.html#a53227b7f5482e32f4c99bcfe9039a2dd">initialize</a> (boost::shared_ptr&lt; <a class="el" href="class_xen_result.html">XenResult</a> &gt; ptrXenRes)</td></tr>
 <tr class="memdesc:a53227b7f5482e32f4c99bcfe9039a2dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialization function from a sorted result file.  <a href="#a53227b7f5482e32f4c99bcfe9039a2dd">More...</a><br/></td></tr>
 <tr class="separator:a53227b7f5482e32f4c99bcfe9039a2dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -285,6 +288,41 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a2a5fb3a986880f9ba773c71d20582557"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void XenVocab::initialize </td>
+          <td>(</td>
+          <td class="paramtype">boost::shared_ptr&lt; <a class="el" href="class_corpus.html">Corpus</a> &gt;&#160;</td>
+          <td class="paramname"><em>ptrInCorp</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">boost::shared_ptr&lt; <a class="el" href="class_corpus.html">Corpus</a> &gt;&#160;</td>
+          <td class="paramname"><em>ptrOutCorp</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initialization function from two <a class="el" href="class_corpus.html" title="Corpus-related functionalities.">Corpus</a>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ptrInCorp</td><td>: the in-domain <a class="el" href="class_corpus.html" title="Corpus-related functionalities.">Corpus</a> to extract the vocabulary from </td></tr>
+    <tr><td class="paramname">ptrOutCorp</td><td>: the out-of-domain <a class="el" href="class_corpus.html" title="Corpus-related functionalities.">Corpus</a> to extract the vocabulary from </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a class="anchor" id="a53227b7f5482e32f4c99bcfe9039a2dd"></a>
 <div class="memitem">
 <div class="memproto">
@@ -325,7 +363,7 @@ Here is the call graph for this function:</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Jul 27 2013 10:46:35 for XenC by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Aug 13 2013 12:17:56 for XenC by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.3.1
 </small></address>

@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['wfile',['Wfile',['../class_wfile.html',1,'Wfile'],['../class_wfile.html#a49f0711a359c4a728974f1d5e017f119',1,'Wfile::Wfile()'],['../struct___options.html#a6f9cd745e22277cf7f98f232464cb960',1,'_Options::wFile()']]],
+  ['wfile',['Wfile',['../class_wfile.html',1,'Wfile'],['../struct___options.html#a6f9cd745e22277cf7f98f232464cb960',1,'_Options::wFile()'],['../class_wfile.html#a49f0711a359c4a728974f1d5e017f119',1,'Wfile::Wfile()']]],
   ['wfile_2ecpp',['wfile.cpp',['../wfile_8cpp.html',1,'']]],
   ['wfile_2eh',['wfile.h',['../wfile_8h.html',1,'']]],
   ['what',['what',['../struct_xen_common_1_1_xen_c_eption.html#a32ca1dc358f84de4e63d73c72e318c42',1,'XenCommon::XenCEption']]],

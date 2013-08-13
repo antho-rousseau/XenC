@@ -7,7 +7,7 @@
 <area shape="rect" id="node28" href="$similarity_8h.html" title="Class taking care of all the similarity measure computations." alt="" coords="1003,304,1123,331"/>
 <area shape="rect" id="node30" href="$xenvocab_8cpp.html" title="Class handling a XenC vocabulary." alt="" coords="815,155,939,181"/>
 <area shape="rect" id="node25" href="$ppl_8h.html" title="Class handling the perplexity/cross&#45;entropy computations." alt="" coords="506,229,597,256"/>
-<area shape="rect" id="node27" href="$_xen_l_msri_8cpp.html" title="src/XenLMsri.cpp" alt="" coords="622,229,740,256"/>
+<area shape="rect" id="node27" href="$_xen_l_msri_8cpp.html" title="Class handling SRI LM estimation, loading, querying..." alt="" coords="622,229,740,256"/>
 <area shape="rect" id="node5" href="$xenio_8h.html" title="Class handling all input/output operations of XenC." alt="" coords="393,379,521,405"/>
 <area shape="rect" id="node9" href="$_xen_8h.html" title="Main file of XenC, controls execution." alt="" coords="432,677,528,704"/>
 <area shape="rect" id="node18" href="$eval_8cpp.html" title="Class handling evaluation system." alt="" coords="144,603,235,629"/>

@@ -27,7 +27,7 @@
 <area shape="rect" id="node15" href="$simple_p_p_l_8cpp.html" title="Derived class to handle filtering mode 1: simple perplexity." alt="" coords="231,677,401,704"/>
 <area shape="rect" id="node30" href="$xenvocab_8cpp.html" title="Class handling a XenC vocabulary." alt="" coords="1009,155,1132,181"/>
 <area shape="rect" id="node25" href="$ppl_8h.html" title="Class handling the perplexity/cross&#45;entropy computations." alt="" coords="1001,229,1092,256"/>
-<area shape="rect" id="node27" href="$_xen_l_msri_8cpp.html" title="src/XenLMsri.cpp" alt="" coords="682,229,800,256"/>
+<area shape="rect" id="node27" href="$_xen_l_msri_8cpp.html" title="Class handling SRI LM estimation, loading, querying..." alt="" coords="682,229,800,256"/>
 <area shape="rect" id="node26" href="$ppl_8cpp.html" title="Class handling the perplexity/cross&#45;entropy computations." alt="" coords="1028,304,1113,331"/>
 <area shape="rect" id="node29" href="$similarity_8cpp.html" title="Class taking care of all the similarity measure computations." alt="" coords="1169,229,1281,256"/>
 </map>
