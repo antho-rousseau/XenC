@@ -104,6 +104,7 @@ var searchData=
   ['gettextline',['getTextLine',['../class_xen_result.html#a85a34524037ff1226f10e5696e6c24dc',1,'XenResult']]],
   ['getthreads',['getThreads',['../class_xen_option.html#a1e63941bf583b329394def43e580bbd6',1,'XenOption']]],
   ['gettlang',['getTLang',['../class_xen_option.html#aaaec9eadf81b57f24f4833be2ff2350a',1,'XenOption']]],
+  ['gettolower',['getToLower',['../class_xen_option.html#ae05629c7b60aee22daa022d839ecc8eb',1,'XenOption']]],
   ['gettvocab',['getTVocab',['../class_xen_option.html#aa38a1233cc2bcd024964fbc54d5abe5e',1,'XenOption']]],
   ['getvecsize',['getVecSize',['../class_xen_option.html#a8f60152e83d018aa39c9260aa08528dd',1,'XenOption']]],
   ['getvocab',['getVocab',['../class_xen_vocab.html#aa8d56d420f5a319c42bd4ae6cd822cb9',1,'XenVocab']]],

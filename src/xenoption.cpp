@@ -2,8 +2,8 @@
  *  @file xenoption.cpp
  *  @brief Singleton class handling XenC options accessors/mutators
  *  @author Anthony Rousseau
- *  @version 1.1.0
- *  @date 13 August 2013
+ *  @version 1.2.0
+ *  @date 19 August 2013
  */
 
 /*  This file is part of the cross-entropy tool for data selection (XenC)
@@ -228,6 +228,14 @@ int XenOption::getOrder() const {
 
 int XenOption::getDiscount() const {
     return opt->discount;
+}
+
+bool XenOption::getToLower() const {
+    return opt->toLower;
+}
+
+bool XenOption::noUnkIsWord() const {
+    return opt->noUnkIsWord;
 }
 
 int XenOption::getBinLM() const {

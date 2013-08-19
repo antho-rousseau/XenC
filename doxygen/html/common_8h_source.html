@@ -153,157 +153,159 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00073"></a><span class="lineno"><a class="code" href="struct___options.html#a187f98389ac1fde5a31bf57d39341a47">   73</a></span>&#160;    std::string <a class="code" href="struct___options.html#a187f98389ac1fde5a31bf57d39341a47" title="The development corpus (for evaluation)">dev</a>;        </div>
 <div class="line"><a name="l00074"></a><span class="lineno"><a class="code" href="struct___options.html#acc29751f1019f626392b1f4a71968268">   74</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="struct___options.html#acc29751f1019f626392b1f4a71968268" title="The order for language models estimation.">order</a>;              </div>
 <div class="line"><a name="l00075"></a><span class="lineno"><a class="code" href="struct___options.html#a989caec391ee23419f3c16e856a9d4be">   75</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="struct___options.html#a989caec391ee23419f3c16e856a9d4be" title="The discounting method for language models estimation.">discount</a>;           </div>
-<div class="line"><a name="l00076"></a><span class="lineno"><a class="code" href="struct___options.html#a981bc1ccef0f483e546ada7efce91548">   76</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="struct___options.html#a981bc1ccef0f483e546ada7efce91548" title="The language models output format (0 = ARPA, 1 = binary)">binLM</a>;              </div>
-<div class="line"><a name="l00077"></a><span class="lineno"><a class="code" href="struct___options.html#ada2c366fb99c7a19f6ef9493cbbb26ae">   77</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="struct___options.html#ada2c366fb99c7a19f6ef9493cbbb26ae" title="The sample size for the out-of-domain corpus.">sampleSize</a>;         </div>
-<div class="line"><a name="l00078"></a><span class="lineno"><a class="code" href="struct___options.html#ac1ca9c143621ec6b0dec855e826bd8c7">   78</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="struct___options.html#ac1ca9c143621ec6b0dec855e826bd8c7" title="Indicates if the weights are given in the log domain.">log</a>;               </div>
-<div class="line"><a name="l00079"></a><span class="lineno"><a class="code" href="struct___options.html#a7ea4060bb6a569c923fa6e2566ba7c38">   79</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="struct___options.html#a7ea4060bb6a569c923fa6e2566ba7c38" title="Indicates if a reversed output is requested (descending order)">rev</a>;               </div>
-<div class="line"><a name="l00080"></a><span class="lineno"><a class="code" href="struct___options.html#a259f33f5c1a1f19de12db0da454ac309">   80</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="struct___options.html#a259f33f5c1a1f19de12db0da454ac309" title="Indicates if an inverse output is requested (1 - score)">inv</a>;               </div>
-<div class="line"><a name="l00081"></a><span class="lineno"><a class="code" href="struct___options.html#ace235a4627d0c0517040da86fc250035">   81</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="struct___options.html#ace235a4627d0c0517040da86fc250035" title="Indicates if monolingual data is being filtered or not.">mono</a>;              </div>
-<div class="line"><a name="l00082"></a><span class="lineno"><a class="code" href="struct___options.html#a1ddc64f66a941e72509d9c4cb7311ebb">   82</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="struct___options.html#a1ddc64f66a941e72509d9c4cb7311ebb" title="Indicates stem computation.">stem</a>;              </div>
-<div class="line"><a name="l00083"></a><span class="lineno"><a class="code" href="struct___options.html#a470a44b7981c83a60ce3306617570c49">   83</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="struct___options.html#a470a44b7981c83a60ce3306617570c49" title="Indicates local scores computation for phrase table filtering.">local</a>;             </div>
-<div class="line"><a name="l00084"></a><span class="lineno"><a class="code" href="struct___options.html#ab6989ec93db4f4b8ca642356120c7d1f">   84</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="struct___options.html#ab6989ec93db4f4b8ca642356120c7d1f" title="Indicates evaluation mode.">eval</a>;              </div>
-<div class="line"><a name="l00085"></a><span class="lineno"><a class="code" href="struct___options.html#a4f66141fa01d3f8a6236c809b4f9d589">   85</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="struct___options.html#a4f66141fa01d3f8a6236c809b4f9d589" title="Indicates best-point evaluation mode.">bp</a>;                </div>
-<div class="line"><a name="l00086"></a><span class="lineno"><a class="code" href="struct___options.html#a593121f953b8e923ea47b460b3d53a6f">   86</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="struct___options.html#a593121f953b8e923ea47b460b3d53a6f" title="The step size for evaluation and best-point.">step</a>;               </div>
-<div class="line"><a name="l00087"></a><span class="lineno"><a class="code" href="struct___options.html#a792b653782b7973b936e402b53fc6e0a">   87</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="struct___options.html#a792b653782b7973b936e402b53fc6e0a" title="The current percentage being evaluated.">pc</a>;                 </div>
-<div class="line"><a name="l00088"></a><span class="lineno"><a class="code" href="struct___options.html#ad82679764d7d5f8299781087dd52d65a">   88</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="struct___options.html#ad82679764d7d5f8299781087dd52d65a" title="The number of in-domain tokens.">inToks</a>;             </div>
-<div class="line"><a name="l00089"></a><span class="lineno"><a class="code" href="struct___options.html#aadf012248b3af655296365c3439a2d58">   89</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="struct___options.html#aadf012248b3af655296365c3439a2d58" title="The number of out-of-domain tokens.">outToks</a>;            </div>
-<div class="line"><a name="l00090"></a><span class="lineno"><a class="code" href="struct___options.html#a17d1320c68d90b6f887b07e925c96f6e">   90</a></span>&#160;    std::string <a class="code" href="struct___options.html#a17d1320c68d90b6f887b07e925c96f6e" title="The output file name.">outName</a>;    </div>
-<div class="line"><a name="l00091"></a><span class="lineno"><a class="code" href="struct___options.html#a8fd04472bc525837a659082da6e8beb3">   91</a></span>&#160;    std::string <a class="code" href="struct___options.html#a8fd04472bc525837a659082da6e8beb3" title="The program name.">name</a>;       </div>
-<div class="line"><a name="l00092"></a><span class="lineno"><a class="code" href="struct___options.html#a13dca3ef2c7f0b589fced91af30766b9">   92</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="struct___options.html#a13dca3ef2c7f0b589fced91af30766b9" title="The program version.">version</a>;           </div>
-<div class="line"><a name="l00093"></a><span class="lineno"><a class="code" href="struct___options.html#abfaa3912b90474ed33748164b5b88aa5">   93</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="struct___options.html#abfaa3912b90474ed33748164b5b88aa5" title="The number of threads.">threads</a>;            </div>
-<div class="line"><a name="l00094"></a><span class="lineno"><a class="code" href="struct___options.html#a46604fd56cf25009ce1dd580a027a222">   94</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="struct___options.html#a46604fd56cf25009ce1dd580a027a222" title="Indicated outputting only the &quot;sorted&quot; file (not the &quot;scored&quot; one)">sortOnly</a>;          </div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;} <a class="code" href="common_8h.html#ad21081104f366c9682adfdca8ee9c45f">Options</a>, *<a class="code" href="common_8h.html#ac5d9a808e501bd85893f0f6819b5e5b9">LPOptions</a>;</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="keyword">namespace </span>XenCommon {</div>
-<div class="line"><a name="l00108"></a><span class="lineno"><a class="code" href="namespace_xen_common.html#ad4f4868634e46d6ee82e57d343a77abe">  108</a></span>&#160;    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt; std::string <a class="code" href="namespace_xen_common.html#ad4f4868634e46d6ee82e57d343a77abe" title="Template converting a value into a string with a precision of 20.">toString</a>(<span class="keyword">const</span> T &amp;Value) {</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        std::ostringstream oss;</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        oss.precision(20);</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        oss &lt;&lt; Value;</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        <span class="keywordflow">return</span> oss.str();</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    }</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    </div>
-<div class="line"><a name="l00121"></a><span class="lineno"><a class="code" href="namespace_xen_common.html#a3b2d08955355a35d07efd74c466b91d1">  121</a></span>&#160;    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt; std::string <a class="code" href="namespace_xen_common.html#a3b2d08955355a35d07efd74c466b91d1" title="Template converting a value into a string with no precision.">toString0</a>(<span class="keyword">const</span> T &amp;Value) {</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        std::ostringstream oss;</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        oss &lt;&lt; Value;</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;        <span class="keywordflow">return</span> oss.str();</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    }</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    </div>
-<div class="line"><a name="l00133"></a><span class="lineno"><a class="code" href="namespace_xen_common.html#a3fd9978be1bd41808ac4605c2e89d816">  133</a></span>&#160;    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt; <span class="keywordtype">int</span> <a class="code" href="namespace_xen_common.html#a3fd9978be1bd41808ac4605c2e89d816" title="Template converting a value (generally a string) into an integer.">toInt</a>(<span class="keyword">const</span> T &amp;Value) {</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        <span class="keywordtype">int</span> ret;</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;        std::istringstream iss;</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;        iss.str(Value);</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;        iss &gt;&gt; ret;</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;        <span class="keywordflow">return</span> ret;</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    }</div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;    </div>
-<div class="line"><a name="l00147"></a><span class="lineno"><a class="code" href="namespace_xen_common.html#aadf35ed2e4ebb9b556cda62563888113">  147</a></span>&#160;    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt; <span class="keywordtype">double</span> <a class="code" href="namespace_xen_common.html#aadf35ed2e4ebb9b556cda62563888113" title="Template converting a value (generally a string) into an double.">toDouble</a>(<span class="keyword">const</span> T &amp;Value) {</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;        <span class="keywordtype">double</span> ret;</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;        std::istringstream iss;</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;        iss.str(Value);</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;        iss &gt;&gt; ret;</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;        <span class="keywordflow">return</span> ret;</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;    }</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    </div>
-<div class="line"><a name="l00161"></a><span class="lineno"><a class="code" href="namespace_xen_common.html#ae4ab9441365ea924eb6b5df051f53155">  161</a></span>&#160;    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> A, <span class="keyword">typename</span> B&gt; std::pair&lt;B, A&gt; <a class="code" href="namespace_xen_common.html#ae4ab9441365ea924eb6b5df051f53155" title="Template flipping a pair key type with value type.">flip_pair</a>(<span class="keyword">const</span> std::pair&lt;A, B&gt; &amp;p) {</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;        <span class="keywordflow">return</span> std::pair&lt;B,A&gt;(p.second, p.first);</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;    }</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    </div>
-<div class="line"><a name="l00171"></a><span class="lineno"><a class="code" href="namespace_xen_common.html#ac5d0528153fa3cb1a068e8eb37f8762e">  171</a></span>&#160;    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> A, <span class="keyword">typename</span> B&gt; std::multimap&lt;B, A, std::greater&lt;B&gt; &gt; <a class="code" href="namespace_xen_common.html#ac5d0528153fa3cb1a068e8eb37f8762e" title="Template flipping a multimap with descending order keys with values.">flip_map</a>(<span class="keyword">const</span> std::map&lt;A, B&gt; &amp;src) {</div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;        std::multimap&lt;B, A, std::greater&lt;B&gt; &gt; dst;</div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;        transform(src.begin(), src.end(), inserter(dst, dst.begin()), flip_pair&lt;A, B&gt;);</div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;        <span class="keywordflow">return</span> dst;</div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;    }</div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;    </div>
-<div class="line"><a name="l00181"></a><span class="lineno"><a class="code" href="struct_xen_common_1_1_xen_c_eption.html">  181</a></span>&#160;    <span class="keyword">struct </span><a class="code" href="struct_xen_common_1_1_xen_c_eption.html" title="XenC exception structure.">XenCEption</a> : <span class="keyword">public</span> std::exception</div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;    {</div>
-<div class="line"><a name="l00183"></a><span class="lineno"><a class="code" href="struct_xen_common_1_1_xen_c_eption.html#af7a342a6d120ed90d701140b4f8b80c2">  183</a></span>&#160;        std::string <a class="code" href="struct_xen_common_1_1_xen_c_eption.html#af7a342a6d120ed90d701140b4f8b80c2" title="The exception message.">s</a>;      </div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;        </div>
-<div class="line"><a name="l00189"></a><span class="lineno"><a class="code" href="struct_xen_common_1_1_xen_c_eption.html#acee5c43bdbf9f2b96430779bc429a111">  189</a></span>&#160;        <a class="code" href="struct_xen_common_1_1_xen_c_eption.html#acee5c43bdbf9f2b96430779bc429a111" title="Exception constructur.">XenCEption</a>(std::string ss) : s(ss) {}</div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;        </div>
-<div class="line"><a name="l00195"></a><span class="lineno"><a class="code" href="struct_xen_common_1_1_xen_c_eption.html#a99eb15e7ae7df47cf6eadfebbbc8326c">  195</a></span>&#160;        <span class="keyword">virtual</span> <a class="code" href="struct_xen_common_1_1_xen_c_eption.html#a99eb15e7ae7df47cf6eadfebbbc8326c" title="Exception desctructor.">~XenCEption</a>() throw() {}</div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;        </div>
-<div class="line"><a name="l00203"></a><span class="lineno"><a class="code" href="struct_xen_common_1_1_xen_c_eption.html#a32ca1dc358f84de4e63d73c72e318c42">  203</a></span>&#160;        <span class="keyword">const</span> <span class="keywordtype">char</span>* <a class="code" href="struct_xen_common_1_1_xen_c_eption.html#a32ca1dc358f84de4e63d73c72e318c42" title="Accessor to the exception message.">what</a>() <span class="keyword">const</span> throw() { <span class="keywordflow">return</span> s.c_str(); }</div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;    };</div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;    </div>
-<div class="line"><a name="l00213"></a><span class="lineno"><a class="code" href="namespace_xen_common.html#a256a94d06d5072213efb1c50412f64bd">  213</a></span>&#160;    <span class="keyword">inline</span> <span class="keywordtype">int</span> <a class="code" href="namespace_xen_common.html#a256a94d06d5072213efb1c50412f64bd" title="Computes the word count of a string.">wordCount</a>(<span class="keyword">const</span> std::string &amp;str) {</div>
-<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;        <span class="keywordtype">int</span> c = 0;</div>
-<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;        std::string::const_iterator pos = str.begin();</div>
-<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;        std::string::const_iterator end = str.end();</div>
-<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;        </div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;        <span class="keywordflow">while</span>(pos != end) {</div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;            <span class="keywordflow">while</span>(pos != end &amp;&amp; (*pos == <span class="charliteral">&#39; &#39;</span> || std::isspace(*pos))) ++pos;</div>
-<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;            c += (pos != end);</div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;            <span class="keywordflow">while</span>(pos != end &amp;&amp; (*pos != <span class="charliteral">&#39; &#39;</span> || !std::isspace(*pos))) ++pos;</div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;        }</div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;        </div>
-<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;        <span class="keywordflow">return</span> c;</div>
-<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;    }</div>
-<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;</div>
-<div class="line"><a name="l00234"></a><span class="lineno"><a class="code" href="namespace_xen_common.html#ab8c7a51d6bf68d64848f1ca9bc3805d0">  234</a></span>&#160;    <span class="keyword">inline</span> std::string <a class="code" href="namespace_xen_common.html#ab8c7a51d6bf68d64848f1ca9bc3805d0" title="Executes a system command and returns the output.">getStdoutFromCommand</a>(std::string cmd) {</div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;        <span class="keywordflow">try</span> {</div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;            std::string data;</div>
-<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;            std::FILE *stream;</div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;            <span class="keywordtype">int</span> MAX_BUFFER = 65535;</div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;            <span class="keywordtype">char</span> buffer[MAX_BUFFER];</div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;            cmd.append(<span class="stringliteral">&quot; 2&gt;&amp;1&quot;</span>);</div>
-<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;            stream = popen(cmd.c_str(), <span class="stringliteral">&quot;r&quot;</span>);</div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;            </div>
-<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;            <span class="keywordflow">if</span> (!stream){</div>
-<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;                <span class="keywordflow">throw</span> <a class="code" href="struct_xen_common_1_1_xen_c_eption.html" title="XenC exception structure.">XenCEption</a>(<span class="stringliteral">&quot;Can&#39;t open stream with popen()!&quot;</span>);</div>
-<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;            }</div>
-<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;            </div>
-<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;            <span class="keywordflow">while</span> (!feof(stream)){</div>
-<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;                <span class="keywordflow">if</span> (std::fgets(buffer, MAX_BUFFER, stream) != NULL){</div>
-<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;                    data.append(buffer);</div>
-<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;                }</div>
-<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;            }</div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;            </div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;            pclose(stream);</div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;            <span class="keywordflow">return</span> data;</div>
-<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;        }</div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;        <span class="keywordflow">catch</span> (<a class="code" href="struct_xen_common_1_1_xen_c_eption.html" title="XenC exception structure.">XenCEption</a> &amp;e) {</div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;            <span class="keywordflow">throw</span>;</div>
-<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;        }</div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;        </div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;        <span class="keywordflow">return</span> <span class="stringliteral">&quot;&quot;</span>;</div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;    }</div>
-<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;</div>
-<div class="line"><a name="l00271"></a><span class="lineno"><a class="code" href="class_xen_common_1_1_splitter.html">  271</a></span>&#160;    <span class="keyword">class </span><a class="code" href="class_xen_common_1_1_splitter.html" title="Class defining a splitter.">Splitter</a> {</div>
-<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;        std::vector&lt;std::string&gt; _tokens;</div>
-<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;        </div>
-<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00275"></a><span class="lineno"><a class="code" href="class_xen_common_1_1_splitter.html#a1dbe904a5919bb0b2bf178587a9fdacf">  275</a></span>&#160;        <span class="keyword">typedef</span> std::vector&lt;std::string&gt;::size_type <a class="code" href="class_xen_common_1_1_splitter.html#a1dbe904a5919bb0b2bf178587a9fdacf">size_type</a>;</div>
-<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;        </div>
-<div class="line"><a name="l00277"></a><span class="lineno"><a class="code" href="class_xen_common_1_1_splitter.html#abe8511807f9fa5b61f130b418a268776">  277</a></span>&#160;        <a class="code" href="class_xen_common_1_1_splitter.html#abe8511807f9fa5b61f130b418a268776">Splitter</a>() { }</div>
-<div class="line"><a name="l00278"></a><span class="lineno"><a class="code" href="class_xen_common_1_1_splitter.html#a39fb663d6036923eaa87dfce236d1ca7">  278</a></span>&#160;        <a class="code" href="class_xen_common_1_1_splitter.html#a39fb663d6036923eaa87dfce236d1ca7">Splitter</a>(<span class="keyword">const</span> std::string&amp; src, <span class="keyword">const</span> std::string&amp; delim) { reset (src, delim); }</div>
-<div class="line"><a name="l00279"></a><span class="lineno"><a class="code" href="class_xen_common_1_1_splitter.html#a87a0b4a9d6bd4c7aedc5fe98360e50ca">  279</a></span>&#160;        std::string&amp; operator[] (<a class="code" href="class_xen_common_1_1_splitter.html#a1dbe904a5919bb0b2bf178587a9fdacf">size_type</a> i) { <span class="keywordflow">return</span> _tokens.at(i); }</div>
-<div class="line"><a name="l00280"></a><span class="lineno"><a class="code" href="class_xen_common_1_1_splitter.html#aae7f6c9016f28ad12f4b31646ba9ef7a">  280</a></span>&#160;        <a class="code" href="class_xen_common_1_1_splitter.html#a1dbe904a5919bb0b2bf178587a9fdacf">size_type</a> <a class="code" href="class_xen_common_1_1_splitter.html#aae7f6c9016f28ad12f4b31646ba9ef7a">size</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> _tokens.size(); }</div>
-<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;        </div>
-<div class="line"><a name="l00282"></a><span class="lineno"><a class="code" href="class_xen_common_1_1_splitter.html#a7d9e0fa4bfe66e9e3609454dd855a417">  282</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_xen_common_1_1_splitter.html#a7d9e0fa4bfe66e9e3609454dd855a417">reset</a>(<span class="keyword">const</span> std::string&amp; src, <span class="keyword">const</span> std::string&amp; delim) {</div>
-<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;            std::vector&lt;std::string&gt; tokens;</div>
-<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;            std::string::size_type start = 0;</div>
-<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;            std::string::size_type end;</div>
-<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;            </div>
-<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;            <span class="keywordflow">for</span> ( ; ; ) {</div>
-<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;                end = src.find(delim, start);</div>
-<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;                tokens.push_back(src.substr(start, end - start));</div>
-<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;                </div>
-<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;                <span class="keywordflow">if</span> (end == std::string::npos)</div>
-<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;                    <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;                </div>
-<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;                start = end + delim.size();</div>
-<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;            }</div>
-<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;            </div>
-<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;            _tokens.swap (tokens);</div>
-<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;        }</div>
-<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;    };</div>
-<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;}</div>
-<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;</div>
-<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno"><a class="code" href="struct___options.html#a1c0a2600636b1fac2552c87e877c6036">   76</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="struct___options.html#a1c0a2600636b1fac2552c87e877c6036" title="Indicates lower case vocabulary mapping for LM estimation.">toLower</a>;           </div>
+<div class="line"><a name="l00077"></a><span class="lineno"><a class="code" href="struct___options.html#aad1a57bb15f81d5a8e24813a7d7d7151">   77</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="struct___options.html#aad1a57bb15f81d5a8e24813a7d7d7151" title="Indicates if &lt;unk&gt; is considered as a word or not.">noUnkIsWord</a>;       </div>
+<div class="line"><a name="l00078"></a><span class="lineno"><a class="code" href="struct___options.html#a981bc1ccef0f483e546ada7efce91548">   78</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="struct___options.html#a981bc1ccef0f483e546ada7efce91548" title="The language models output format (0 = ARPA, 1 = binary)">binLM</a>;              </div>
+<div class="line"><a name="l00079"></a><span class="lineno"><a class="code" href="struct___options.html#ada2c366fb99c7a19f6ef9493cbbb26ae">   79</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="struct___options.html#ada2c366fb99c7a19f6ef9493cbbb26ae" title="The sample size for the out-of-domain corpus.">sampleSize</a>;         </div>
+<div class="line"><a name="l00080"></a><span class="lineno"><a class="code" href="struct___options.html#ac1ca9c143621ec6b0dec855e826bd8c7">   80</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="struct___options.html#ac1ca9c143621ec6b0dec855e826bd8c7" title="Indicates if the weights are given in the log domain.">log</a>;               </div>
+<div class="line"><a name="l00081"></a><span class="lineno"><a class="code" href="struct___options.html#a7ea4060bb6a569c923fa6e2566ba7c38">   81</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="struct___options.html#a7ea4060bb6a569c923fa6e2566ba7c38" title="Indicates if a reversed output is requested (descending order)">rev</a>;               </div>
+<div class="line"><a name="l00082"></a><span class="lineno"><a class="code" href="struct___options.html#a259f33f5c1a1f19de12db0da454ac309">   82</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="struct___options.html#a259f33f5c1a1f19de12db0da454ac309" title="Indicates if an inverse output is requested (1 - score)">inv</a>;               </div>
+<div class="line"><a name="l00083"></a><span class="lineno"><a class="code" href="struct___options.html#ace235a4627d0c0517040da86fc250035">   83</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="struct___options.html#ace235a4627d0c0517040da86fc250035" title="Indicates if monolingual data is being filtered or not.">mono</a>;              </div>
+<div class="line"><a name="l00084"></a><span class="lineno"><a class="code" href="struct___options.html#a1ddc64f66a941e72509d9c4cb7311ebb">   84</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="struct___options.html#a1ddc64f66a941e72509d9c4cb7311ebb" title="Indicates stem computation.">stem</a>;              </div>
+<div class="line"><a name="l00085"></a><span class="lineno"><a class="code" href="struct___options.html#a470a44b7981c83a60ce3306617570c49">   85</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="struct___options.html#a470a44b7981c83a60ce3306617570c49" title="Indicates local scores computation for phrase table filtering.">local</a>;             </div>
+<div class="line"><a name="l00086"></a><span class="lineno"><a class="code" href="struct___options.html#ab6989ec93db4f4b8ca642356120c7d1f">   86</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="struct___options.html#ab6989ec93db4f4b8ca642356120c7d1f" title="Indicates evaluation mode.">eval</a>;              </div>
+<div class="line"><a name="l00087"></a><span class="lineno"><a class="code" href="struct___options.html#a4f66141fa01d3f8a6236c809b4f9d589">   87</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="struct___options.html#a4f66141fa01d3f8a6236c809b4f9d589" title="Indicates best-point evaluation mode.">bp</a>;                </div>
+<div class="line"><a name="l00088"></a><span class="lineno"><a class="code" href="struct___options.html#a593121f953b8e923ea47b460b3d53a6f">   88</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="struct___options.html#a593121f953b8e923ea47b460b3d53a6f" title="The step size for evaluation and best-point.">step</a>;               </div>
+<div class="line"><a name="l00089"></a><span class="lineno"><a class="code" href="struct___options.html#a792b653782b7973b936e402b53fc6e0a">   89</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="struct___options.html#a792b653782b7973b936e402b53fc6e0a" title="The current percentage being evaluated.">pc</a>;                 </div>
+<div class="line"><a name="l00090"></a><span class="lineno"><a class="code" href="struct___options.html#ad82679764d7d5f8299781087dd52d65a">   90</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="struct___options.html#ad82679764d7d5f8299781087dd52d65a" title="The number of in-domain tokens.">inToks</a>;             </div>
+<div class="line"><a name="l00091"></a><span class="lineno"><a class="code" href="struct___options.html#aadf012248b3af655296365c3439a2d58">   91</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="struct___options.html#aadf012248b3af655296365c3439a2d58" title="The number of out-of-domain tokens.">outToks</a>;            </div>
+<div class="line"><a name="l00092"></a><span class="lineno"><a class="code" href="struct___options.html#a17d1320c68d90b6f887b07e925c96f6e">   92</a></span>&#160;    std::string <a class="code" href="struct___options.html#a17d1320c68d90b6f887b07e925c96f6e" title="The output file name.">outName</a>;    </div>
+<div class="line"><a name="l00093"></a><span class="lineno"><a class="code" href="struct___options.html#a8fd04472bc525837a659082da6e8beb3">   93</a></span>&#160;    std::string <a class="code" href="struct___options.html#a8fd04472bc525837a659082da6e8beb3" title="The program name.">name</a>;       </div>
+<div class="line"><a name="l00094"></a><span class="lineno"><a class="code" href="struct___options.html#a13dca3ef2c7f0b589fced91af30766b9">   94</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="struct___options.html#a13dca3ef2c7f0b589fced91af30766b9" title="The program version.">version</a>;           </div>
+<div class="line"><a name="l00095"></a><span class="lineno"><a class="code" href="struct___options.html#abfaa3912b90474ed33748164b5b88aa5">   95</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="struct___options.html#abfaa3912b90474ed33748164b5b88aa5" title="The number of threads.">threads</a>;            </div>
+<div class="line"><a name="l00096"></a><span class="lineno"><a class="code" href="struct___options.html#a46604fd56cf25009ce1dd580a027a222">   96</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="struct___options.html#a46604fd56cf25009ce1dd580a027a222" title="Indicated outputting only the &quot;sorted&quot; file (not the &quot;scored&quot; one)">sortOnly</a>;          </div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;} <a class="code" href="common_8h.html#ad21081104f366c9682adfdca8ee9c45f">Options</a>, *<a class="code" href="common_8h.html#ac5d9a808e501bd85893f0f6819b5e5b9">LPOptions</a>;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="keyword">namespace </span>XenCommon {</div>
+<div class="line"><a name="l00110"></a><span class="lineno"><a class="code" href="namespace_xen_common.html#ad4f4868634e46d6ee82e57d343a77abe">  110</a></span>&#160;    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt; std::string <a class="code" href="namespace_xen_common.html#ad4f4868634e46d6ee82e57d343a77abe" title="Template converting a value into a string with a precision of 20.">toString</a>(<span class="keyword">const</span> T &amp;Value) {</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        std::ostringstream oss;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        oss.precision(20);</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        oss &lt;&lt; Value;</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        <span class="keywordflow">return</span> oss.str();</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    }</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    </div>
+<div class="line"><a name="l00123"></a><span class="lineno"><a class="code" href="namespace_xen_common.html#a3b2d08955355a35d07efd74c466b91d1">  123</a></span>&#160;    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt; std::string <a class="code" href="namespace_xen_common.html#a3b2d08955355a35d07efd74c466b91d1" title="Template converting a value into a string with no precision.">toString0</a>(<span class="keyword">const</span> T &amp;Value) {</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;        std::ostringstream oss;</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;        oss &lt;&lt; Value;</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;        <span class="keywordflow">return</span> oss.str();</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    }</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    </div>
+<div class="line"><a name="l00135"></a><span class="lineno"><a class="code" href="namespace_xen_common.html#a3fd9978be1bd41808ac4605c2e89d816">  135</a></span>&#160;    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt; <span class="keywordtype">int</span> <a class="code" href="namespace_xen_common.html#a3fd9978be1bd41808ac4605c2e89d816" title="Template converting a value (generally a string) into an integer.">toInt</a>(<span class="keyword">const</span> T &amp;Value) {</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;        <span class="keywordtype">int</span> ret;</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;        std::istringstream iss;</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;        iss.str(Value);</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;        iss &gt;&gt; ret;</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;        <span class="keywordflow">return</span> ret;</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;    }</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    </div>
+<div class="line"><a name="l00149"></a><span class="lineno"><a class="code" href="namespace_xen_common.html#aadf35ed2e4ebb9b556cda62563888113">  149</a></span>&#160;    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt; <span class="keywordtype">double</span> <a class="code" href="namespace_xen_common.html#aadf35ed2e4ebb9b556cda62563888113" title="Template converting a value (generally a string) into an double.">toDouble</a>(<span class="keyword">const</span> T &amp;Value) {</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;        <span class="keywordtype">double</span> ret;</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;        std::istringstream iss;</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;        iss.str(Value);</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;        iss &gt;&gt; ret;</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;        <span class="keywordflow">return</span> ret;</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    }</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    </div>
+<div class="line"><a name="l00163"></a><span class="lineno"><a class="code" href="namespace_xen_common.html#ae4ab9441365ea924eb6b5df051f53155">  163</a></span>&#160;    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> A, <span class="keyword">typename</span> B&gt; std::pair&lt;B, A&gt; <a class="code" href="namespace_xen_common.html#ae4ab9441365ea924eb6b5df051f53155" title="Template flipping a pair key type with value type.">flip_pair</a>(<span class="keyword">const</span> std::pair&lt;A, B&gt; &amp;p) {</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;        <span class="keywordflow">return</span> std::pair&lt;B,A&gt;(p.second, p.first);</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    }</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;    </div>
+<div class="line"><a name="l00173"></a><span class="lineno"><a class="code" href="namespace_xen_common.html#ac5d0528153fa3cb1a068e8eb37f8762e">  173</a></span>&#160;    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> A, <span class="keyword">typename</span> B&gt; std::multimap&lt;B, A, std::greater&lt;B&gt; &gt; <a class="code" href="namespace_xen_common.html#ac5d0528153fa3cb1a068e8eb37f8762e" title="Template flipping a multimap with descending order keys with values.">flip_map</a>(<span class="keyword">const</span> std::map&lt;A, B&gt; &amp;src) {</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;        std::multimap&lt;B, A, std::greater&lt;B&gt; &gt; dst;</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;        transform(src.begin(), src.end(), inserter(dst, dst.begin()), flip_pair&lt;A, B&gt;);</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;        <span class="keywordflow">return</span> dst;</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;    }</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;    </div>
+<div class="line"><a name="l00183"></a><span class="lineno"><a class="code" href="struct_xen_common_1_1_xen_c_eption.html">  183</a></span>&#160;    <span class="keyword">struct </span><a class="code" href="struct_xen_common_1_1_xen_c_eption.html" title="XenC exception structure.">XenCEption</a> : <span class="keyword">public</span> std::exception</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;    {</div>
+<div class="line"><a name="l00185"></a><span class="lineno"><a class="code" href="struct_xen_common_1_1_xen_c_eption.html#af7a342a6d120ed90d701140b4f8b80c2">  185</a></span>&#160;        std::string <a class="code" href="struct_xen_common_1_1_xen_c_eption.html#af7a342a6d120ed90d701140b4f8b80c2" title="The exception message.">s</a>;      </div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;        </div>
+<div class="line"><a name="l00191"></a><span class="lineno"><a class="code" href="struct_xen_common_1_1_xen_c_eption.html#acee5c43bdbf9f2b96430779bc429a111">  191</a></span>&#160;        <a class="code" href="struct_xen_common_1_1_xen_c_eption.html#acee5c43bdbf9f2b96430779bc429a111" title="Exception constructur.">XenCEption</a>(std::string ss) : s(ss) {}</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;        </div>
+<div class="line"><a name="l00197"></a><span class="lineno"><a class="code" href="struct_xen_common_1_1_xen_c_eption.html#a99eb15e7ae7df47cf6eadfebbbc8326c">  197</a></span>&#160;        <span class="keyword">virtual</span> <a class="code" href="struct_xen_common_1_1_xen_c_eption.html#a99eb15e7ae7df47cf6eadfebbbc8326c" title="Exception desctructor.">~XenCEption</a>() throw() {}</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;        </div>
+<div class="line"><a name="l00205"></a><span class="lineno"><a class="code" href="struct_xen_common_1_1_xen_c_eption.html#a32ca1dc358f84de4e63d73c72e318c42">  205</a></span>&#160;        <span class="keyword">const</span> <span class="keywordtype">char</span>* <a class="code" href="struct_xen_common_1_1_xen_c_eption.html#a32ca1dc358f84de4e63d73c72e318c42" title="Accessor to the exception message.">what</a>() <span class="keyword">const</span> throw() { <span class="keywordflow">return</span> s.c_str(); }</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;    };</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;    </div>
+<div class="line"><a name="l00215"></a><span class="lineno"><a class="code" href="namespace_xen_common.html#a256a94d06d5072213efb1c50412f64bd">  215</a></span>&#160;    <span class="keyword">inline</span> <span class="keywordtype">int</span> <a class="code" href="namespace_xen_common.html#a256a94d06d5072213efb1c50412f64bd" title="Computes the word count of a string.">wordCount</a>(<span class="keyword">const</span> std::string &amp;str) {</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;        <span class="keywordtype">int</span> c = 0;</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;        std::string::const_iterator pos = str.begin();</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;        std::string::const_iterator end = str.end();</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;        </div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;        <span class="keywordflow">while</span>(pos != end) {</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;            <span class="keywordflow">while</span>(pos != end &amp;&amp; (*pos == <span class="charliteral">&#39; &#39;</span> || std::isspace(*pos))) ++pos;</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;            c += (pos != end);</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;            <span class="keywordflow">while</span>(pos != end &amp;&amp; (*pos != <span class="charliteral">&#39; &#39;</span> || !std::isspace(*pos))) ++pos;</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;        }</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;        </div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;        <span class="keywordflow">return</span> c;</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;    }</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;</div>
+<div class="line"><a name="l00236"></a><span class="lineno"><a class="code" href="namespace_xen_common.html#ab8c7a51d6bf68d64848f1ca9bc3805d0">  236</a></span>&#160;    <span class="keyword">inline</span> std::string <a class="code" href="namespace_xen_common.html#ab8c7a51d6bf68d64848f1ca9bc3805d0" title="Executes a system command and returns the output.">getStdoutFromCommand</a>(std::string cmd) {</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;        <span class="keywordflow">try</span> {</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;            std::string data;</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;            std::FILE *stream;</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;            <span class="keywordtype">int</span> MAX_BUFFER = 65535;</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;            <span class="keywordtype">char</span> buffer[MAX_BUFFER];</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;            cmd.append(<span class="stringliteral">&quot; 2&gt;&amp;1&quot;</span>);</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;            stream = popen(cmd.c_str(), <span class="stringliteral">&quot;r&quot;</span>);</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;            </div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;            <span class="keywordflow">if</span> (!stream){</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;                <span class="keywordflow">throw</span> <a class="code" href="struct_xen_common_1_1_xen_c_eption.html" title="XenC exception structure.">XenCEption</a>(<span class="stringliteral">&quot;Can&#39;t open stream with popen()!&quot;</span>);</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;            }</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;            </div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;            <span class="keywordflow">while</span> (!feof(stream)){</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;                <span class="keywordflow">if</span> (std::fgets(buffer, MAX_BUFFER, stream) != NULL){</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;                    data.append(buffer);</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;                }</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;            }</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;            </div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;            pclose(stream);</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;            <span class="keywordflow">return</span> data;</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;        }</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;        <span class="keywordflow">catch</span> (<a class="code" href="struct_xen_common_1_1_xen_c_eption.html" title="XenC exception structure.">XenCEption</a> &amp;e) {</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;            <span class="keywordflow">throw</span>;</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;        }</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;        </div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;        <span class="keywordflow">return</span> <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;    }</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;</div>
+<div class="line"><a name="l00273"></a><span class="lineno"><a class="code" href="class_xen_common_1_1_splitter.html">  273</a></span>&#160;    <span class="keyword">class </span><a class="code" href="class_xen_common_1_1_splitter.html" title="Class defining a splitter.">Splitter</a> {</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;        std::vector&lt;std::string&gt; _tokens;</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;        </div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00277"></a><span class="lineno"><a class="code" href="class_xen_common_1_1_splitter.html#a1dbe904a5919bb0b2bf178587a9fdacf">  277</a></span>&#160;        <span class="keyword">typedef</span> std::vector&lt;std::string&gt;::size_type <a class="code" href="class_xen_common_1_1_splitter.html#a1dbe904a5919bb0b2bf178587a9fdacf">size_type</a>;</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;        </div>
+<div class="line"><a name="l00279"></a><span class="lineno"><a class="code" href="class_xen_common_1_1_splitter.html#abe8511807f9fa5b61f130b418a268776">  279</a></span>&#160;        <a class="code" href="class_xen_common_1_1_splitter.html#abe8511807f9fa5b61f130b418a268776">Splitter</a>() { }</div>
+<div class="line"><a name="l00280"></a><span class="lineno"><a class="code" href="class_xen_common_1_1_splitter.html#a39fb663d6036923eaa87dfce236d1ca7">  280</a></span>&#160;        <a class="code" href="class_xen_common_1_1_splitter.html#a39fb663d6036923eaa87dfce236d1ca7">Splitter</a>(<span class="keyword">const</span> std::string&amp; src, <span class="keyword">const</span> std::string&amp; delim) { reset (src, delim); }</div>
+<div class="line"><a name="l00281"></a><span class="lineno"><a class="code" href="class_xen_common_1_1_splitter.html#a87a0b4a9d6bd4c7aedc5fe98360e50ca">  281</a></span>&#160;        std::string&amp; operator[] (<a class="code" href="class_xen_common_1_1_splitter.html#a1dbe904a5919bb0b2bf178587a9fdacf">size_type</a> i) { <span class="keywordflow">return</span> _tokens.at(i); }</div>
+<div class="line"><a name="l00282"></a><span class="lineno"><a class="code" href="class_xen_common_1_1_splitter.html#aae7f6c9016f28ad12f4b31646ba9ef7a">  282</a></span>&#160;        <a class="code" href="class_xen_common_1_1_splitter.html#a1dbe904a5919bb0b2bf178587a9fdacf">size_type</a> <a class="code" href="class_xen_common_1_1_splitter.html#aae7f6c9016f28ad12f4b31646ba9ef7a">size</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> _tokens.size(); }</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;        </div>
+<div class="line"><a name="l00284"></a><span class="lineno"><a class="code" href="class_xen_common_1_1_splitter.html#a7d9e0fa4bfe66e9e3609454dd855a417">  284</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_xen_common_1_1_splitter.html#a7d9e0fa4bfe66e9e3609454dd855a417">reset</a>(<span class="keyword">const</span> std::string&amp; src, <span class="keyword">const</span> std::string&amp; delim) {</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;            std::vector&lt;std::string&gt; tokens;</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;            std::string::size_type start = 0;</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;            std::string::size_type end;</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;            </div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;            <span class="keywordflow">for</span> ( ; ; ) {</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;                end = src.find(delim, start);</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;                tokens.push_back(src.substr(start, end - start));</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;                </div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;                <span class="keywordflow">if</span> (end == std::string::npos)</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;                    <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;                </div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;                start = end + delim.size();</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;            }</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;            </div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;            _tokens.swap (tokens);</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;        }</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;    };</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;}</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Aug 13 2013 12:17:55 for XenC by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Aug 19 2013 12:02:45 for XenC by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.3.1
 </small></address>

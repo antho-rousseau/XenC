@@ -2,8 +2,8 @@
  *  @file Xen.cpp
  *  @brief Main file of XenC, controls execution
  *  @author Anthony Rousseau
- *  @version 1.1.0
- *  @date 13 August 2013
+ *  @version 1.2.0
+ *  @date 19 August 2013
  */
 
 /*  This file is part of the cross-entropy tool for data selection (XenC)
@@ -27,7 +27,7 @@
 
 #include "Xen.h"
 
-const string version = "1.1.0";
+const string version = "1.2.0";
 
 int main(int argc, char* argv[]) {
     po::options_description desc("XenC options", 200);
@@ -68,6 +68,8 @@ int main(int argc, char* argv[]) {
         ("out-tlm", po::value<std::string>(&opt.outTLM)->default_value(""), "out-of-domain target language model (LM). Will be estimated if not present")
         ("order", po::value<int>(&opt.order)->default_value(4), "order for LMs. Default is 4")
         ("discount", po::value<int>(&opt.discount)->default_value(0), "discounting method for LM estimation. Default is modified KneserNey (0). 1 is GoodTuring, 2 is WittenBell.")
+        ("to-lower", po::value<bool>(&opt.toLower)->default_value(false), "maps vocabulary to lower case for LM estimation. Useful for ASR. Default is false.")
+        ("no-unkisword", po::value<bool>(&opt.noUnkIsWord)->default_value(false), "DO NOT consider <unk> and its probability as a word. Default is false, with respect to common practice.")
         ("bin-lm", po::value<int>(&opt.binLM)->default_value(1), "whether you want to estimate arpa.gz (0) or binary (1) LMs. Default is 1 (binary)")
         ("w-file", po::value<std::string>(&opt.wFile)->default_value(""), "filename for weighting the final score (one value per line)")
         ("log", po::value<bool>(&opt.log)->zero_tokens()->default_value(false), "switch to consider weights in w-file as log values")

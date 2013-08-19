@@ -187,6 +187,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ade824301ab5f2a214ae9e7a6a0ddbffd"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_xen_option.html#ade824301ab5f2a214ae9e7a6a0ddbffd">getDiscount</a> () const </td></tr>
 <tr class="memdesc:ade824301ab5f2a214ae9e7a6a0ddbffd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Accessor to the discounting method for language models estimation.  <a href="#ade824301ab5f2a214ae9e7a6a0ddbffd">More...</a><br/></td></tr>
 <tr class="separator:ade824301ab5f2a214ae9e7a6a0ddbffd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae05629c7b60aee22daa022d839ecc8eb"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_xen_option.html#ae05629c7b60aee22daa022d839ecc8eb">getToLower</a> () const </td></tr>
+<tr class="memdesc:ae05629c7b60aee22daa022d839ecc8eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Accessor to the flag for lower case vocabulary mapping in LM estimation.  <a href="#ae05629c7b60aee22daa022d839ecc8eb">More...</a><br/></td></tr>
+<tr class="separator:ae05629c7b60aee22daa022d839ecc8eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6898660de3a5c0785a60d9383b67384b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_xen_option.html#a6898660de3a5c0785a60d9383b67384b">noUnkIsWord</a> () const </td></tr>
+<tr class="memdesc:a6898660de3a5c0785a60d9383b67384b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Accessor to the flag for NOT considering &lt;unk&gt; as a word in LM estimation.  <a href="#a6898660de3a5c0785a60d9383b67384b">More...</a><br/></td></tr>
+<tr class="separator:a6898660de3a5c0785a60d9383b67384b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae07782dfa432f2ec69c4b5cce30971ec"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_xen_option.html#ae07782dfa432f2ec69c4b5cce30971ec">getBinLM</a> () const </td></tr>
 <tr class="memdesc:ae07782dfa432f2ec69c4b5cce30971ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Accessor to the estimated LMs output format.  <a href="#ae07782dfa432f2ec69c4b5cce30971ec">More...</a><br/></td></tr>
 <tr class="separator:ae07782dfa432f2ec69c4b5cce30971ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -584,7 +590,7 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_xen_option_a97ad096aee729b4d8ae993b1381d4eec_icgraph.png" border="0" usemap="#class_xen_option_a97ad096aee729b4d8ae993b1381d4eec_icgraph" alt=""/></div>
 <map name="class_xen_option_a97ad096aee729b4d8ae993b1381d4eec_icgraph" id="class_xen_option_a97ad096aee729b4d8ae993b1381d4eec_icgraph">
-<area shape="rect" id="node2" href="class_eval.html#a0c3f6f4605b2763e8e18a12b54779baf" title="Computes an evaluation bount by the high and low integers (in percentage)" alt="" coords="247,48,342,75"/><area shape="rect" id="node3" href="class_eval.html#a9f7cf5cbc48c414a0cef2a8ccb27ad56" title="Computes the best theoretical point based on current evaluation." alt="" coords="461,36,547,63"/><area shape="rect" id="node4" href="class_bi_x_entropy.html#a55ad423050eae54a09ce73ca24598ca4" title="Function in charge of launching the filtering mode." alt="" coords="440,112,568,139"/><area shape="rect" id="node5" href="class_mono_x_entropy.html#ab82ba430051ad6ca073f9f4f74dc25ae" title="Function in charge of launching the filtering mode." alt="" coords="429,200,579,227"/><area shape="rect" id="node6" href="class_p_t_scoring.html#a51b8eadcb3b7fa0264c09b3a0908f2c0" title="Function in charge of launching the filtering mode." alt="" coords="443,377,565,404"/><area shape="rect" id="node7" href="class_simple_p_p_l.html#a0cbcec72a693b6bf700c3d1802026be1" title="Function in charge of launching the filtering mode." alt="" coords="440,251,568,277"/><area shape="rect" id="node8" href="class_phrase_table.html#ad7b885bf055e632ef0a3ea08b3a56215" title="Initialization function from an already instanciated XenFile." alt="" coords="223,453,366,480"/><area shape="rect" id="node9" href="class_p_p_l.html#a7b4657c023618ae0beb8101b82cf3005" title="Computes the perplexity of a Corpus sentence by sentence." alt="" coords="223,504,366,531"/><area shape="rect" id="node10" href="class_p_p_l.html#a49004246863fdf55c41be3b575f0a443" title="Computes the perplexity of a PhraseTable phrase by phrase." alt="" coords="208,555,381,581"/><area shape="rect" id="node11" href="class_xen_i_o.html#ac4fbd0582c974bb4c11c225ef467f26a" title="Writes monolingual scored/sorted result files." alt="" coords="214,251,375,277"/><area shape="rect" id="node12" href="class_xen_i_o.html#ad3264b7bde95ba72494ab9db3804ad11" title="Writes bilingual scored/sorted result files." alt="" coords="225,149,365,176"/><area shape="rect" id="node13" href="class_xen_i_o.html#a6c32040f72b5d39ead7b08874beb65a3" title="Writes a new rescored phrase&#45;table." alt="" coords="228,403,361,429"/><area shape="rect" id="node14" href="_xen_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title="Main function of XenC." alt="" coords="270,605,319,632"/><area shape="rect" id="node15" href="class_xen_l_msri.html#a9693e7088caaa0f0f363d93cd9ba3cc5" title="Default constructor." alt="" coords="229,656,361,683"/><area shape="rect" id="node16" href="class_xen_l_msri.html#a3702bf72af675b928b348f3e3a26abc8" title="Initialization function from a Corpus and a vocabulary (XenVocab)" alt="" coords="233,707,356,733"/><area shape="rect" id="node17" href="class_xen_vocab.html#a53227b7f5482e32f4c99bcfe9039a2dd" title="Initialization function from a sorted result file." alt="" coords="229,757,360,784"/></map>
+<area shape="rect" id="node2" href="class_eval.html#a0c3f6f4605b2763e8e18a12b54779baf" title="Computes an evaluation bount by the high and low integers (in percentage)" alt="" coords="247,5,342,32"/><area shape="rect" id="node3" href="class_eval.html#a9f7cf5cbc48c414a0cef2a8ccb27ad56" title="Computes the best theoretical point based on current evaluation." alt="" coords="461,44,547,71"/><area shape="rect" id="node4" href="class_bi_x_entropy.html#a55ad423050eae54a09ce73ca24598ca4" title="Function in charge of launching the filtering mode." alt="" coords="440,120,568,147"/><area shape="rect" id="node5" href="class_mono_x_entropy.html#ab82ba430051ad6ca073f9f4f74dc25ae" title="Function in charge of launching the filtering mode." alt="" coords="429,208,579,235"/><area shape="rect" id="node6" href="class_p_t_scoring.html#a51b8eadcb3b7fa0264c09b3a0908f2c0" title="Function in charge of launching the filtering mode." alt="" coords="443,385,565,412"/><area shape="rect" id="node7" href="class_simple_p_p_l.html#a0cbcec72a693b6bf700c3d1802026be1" title="Function in charge of launching the filtering mode." alt="" coords="440,259,568,285"/><area shape="rect" id="node8" href="class_phrase_table.html#ad7b885bf055e632ef0a3ea08b3a56215" title="Initialization function from an already instanciated XenFile." alt="" coords="223,461,366,488"/><area shape="rect" id="node9" href="class_p_p_l.html#a7b4657c023618ae0beb8101b82cf3005" title="Computes the perplexity of a Corpus sentence by sentence." alt="" coords="223,512,366,539"/><area shape="rect" id="node10" href="class_p_p_l.html#a49004246863fdf55c41be3b575f0a443" title="Computes the perplexity of a PhraseTable phrase by phrase." alt="" coords="208,563,381,589"/><area shape="rect" id="node11" href="class_xen_i_o.html#ac4fbd0582c974bb4c11c225ef467f26a" title="Writes monolingual scored/sorted result files." alt="" coords="214,259,375,285"/><area shape="rect" id="node12" href="class_xen_i_o.html#ad3264b7bde95ba72494ab9db3804ad11" title="Writes bilingual scored/sorted result files." alt="" coords="225,208,365,235"/><area shape="rect" id="node13" href="class_xen_i_o.html#a6c32040f72b5d39ead7b08874beb65a3" title="Writes a new rescored phrase&#45;table." alt="" coords="228,360,361,387"/><area shape="rect" id="node14" href="_xen_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title="Main function of XenC." alt="" coords="270,613,319,640"/><area shape="rect" id="node15" href="class_xen_l_msri.html#a9693e7088caaa0f0f363d93cd9ba3cc5" title="Default constructor." alt="" coords="229,664,361,691"/><area shape="rect" id="node16" href="class_xen_l_msri.html#a3702bf72af675b928b348f3e3a26abc8" title="Initialization function from a Corpus and a vocabulary (XenVocab)" alt="" coords="233,715,356,741"/><area shape="rect" id="node17" href="class_xen_l_msri.html#ac5022438d71e1436b30d2acdd3cc64dd" title="Loads a language model from a provided file name." alt="" coords="233,765,356,792"/><area shape="rect" id="node18" href="class_xen_vocab.html#a53227b7f5482e32f4c99bcfe9039a2dd" title="Initialization function from a sorted result file." alt="" coords="229,816,360,843"/></map>
 </div>
 </p>
 
@@ -1424,6 +1430,33 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
+<a class="anchor" id="ae05629c7b60aee22daa022d839ecc8eb"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool XenOption::getToLower </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Accessor to the flag for lower case vocabulary mapping in LM estimation. </p>
+<dl class="section return"><dt>Returns</dt><dd>true if lower case vocabulary mapping is requested </dd></dl>
+
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_xen_option_ae05629c7b60aee22daa022d839ecc8eb_icgraph.png" border="0" usemap="#class_xen_option_ae05629c7b60aee22daa022d839ecc8eb_icgraph" alt=""/></div>
+<map name="class_xen_option_ae05629c7b60aee22daa022d839ecc8eb_icgraph" id="class_xen_option_ae05629c7b60aee22daa022d839ecc8eb_icgraph">
+<area shape="rect" id="node2" href="class_xen_l_msri.html#a3702bf72af675b928b348f3e3a26abc8" title="Initialization function from a Corpus and a vocabulary (XenVocab)" alt="" coords="208,5,331,32"/><area shape="rect" id="node3" href="class_xen_l_msri.html#ac5022438d71e1436b30d2acdd3cc64dd" title="Loads a language model from a provided file name." alt="" coords="208,56,331,83"/></map>
+</div>
+</p>
+
+</div>
+</div>
 <a class="anchor" id="aa38a1233cc2bcd024964fbc54d5abe5e"></a>
 <div class="memitem">
 <div class="memproto">
@@ -1491,6 +1524,33 @@ Here is the caller graph for this function:</div>
 <div class="center"><img src="class_xen_option_a9eb5309135ec46b588dcc98c196303ea_icgraph.png" border="0" usemap="#class_xen_option_a9eb5309135ec46b588dcc98c196303ea_icgraph" alt=""/></div>
 <map name="class_xen_option_a9eb5309135ec46b588dcc98c196303ea_icgraph" id="class_xen_option_a9eb5309135ec46b588dcc98c196303ea_icgraph">
 <area shape="rect" id="node2" href="class_bi_x_entropy.html#a55ad423050eae54a09ce73ca24598ca4" title="Function in charge of launching the filtering mode." alt="" coords="200,5,328,32"/><area shape="rect" id="node3" href="class_mono_x_entropy.html#ab82ba430051ad6ca073f9f4f74dc25ae" title="Function in charge of launching the filtering mode." alt="" coords="189,56,339,83"/><area shape="rect" id="node4" href="class_p_t_scoring.html#a51b8eadcb3b7fa0264c09b3a0908f2c0" title="Function in charge of launching the filtering mode." alt="" coords="203,107,325,133"/><area shape="rect" id="node5" href="class_simple_p_p_l.html#a0cbcec72a693b6bf700c3d1802026be1" title="Function in charge of launching the filtering mode." alt="" coords="200,157,328,184"/><area shape="rect" id="node6" href="_xen_8cpp.html#a59cff1fcf7715b591b35b6a17c440a72" title="Computes the output file name." alt="" coords="217,208,311,235"/><area shape="rect" id="node7" href="_xen_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title="Main function of XenC." alt="" coords="529,208,578,235"/><area shape="rect" id="node8" href="_xen_8cpp.html#abd605e012987328a9f2fde549b82b0f7" title="Controls the mandatory options." alt="" coords="387,233,479,260"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a6898660de3a5c0785a60d9383b67384b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool XenOption::noUnkIsWord </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Accessor to the flag for NOT considering &lt;unk&gt; as a word in LM estimation. </p>
+<dl class="section return"><dt>Returns</dt><dd>true if &lt;unk&gt; is NOT considered as a word </dd></dl>
+
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_xen_option_a6898660de3a5c0785a60d9383b67384b_icgraph.png" border="0" usemap="#class_xen_option_a6898660de3a5c0785a60d9383b67384b_icgraph" alt=""/></div>
+<map name="class_xen_option_a6898660de3a5c0785a60d9383b67384b_icgraph" id="class_xen_option_a6898660de3a5c0785a60d9383b67384b_icgraph">
+<area shape="rect" id="node2" href="class_xen_l_msri.html#a3702bf72af675b928b348f3e3a26abc8" title="Initialization function from a Corpus and a vocabulary (XenVocab)" alt="" coords="219,5,341,32"/><area shape="rect" id="node3" href="class_xen_l_msri.html#ac5022438d71e1436b30d2acdd3cc64dd" title="Loads a language model from a provided file name." alt="" coords="219,56,341,83"/></map>
 </div>
 </p>
 
@@ -1569,7 +1629,7 @@ Here is the caller graph for this function:</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Aug 13 2013 12:17:56 for XenC by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Aug 19 2013 12:02:46 for XenC by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.3.1
 </small></address>

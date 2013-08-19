@@ -6,7 +6,7 @@
 <area shape="rect" id="node48" href="$mono_x_entropy_8h.html" title="Derived class to handle filtering mode 2: monolingual cross&#45;entropy." alt="" coords="629,155,787,181"/>
 <area shape="rect" id="node49" href="$bi_x_entropy_8h.html" title="Derived class to handle filtering mode 3: bilingual cross&#45;entropy." alt="" coords="469,155,605,181"/>
 <area shape="rect" id="node50" href="$pt_scoring_8h.html" title="Derived class to handle filtering mode 4: phrase&#45;table cross&#45;entropy." alt="" coords="811,155,937,181"/>
-<area shape="rect" id="node16" href="$eval_8h.html" title="Class handling evaluation system." alt="" coords="2975,312,3031,339"/>
+<area shape="rect" id="node16" href="$eval_8h.html" title="Class handling evaluation system." alt="" coords="2921,312,2977,339"/>
 <area shape="rect" id="node46" href="$mode_8h.html" title="Abstract class defining the filtering modes architecture." alt="" coords="713,229,775,256"/>
 <area shape="rect" id="node38" href="$xenoption_8h.html" title="Singleton class handling XenC options accessors/mutators." alt="" coords="966,409,1052,436"/>
 <area shape="rect" id="node47" href="$_static_data_8h.html" title="File handling all data objects used by XenC in a static way." alt="" coords="510,229,636,256"/>

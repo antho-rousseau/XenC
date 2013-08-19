@@ -8,12 +8,12 @@
 <area shape="rect" id="node23" href="$xenvocab_8h.html" title="Class handling a XenC vocabulary." alt="" coords="679,573,768,600"/>
 <area shape="rect" id="node27" href="$ppl_8h.html" title="Class handling the perplexity/cross&#45;entropy computations." alt="" coords="859,409,909,436"/>
 <area shape="rect" id="node32" href="$similarity_8h.html" title="Class taking care of all the similarity measure computations." alt="" coords="399,499,477,525"/>
-<area shape="rect" id="node33" href="$wfile_8h.html" title="Class handling a file with values intended at weighting XenC scores." alt="" coords="1113,155,1169,181"/>
+<area shape="rect" id="node33" href="$wfile_8h.html" title="Class handling a file with values intended at weighting XenC scores." alt="" coords="1102,155,1159,181"/>
 <area shape="rect" id="node25" href="$xenoption_8h.html" title="Singleton class handling XenC options accessors/mutators." alt="" coords="1426,648,1512,675"/>
 <area shape="rect" id="node24" href="$xenresult_8h.html" title="Class handling a XenC sorted result file for evaluation/best point." alt="" coords="1217,648,1300,675"/>
 <area shape="rect" id="node29" href="$phrasetable_8h.html" title="Class handling phrase&#45;table related functionalities." alt="" coords="1618,499,1717,525"/>
-<area shape="rect" id="node30" href="$sourcephrase_8h.html" title="Class holding a merged source phrase and all associated data." alt="" coords="2525,573,2635,600"/>
-<area shape="rect" id="node31" href="$score_8h.html" title="Class holding the XenC scores representation." alt="" coords="2526,648,2588,675"/>
-<area shape="rect" id="node34" href="$xenio_8h.html" title="Class handling all input/output operations of XenC." alt="" coords="1491,229,1577,256"/>
-<area shape="rect" id="node35" href="$eval_8h.html" title="Class handling evaluation system." alt="" coords="1992,312,2048,339"/>
+<area shape="rect" id="node30" href="$sourcephrase_8h.html" title="Class holding a merged source phrase and all associated data." alt="" coords="2505,573,2615,600"/>
+<area shape="rect" id="node31" href="$score_8h.html" title="Class holding the XenC scores representation." alt="" coords="2506,648,2568,675"/>
+<area shape="rect" id="node34" href="$xenio_8h.html" title="Class handling all input/output operations of XenC." alt="" coords="1471,229,1557,256"/>
+<area shape="rect" id="node35" href="$eval_8h.html" title="Class handling evaluation system." alt="" coords="1952,312,2008,339"/>
 </map>

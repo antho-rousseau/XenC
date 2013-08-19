@@ -49,6 +49,8 @@
     <CODE>--out-tlm arg</CODE>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;out-of-domain target language model (LM). Will be estimated if not present</BR>
     <CODE>--order arg (=4)</CODE>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;order for LMs. Default is 4</BR>
     <CODE>--discount arg (=0)</CODE>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;discounting method for LM estimation. Default is modified KneserNey (0). 1 is GoodTuring, 2 is WittenBell.</BR>
+    <CODE>--to-lower</CODE>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;maps vocabulary to lower case for LM estimation. Useful for ASR. Default is false.</BR>
+    <CODE>--no-unkisword</CODE>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DO NOT consider &lt;unk&gt; and its probability as a word. Default is false, with respect to common practice.</BR>
     <CODE>--bin-lm arg (=1)</CODE>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;whether you want to estimate arpa.gz (0) or binary (1) LMs. Default is 1 (binary)</BR>
     <CODE>--w-file arg</CODE>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;filename for weighting the final score (one value per line)</BR>
     <CODE>--log</CODE>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;switch to consider weights in w-file as log values</BR>

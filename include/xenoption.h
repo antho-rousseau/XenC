@@ -2,8 +2,8 @@
  *  @file xenoption.h
  *  @brief Singleton class handling XenC options accessors/mutators
  *  @author Anthony Rousseau
- *  @version 1.1.0
- *  @date 13 August 2013
+ *  @version 1.2.0
+ *  @date 19 August 2013
  */
 
 /*  This file is part of the cross-entropy tool for data selection (XenC)
@@ -296,6 +296,22 @@ public:
      *  @return the discounting method for language models estimation
      */
     int getDiscount() const;
+    
+    /**
+     *  @fn bool getToLower () const
+     *  @brief Accessor to the flag for lower case vocabulary mapping in LM estimation
+     *
+     *  @return true if lower case vocabulary mapping is requested
+     */
+    bool getToLower() const;
+    
+    /**
+     *  @fn bool noUnkIsWord () const
+     *  @brief Accessor to the flag for NOT considering <unk> as a word in LM estimation
+     *
+     *  @return true if <unk> is NOT considered as a word
+     */
+    bool noUnkIsWord() const;
     
     /**
      *  @fn int getBinLM () const

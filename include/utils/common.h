@@ -2,8 +2,8 @@
  *  @file common.h
  *  @brief File containing all common classes/structures/functions of many classes of XenC
  *  @author Anthony Rousseau
- *  @version 1.1.0
- *  @date 13 August 2013
+ *  @version 1.2.0
+ *  @date 19 August 2013
  */
 
 /*  This file is part of the cross-entropy tool for data selection (XenC)
@@ -73,6 +73,8 @@ typedef struct _Options {
 	std::string dev;        //!< The development corpus (for evaluation)
 	int order;              //!< The order for language models estimation
     int discount;           //!< The discounting method for language models estimation
+    bool toLower;           //!< Indicates lower case vocabulary mapping for LM estimation
+    bool noUnkIsWord;       //!< Indicates if <unk> is considered as a word or not
     int binLM;              //!< The language models output format (0 = ARPA, 1 = binary)
 	int sampleSize;         //!< The sample size for the out-of-domain corpus
 	bool log;               //!< Indicates if the weights are given in the log domain

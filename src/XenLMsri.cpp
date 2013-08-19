@@ -2,8 +2,8 @@
  *  @file XenLMsri.cpp
  *  @brief Class handling SRI LM estimation, loading, querying...
  *  @author Anthony Rousseau
- *  @version 1.1.0
- *  @date 13 August 2013
+ *  @version 1.2.0
+ *  @date 19 August 2013
  */
 
 /*  This file is part of the cross-entropy tool for data selection (XenC)
@@ -55,7 +55,8 @@ void XenLMsri::initialize(boost::shared_ptr<Corpus> ptrCorp, boost::shared_ptr<X
     this->ptrVoc = ptrVoc;
 
     ptrVocab = ptrVoc->getVocab();
-    ptrVocab->unkIsWord() = true;
+    ptrVocab->unkIsWord() = !(opt->noUnkIsWord());
+    ptrVocab->toLower() = opt->getToLower();
     
     ptrNStats = boost::shared_ptr<NgramStats>(new NgramStats(*ptrVocab, order));
     ptrDiscounts = boost::shared_array<Discount*>(new Discount*[order]);
@@ -76,12 +77,15 @@ void XenLMsri::initialize(boost::shared_ptr<Corpus> ptrCorp, boost::shared_ptr<X
 }
 
 void XenLMsri::initialize(boost::shared_ptr<XenFile> ptrFile, boost::shared_ptr<XenVocab> ptrVoc) {
+    XenOption* opt = XenOption::getInstance();
+    
     ptrCorp = boost::make_shared<Corpus>();     //!< No use for a corpus here
     this->ptrVoc = ptrVoc;
     
     ptrVocab = ptrVoc->getVocab();
-    ptrVocab->unkIsWord() = true;
-
+    ptrVocab->unkIsWord() = !(opt->noUnkIsWord());
+    ptrVocab->toLower() = opt->getToLower();
+    
     ptrNStats = boost::shared_ptr<NgramStats>(new NgramStats(*ptrVocab, order));
     ptrDiscounts = boost::shared_array<Discount*>(new Discount*[order]);
     ptrLM = boost::shared_ptr<Ngram>(new Ngram(*ptrVocab, order));
@@ -100,11 +104,14 @@ void XenLMsri::initialize(boost::shared_ptr<XenFile> ptrFile, boost::shared_ptr<
 }
 
 void XenLMsri::initialize(boost::shared_ptr<XenResult> ptrXenRes, boost::shared_ptr<XenVocab> ptrVoc, int pc, std::string name) {
+    XenOption* opt = XenOption::getInstance();
+    
     ptrCorp = boost::make_shared<Corpus>();     //!< No use for a corpus here
     this->ptrVoc = ptrVoc;
     
     ptrVocab = ptrVoc->getVocab();
-    ptrVocab->unkIsWord() = true;
+    ptrVocab->unkIsWord() = !(opt->noUnkIsWord());
+    ptrVocab->toLower() = opt->getToLower();
     
     ptrNStats = boost::shared_ptr<NgramStats>(new NgramStats(*ptrVocab, order));
     ptrDiscounts = boost::shared_array<Discount*>(new Discount*[order]);
@@ -235,9 +242,11 @@ int XenLMsri::createLM() {
 }
 
 int XenLMsri::loadLM() {
+    XenOption* opt = XenOption::getInstance();
     assert(ptrVocab);
     
-    ptrVocab->unkIsWord() = true;
+    ptrVocab->unkIsWord() = !(opt->noUnkIsWord());
+    ptrVocab->toLower() = opt->getToLower();
     
     #define USE_STATS(what) (ptrNStats->what)
     assert(ptrNStats != 0);

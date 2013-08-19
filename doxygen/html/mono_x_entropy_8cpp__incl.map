@@ -9,12 +9,12 @@
 <area shape="rect" id="node24" href="$xenvocab_8h.html" title="Class handling a XenC vocabulary." alt="" coords="499,648,588,675"/>
 <area shape="rect" id="node28" href="$ppl_8h.html" title="Class handling the perplexity/cross&#45;entropy computations." alt="" coords="884,484,935,511"/>
 <area shape="rect" id="node33" href="$similarity_8h.html" title="Class taking care of all the similarity measure computations." alt="" coords="505,573,583,600"/>
-<area shape="rect" id="node34" href="$wfile_8h.html" title="Class handling a file with values intended at weighting XenC scores." alt="" coords="934,229,991,256"/>
+<area shape="rect" id="node34" href="$wfile_8h.html" title="Class handling a file with values intended at weighting XenC scores." alt="" coords="929,229,985,256"/>
 <area shape="rect" id="node26" href="$xenoption_8h.html" title="Singleton class handling XenC options accessors/mutators." alt="" coords="1269,723,1355,749"/>
 <area shape="rect" id="node25" href="$xenresult_8h.html" title="Class handling a XenC sorted result file for evaluation/best point." alt="" coords="795,723,877,749"/>
 <area shape="rect" id="node30" href="$phrasetable_8h.html" title="Class handling phrase&#45;table related functionalities." alt="" coords="1015,573,1115,600"/>
 <area shape="rect" id="node31" href="$sourcephrase_8h.html" title="Class holding a merged source phrase and all associated data." alt="" coords="1651,648,1760,675"/>
 <area shape="rect" id="node32" href="$score_8h.html" title="Class holding the XenC scores representation." alt="" coords="1651,723,1713,749"/>
-<area shape="rect" id="node35" href="$xenio_8h.html" title="Class handling all input/output operations of XenC." alt="" coords="1150,304,1236,331"/>
-<area shape="rect" id="node36" href="$eval_8h.html" title="Class handling evaluation system." alt="" coords="1511,387,1567,413"/>
+<area shape="rect" id="node35" href="$xenio_8h.html" title="Class handling all input/output operations of XenC." alt="" coords="1139,304,1225,331"/>
+<area shape="rect" id="node36" href="$eval_8h.html" title="Class handling evaluation system." alt="" coords="1491,387,1547,413"/>
 </map>
