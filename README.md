@@ -20,6 +20,8 @@ These files are part of XenC: an open-source tool for data selection in Natural 
 Copyright 2013, Anthony Rousseau, LIUM, University of Le Mans, France
 Contact: anthony.rousseau@lium.univ-lemans.fr
 
+Development of the XenC tool has been partially funded by the
+European Commission under the MateCat project.
 
 To reference XenC in your publications, please cite this article:
 
