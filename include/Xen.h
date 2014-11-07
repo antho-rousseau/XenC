@@ -11,6 +11,9 @@
  *
  *  Copyright 2013, Anthony Rousseau, LIUM, University of Le Mans, France
  *
+ *  Development of the XenC tool has been partially funded by the
+ *  European Commission under the MateCat project.
+ *
  *  The XenC tool is free software; you can redistribute it and/or modify it
  *  under the terms of the GNU Lesser General Public License version 3 as
  *  published by the Free Software Foundation
