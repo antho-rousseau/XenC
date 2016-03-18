@@ -1,5 +1,4 @@
-1 - 	Unpack. This should give a top-level directory with the subdirectories
-    	listed in README, as well as a few documentation files and a Makefile.
+1 - 	Unpack.
     
 2 - 	You need a SunOS (Sparc or i386), Linux i386/x86_64 or Mac OSX platform 
 	to compile out of the box. Other platforms are untested.
