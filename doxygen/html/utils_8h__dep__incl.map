@@ -1,0 +1,11 @@
+<map id="include/kenlm/util/double&#45;conversion/utils.h" name="include/kenlm/util/double&#45;conversion/utils.h">
+<area shape="rect" id="node2" href="$bignum-dtoa_8h.html" title="include/kenlm/util\l/double&#45;conversion/bignum\l&#45;dtoa.h" alt="" coords="5,92,187,144"/>
+<area shape="rect" id="node3" href="$bignum_8h.html" title="include/kenlm/util\l/double&#45;conversion/bignum.h" alt="" coords="210,99,403,137"/>
+<area shape="rect" id="node4" href="$diy-fp_8h.html" title="include/kenlm/util\l/double&#45;conversion/diy&#45;fp.h" alt="" coords="427,99,608,137"/>
+<area shape="rect" id="node7" href="$double-conversion_8h.html" title="include/kenlm/util\l/double&#45;conversion/double\l&#45;conversion.h" alt="" coords="633,92,810,144"/>
+<area shape="rect" id="node8" href="$fast-dtoa_8h.html" title="include/kenlm/util\l/double&#45;conversion/fast\l&#45;dtoa.h" alt="" coords="834,92,993,144"/>
+<area shape="rect" id="node9" href="$fixed-dtoa_8h.html" title="include/kenlm/util\l/double&#45;conversion/fixed\l&#45;dtoa.h" alt="" coords="1017,92,1183,144"/>
+<area shape="rect" id="node10" href="$strtod_8h.html" title="include/kenlm/util\l/double&#45;conversion/strtod.h" alt="" coords="1208,99,1390,137"/>
+<area shape="rect" id="node5" href="$cached-powers_8h.html" title="include/kenlm/util\l/double&#45;conversion/cached\l&#45;powers.h" alt="" coords="326,192,506,244"/>
+<area shape="rect" id="node6" href="$ieee_8h.html" title="include/kenlm/util\l/double&#45;conversion/ieee.h" alt="" coords="530,199,704,237"/>
+</map>

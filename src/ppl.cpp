@@ -2,14 +2,14 @@
  *  @file ppl.cpp
  *  @brief Class handling the perplexity/cross-entropy computations
  *  @author Anthony Rousseau
- *  @version 1.2.0
- *  @date 19 August 2013
+ *  @version 2.0.0
+ *  @date 18 March 2016
  */
 
 /*  This file is part of the cross-entropy tool for data selection (XenC)
  *  aimed at speech recognition and statistical machine translation.
  *
- *  Copyright 2013, Anthony Rousseau, LIUM, University of Le Mans, France
+ *  Copyright 2013-2016, Anthony Rousseau, LIUM, University of Le Mans, France
  *
  *  Development of the XenC tool has been partially funded by the
  *  European Commission under the MateCat project.
@@ -28,29 +28,39 @@
  *  Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
-#include "ppl.h"
+#include "../include/ppl.h"
 
-void taskCalcPPL(int numLine, std::string line, boost::shared_ptr<std::vector<double> > ptrPPL, boost::shared_ptr<XenLMsri> ptrLM) {
-    TextStats tstats = ptrLM->getSentenceStats(line);
-    
-    double denom = tstats.numWords - tstats.numOOVs - tstats.zeroProbs + tstats.numSentences;
-    Prob prob = LogPtoPPL(tstats.prob / denom);
-    
+boost::mutex randy;
+
+void taskCalcPPL(int numLine, std::string line, boost::shared_ptr<std::vector<double> > ptrPPL, boost::shared_ptr<XenLMken> ptrLM) {
+    XenOption* opt = XenOption::getInstance();
+
+    TxtStats tstats = ptrLM->getSentenceStats(line);
+
+    double prob = 0.0;
+
+    if (!opt->getExclOOVs())
+        prob = pow(10.0, -(tstats.prob / static_cast<double>(tstats.numwords)));
+    else
+        prob = pow(10.0, -((tstats.prob - tstats.zeroprobs) / static_cast<double>(tstats.numwords - tstats.numoov + tstats.numsentences)));
+
+    randy.lock();
     ptrPPL->operator[](numLine) = prob;
+    randy.unlock();
 }
 
 PPL::PPL() {
     source = false;
 }
 
-void PPL::initialize(boost::shared_ptr<Corpus> ptrCorp, boost::shared_ptr<XenLMsri> ptrLM) {
+void PPL::initialize(boost::shared_ptr<Corpus> ptrCorp, boost::shared_ptr<XenLMken> ptrLM) {
     this->ptrCorp = ptrCorp;
     ptrPT = boost::make_shared<PhraseTable>();
     this->ptrLM = ptrLM;
     ptrPPL = boost::make_shared<vector<double> >(ptrCorp->getSize(), 0.0);
 }
 
-void PPL::initialize(boost::shared_ptr<PhraseTable> ptrPT, boost::shared_ptr<XenLMsri> ptrLM, bool source) {
+void PPL::initialize(boost::shared_ptr<PhraseTable> ptrPT, boost::shared_ptr<XenLMken> ptrLM, bool source) {
     ptrCorp = boost::make_shared<Corpus>();
     this->ptrPT = ptrPT;
     this->ptrLM = ptrLM;
@@ -75,15 +85,21 @@ double PPL::getXE(int n) {
 }
 
 double PPL::getCorpPPL() {
+    XenOption* opt = XenOption::getInstance();
     std::cout << "Computing document perplexity score with LM " << ptrLM->getFileName() << "..." << std::endl;
-    
-    TextStats tstats = ptrLM->getDocumentStats(ptrCorp);
-    
-    double denom = tstats.numWords - tstats.numOOVs - tstats.zeroProbs + tstats.numSentences;
-    
+
+    TxtStats tstats = ptrLM->getDocumentStats(ptrCorp);
+
+    double prob = 0.0;
+
+    if (!opt->getExclOOVs())
+        prob = pow(10.0, -(tstats.prob / static_cast<double>(tstats.numwords)));
+    else
+        prob = pow(10.0, -((tstats.prob - tstats.zeroprobs) / static_cast<double>(tstats.numwords - tstats.numoov + tstats.numsentences)));
+
     std::cout << "Finished computing document perplexity score with LM " << ptrLM->getFileName() << "." << std::endl;
     
-    return LogPtoPPL(tstats.prob / denom);
+    return prob;
 }
 
 void PPL::calcPPLCorpus() {

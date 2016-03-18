@@ -1,0 +1,7 @@
+<map id="double_conversion::Double::NextDouble" name="double_conversion::Double::NextDouble">
+<area shape="rect" id="node2" href="$classdouble__conversion_1_1_double.html#a1c8c3f7b2aad3cbcf6012b8e944c02f6" title="double_conversion::\lDouble::Double" alt="" coords="194,5,335,44"/>
+<area shape="rect" id="node3" href="$classdouble__conversion_1_1_double.html#aef84a03f3860480c04a55a855d8c3a07" title="double_conversion::\lDouble::Sign" alt="" coords="383,63,523,101"/>
+<area shape="rect" id="node5" href="$classdouble__conversion_1_1_double.html#a82d4fbb98a3beb4410eed342cca9077a" title="double_conversion::\lDouble::Significand" alt="" coords="194,120,335,159"/>
+<area shape="rect" id="node4" href="$classdouble__conversion_1_1_double.html#aa634c51b224638b8232b190e663d3c55" title="double_conversion::\lDouble::AsUint64" alt="" coords="571,120,712,159"/>
+<area shape="rect" id="node6" href="$classdouble__conversion_1_1_double.html#a72610fddaeed3a34f135eed58d5b6a59" title="double_conversion::\lDouble::IsDenormal" alt="" coords="383,177,523,216"/>
+</map>

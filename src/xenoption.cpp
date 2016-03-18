@@ -2,14 +2,14 @@
  *  @file xenoption.cpp
  *  @brief Singleton class handling XenC options accessors/mutators
  *  @author Anthony Rousseau
- *  @version 1.2.0
- *  @date 19 August 2013
+ *  @version 2.0.0
+ *  @date 18 March 2016
  */
 
 /*  This file is part of the cross-entropy tool for data selection (XenC)
  *  aimed at speech recognition and statistical machine translation.
  *
- *  Copyright 2013, Anthony Rousseau, LIUM, University of Le Mans, France
+ *  Copyright 2013-2016, Anthony Rousseau, LIUM, University of Le Mans, France
  *
  *  Development of the XenC tool has been partially funded by the
  *  European Commission under the MateCat project.
@@ -28,7 +28,7 @@
  *  Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
-#include "xenoption.h"
+#include "../include/xenoption.h"
 
 XenOption* XenOption::_instance = NULL;
 
@@ -229,20 +229,24 @@ int XenOption::getOrder() const {
     return opt->order;
 }
 
-int XenOption::getDiscount() const {
-    return opt->discount;
+std::size_t XenOption::getMemPc() const {
+    return opt->memPC;
 }
 
-bool XenOption::getToLower() const {
-    return opt->toLower;
+std::string XenOption::getTemp() const {
+    return opt->temp;
 }
 
-bool XenOption::noUnkIsWord() const {
-    return opt->noUnkIsWord;
+std::size_t XenOption::getMinBlk() const {
+    return opt->minblk;
 }
 
-int XenOption::getBinLM() const {
-    return opt->binLM;
+std::size_t XenOption::getSortBlk() const {
+    return opt->sortblk;
+}
+
+bool XenOption::getExclOOVs() const {
+    return opt->exclOOVs;
 }
 
 int XenOption::getSampleSize() const {
@@ -295,6 +299,10 @@ int XenOption::getThreads() const {
 
 bool XenOption::getSortOnly() const {
     return opt->sortOnly;
+}
+
+int XenOption::getMaxEvalPC() const {
+    return opt->maxEvalPC;
 }
 
 void XenOption::setSampleSize(int size) {

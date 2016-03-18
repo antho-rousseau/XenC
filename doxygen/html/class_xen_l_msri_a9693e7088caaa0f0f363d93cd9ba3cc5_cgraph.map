@@ -1,6 +1,0 @@
-<map id="XenLMsri::XenLMsri" name="XenLMsri::XenLMsri">
-<area shape="rect" id="node2" href="$class_xen_option.html#a97ad096aee729b4d8ae993b1381d4eec" title="Accessor to the instance of the singleton XenOption object." alt="" coords="187,5,341,32"/>
-<area shape="rect" id="node3" href="$class_xen_option.html#a67da0cea887ff0da9811ddcec2f68e41" title="Accessor to the order for language models estimation." alt="" coords="196,56,332,83"/>
-<area shape="rect" id="node4" href="$class_xen_option.html#ade824301ab5f2a214ae9e7a6a0ddbffd" title="Accessor to the discounting method for language models estimation." alt="" coords="187,107,341,133"/>
-<area shape="rect" id="node5" href="$class_xen_option.html#ae07782dfa432f2ec69c4b5cce30971ec" title="Accessor to the estimated LMs output format." alt="" coords="193,157,335,184"/>
-</map>

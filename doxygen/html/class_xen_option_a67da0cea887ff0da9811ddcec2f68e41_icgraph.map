@@ -1,3 +1,5 @@
 <map id="XenOption::getOrder" name="XenOption::getOrder">
-<area shape="rect" id="node2" href="$class_xen_l_msri.html#a9693e7088caaa0f0f363d93cd9ba3cc5" title="Default constructor." alt="" coords="190,5,322,32"/>
+<area shape="rect" id="node2" href="$class_xen_l_mken.html#a20d9eb9ed2572542da03136233b1bba6" title="Default constructor. " alt="" coords="221,5,377,31"/>
+<area shape="rect" id="node3" href="$class_xen_l_mken.html#a7ce273f39e73dcbf814ec0ecfc2fcbc6" title="Estimates a language model based on the provided data. " alt="" coords="225,55,373,80"/>
+<area shape="rect" id="node4" href="$class_xen_l_mken.html#a1fe6edbcbd59bd0f28a6bb5385ad9557" title="Computes the KenLM stats of a Corpus at a document level. " alt="" coords="198,104,400,129"/>
 </map>

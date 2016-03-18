@@ -1,0 +1,10 @@
+<map id="double_conversion::Double::Sign" name="double_conversion::Double::Sign">
+<area shape="rect" id="node2" href="$classdouble__conversion_1_1_double.html#aa6d20ebb68d96990e922d88121a04596" title="double_conversion::\lDouble::AsDiyFp" alt="" coords="206,36,347,75"/>
+<area shape="rect" id="node5" href="$classdouble__conversion_1_1_double.html#a251101fa9caa9dc0bbe3f810a746a3ce" title="double_conversion::\lDouble::NextDouble" alt="" coords="206,99,347,137"/>
+<area shape="rect" id="node6" href="$classdouble__conversion_1_1_double.html#a4a7a969f8f8617c19c0f00290a884a71" title="double_conversion::\lDouble::PreviousDouble" alt="" coords="194,161,359,200"/>
+<area shape="rect" id="node7" href="$classdouble__conversion_1_1_double.html#a92f0f0e6cca6b6c6dbf06eda102825d6" title="double_conversion::\lDouble::UpperBoundary" alt="" coords="194,224,359,263"/>
+<area shape="rect" id="node8" href="$classdouble__conversion_1_1_single.html#a3ccf8c9e903e38a343d21659af3ce2bf" title="double_conversion::\lSingle::AsDiyFp" alt="" coords="206,287,347,325"/>
+<area shape="rect" id="node9" href="$classdouble__conversion_1_1_single.html#a13fd3d2560ce5cd7bca7055fed5bdabc" title="double_conversion::\lSingle::UpperBoundary" alt="" coords="197,349,356,388"/>
+<area shape="rect" id="node3" href="$classdouble__conversion_1_1_double.html#a8b40e18c1c3b309a5161c8895c640e51" title="double_conversion::\lDouble::NormalizedBoundaries" alt="" coords="407,5,613,44"/>
+<area shape="rect" id="node4" href="$classdouble__conversion_1_1_single.html#ae9e8d15a9beef8ec82cf3ade30a64601" title="double_conversion::\lSingle::NormalizedBoundaries" alt="" coords="410,68,610,107"/>
+</map>

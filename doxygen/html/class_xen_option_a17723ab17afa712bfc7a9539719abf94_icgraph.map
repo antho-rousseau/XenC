@@ -1,7 +1,8 @@
 <map id="XenOption::getInSData" name="XenOption::getInSData">
-<area shape="rect" id="node2" href="$class_bi_x_entropy.html#a55ad423050eae54a09ce73ca24598ca4" title="Function in charge of launching the filtering mode." alt="" coords="219,5,347,32"/>
-<area shape="rect" id="node3" href="$class_mono_x_entropy.html#ab82ba430051ad6ca073f9f4f74dc25ae" title="Function in charge of launching the filtering mode." alt="" coords="208,56,357,83"/>
-<area shape="rect" id="node4" href="$class_simple_p_p_l.html#a0cbcec72a693b6bf700c3d1802026be1" title="Function in charge of launching the filtering mode." alt="" coords="219,107,347,133"/>
-<area shape="rect" id="node5" href="$_xen_8cpp.html#abd605e012987328a9f2fde549b82b0f7" title="Controls the mandatory options." alt="" coords="237,157,329,184"/>
-<area shape="rect" id="node6" href="$_xen_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title="Main function of XenC." alt="" coords="406,157,455,184"/>
+<area shape="rect" id="node2" href="$class_bi_x_entropy.html#a55ad423050eae54a09ce73ca24598ca4" title="Function in charge of launching the filtering mode. " alt="" coords="246,5,380,31"/>
+<area shape="rect" id="node3" href="$class_mono_x_entropy.html#ab82ba430051ad6ca073f9f4f74dc25ae" title="Function in charge of launching the filtering mode. " alt="" coords="235,55,391,80"/>
+<area shape="rect" id="node4" href="$class_simple_p_p_l.html#a0cbcec72a693b6bf700c3d1802026be1" title="Function in charge of launching the filtering mode. " alt="" coords="246,104,380,129"/>
+<area shape="rect" id="node5" href="$_xen_8cpp.html#abd605e012987328a9f2fde549b82b0f7" title="Controls the mandatory options. " alt="" coords="266,153,360,179"/>
+<area shape="rect" id="node7" href="$class_xen_l_mken.html#a1fe6edbcbd59bd0f28a6bb5385ad9557" title="Computes the KenLM stats of a Corpus at a document level. " alt="" coords="212,203,414,228"/>
+<area shape="rect" id="node6" href="$_xen_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title="Main function of XenC. " alt="" coords="462,153,512,179"/>
 </map>

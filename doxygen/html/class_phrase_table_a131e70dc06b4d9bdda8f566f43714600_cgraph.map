@@ -1,0 +1,15 @@
+<map id="PhraseTable::getSize" name="PhraseTable::getSize">
+<area shape="rect" id="node2" href="$class_xen_i_o.html#ad087c0895d023a9ff0c0a1f794854b5d" title="Reads a file (plain text/gzipped) " alt="" coords="255,12,348,37"/>
+<area shape="rect" id="node4" href="$class_phrase_table.html#afed99089344b3b9c294b68e1357e9e13" title="Accessor to the nth source phrase. " alt="" coords="220,61,383,87"/>
+<area shape="rect" id="node6" href="$class_source_phrase.html#a2e16718735a86126d9ef5a20e8a6e43b" title="Accessor to the source phrase. " alt="" coords="214,111,388,136"/>
+<area shape="rect" id="node7" href="$class_source_phrase.html#aaaec171f591bb7e3e2c745757fb24bde" title="Associates a target phrase to the source phrase. " alt="" coords="215,160,388,185"/>
+<area shape="rect" id="node8" href="$class_phrase_table.html#af502a1c69356c10e50bc9768bee72991" title="Accessor to the nth target phrase. " alt="" coords="222,209,381,235"/>
+<area shape="rect" id="node9" href="$class_source_phrase.html#a4f34613ddb8474b0ff263e03505ce3c8" title="Associates a phrase table scores sequence to the source phrase. " alt="" coords="213,259,390,284"/>
+<area shape="rect" id="node10" href="$class_phrase_table.html#a1a6951601e23324b860140ccf88059e7" title="Accessor to the nth scores for the source/target phrase pair. " alt="" coords="220,308,383,333"/>
+<area shape="rect" id="node11" href="$class_source_phrase.html#a28d577d9675171fbf3048d0aeaf6cc78" title="Associates alignments to the source phrase. " alt="" coords="201,357,402,383"/>
+<area shape="rect" id="node12" href="$class_phrase_table.html#a52792d5aceb6355f8e52672e4d4e2570" title="Accessor to the nth alignments for the source/target phrase pair. " alt="" coords="211,407,392,432"/>
+<area shape="rect" id="node13" href="$class_source_phrase.html#a524e702b0b75bafaacabf95121d929df" title="Associates counts to the source phrase. " alt="" coords="213,456,390,481"/>
+<area shape="rect" id="node14" href="$class_phrase_table.html#a5cdec93022f04bc65e3e315efcb85186" title="Accessor to the nth counts for the source/target phrase pair. " alt="" coords="220,505,383,531"/>
+<area shape="rect" id="node3" href="$struct_xen_common_1_1_xen_c_eption.html#a32ca1dc358f84de4e63d73c72e318c42" title="Accessor to the exception message. " alt="" coords="450,5,628,44"/>
+<area shape="rect" id="node5" href="$class_xen_common_1_1_splitter.html#a7d9e0fa4bfe66e9e3609454dd855a417" title="XenCommon::Splitter\l::reset" alt="" coords="465,301,613,340"/>
+</map>

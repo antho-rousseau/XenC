@@ -1,5 +1,5 @@
 <map id="StaticData::getDevCorp" name="StaticData::getDevCorp">
-<area shape="rect" id="node2" href="$class_eval.html#a0c3f6f4605b2763e8e18a12b54779baf" title="Computes an evaluation bount by the high and low integers (in percentage)" alt="" coords="211,5,306,32"/>
-<area shape="rect" id="node4" href="$_xen_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title="Main function of XenC." alt="" coords="234,56,283,83"/>
-<area shape="rect" id="node3" href="$class_eval.html#a9f7cf5cbc48c414a0cef2a8ccb27ad56" title="Computes the best theoretical point based on current evaluation." alt="" coords="355,5,442,32"/>
+<area shape="rect" id="node2" href="$class_eval.html#a0c3f6f4605b2763e8e18a12b54779baf" title="Computes an evaluation bount by the high and low integers (in percentage) " alt="" coords="215,5,310,31"/>
+<area shape="rect" id="node4" href="$_xen_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title="Main function of XenC. " alt="" coords="237,55,288,80"/>
+<area shape="rect" id="node3" href="$class_eval.html#a9f7cf5cbc48c414a0cef2a8ccb27ad56" title="Computes the best theoretical point based on current evaluation. " alt="" coords="358,5,445,31"/>
 </map>

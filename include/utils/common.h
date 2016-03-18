@@ -2,14 +2,14 @@
  *  @file common.h
  *  @brief File containing all common classes/structures/functions of many classes of XenC
  *  @author Anthony Rousseau
- *  @version 1.2.0
- *  @date 19 August 2013
+ *  @version 2.0.0
+ *  @date 18 March 2016
  */
 
 /*  This file is part of the cross-entropy tool for data selection (XenC)
  *  aimed at speech recognition and statistical machine translation.
  *
- *  Copyright 2013, Anthony Rousseau, LIUM, University of Le Mans, France
+ *  Copyright 2013-2016, Anthony Rousseau, LIUM, University of Le Mans, France
  *
  *  Development of the XenC tool has been partially funded by the
  *  European Commission under the MateCat project.
@@ -75,10 +75,11 @@ typedef struct _Options {
 	std::string wFile;      //!< The weight file
 	std::string dev;        //!< The development corpus (for evaluation)
 	int order;              //!< The order for language models estimation
-    int discount;           //!< The discounting method for language models estimation
-    bool toLower;           //!< Indicates lower case vocabulary mapping for LM estimation
-    bool noUnkIsWord;       //!< Indicates if <unk> is considered as a word or not
-    int binLM;              //!< The language models output format (0 = ARPA, 1 = binary)
+    std::size_t memPC;      //!< The percentage of system memory to use
+    std::string temp;       //!< The temporary files location
+    std::size_t minblk;     //!< The minimum block size
+    std::size_t sortblk;    //!< The minimum block size for sort
+    bool exclOOVs;          //!< Indicates if the OOVs must be excluded from PPL computation
 	int sampleSize;         //!< The sample size for the out-of-domain corpus
 	bool log;               //!< Indicates if the weights are given in the log domain
 	bool rev;               //!< Indicates if a reversed output is requested (descending order)
@@ -97,6 +98,7 @@ typedef struct _Options {
     bool version;           //!< The program version
     int threads;            //!< The number of threads
     bool sortOnly;          //!< Indicated outputting only the "sorted" file (not the "scored" one)
+    int maxEvalPC;          //!< The maximum eval percentage
 } Options, *LPOptions;
 
 /**
@@ -261,8 +263,6 @@ namespace XenCommon {
         catch (XenCEption &e) {
             throw;
         }
-        
-        return "";
     }
 
     /**

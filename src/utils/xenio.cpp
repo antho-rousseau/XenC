@@ -2,14 +2,14 @@
  *  @file xenio.cpp
  *  @brief Class handling all input/output operations of XenC
  *  @author Anthony Rousseau
- *  @version 1.2.0
- *  @date 19 August 2013
+ *  @version 2.0.0
+ *  @date 18 March 2016
  */
 
 /*  This file is part of the cross-entropy tool for data selection (XenC)
  *  aimed at speech recognition and statistical machine translation.
  *
- *  Copyright 2013, Anthony Rousseau, LIUM, University of Le Mans, France
+ *  Copyright 2013-2016, Anthony Rousseau, LIUM, University of Le Mans, France
  *
  *  Development of the XenC tool has been partially funded by the
  *  European Commission under the MateCat project.
@@ -28,9 +28,7 @@
  *  Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
-#include "xenio.h"
-#include "corpus.h"
-#include "phrasetable.h"
+#include "../../include/utils/xenio.h"
 
 void XenIO::cleanCorpusMono(boost::shared_ptr<Corpus> ptrCorp, boost::shared_ptr<Score> ptrScore) {
     std::cout << "Cleaning monolingual output..." << std::endl;
@@ -342,6 +340,57 @@ void XenIO::writeEval(boost::shared_ptr<EvalMap> ptrEvalMap, std::string distNam
     }
 }
 
+void XenIO::writeVocab(std::map<std::string, int> voc, std::string fileName) {
+    vector<std::string> keys;
+    boost::copy(voc | boost::adaptors::map_keys, std::back_inserter(keys));
+
+    try {
+        std::ofstream out(fileName.c_str(), std::ios::out | std::ios::trunc);
+
+        if (!out.is_open())
+            throw XenCommon::XenCEption("Can't open " + fileName + " for writing.");
+
+        for (unsigned int i = 0; i < keys.size(); i++) {
+            out << keys[i] << std::endl;
+
+            if (out.bad())
+                throw XenCommon::XenCEption("Error while writing file " + fileName);
+        }
+
+        out.close();
+    } catch (XenCommon::XenCEption &e) {
+        throw;
+    }
+}
+
+void XenIO::writeXRpart(boost::shared_ptr<XenResult> ptrXR, int pc, std::string fileName) {
+    unsigned int nbLines = (ptrXR->getSize() / 100) * pc;
+
+    if (fileName.compare("") == 0)
+        fileName = ptrXR->getXenFile()->getDirName() + "/" + ptrXR->getXenFile()->getPrefix() + "-" + XenCommon::toString(pc) + "pc.gz";
+
+    try {
+        boost::iostreams::filtering_ostream out;
+        out.push(boost::iostreams::gzip_compressor());
+        out.push(boost::iostreams::file_sink(fileName.c_str(), std::ios_base::out | std::ios_base::binary));
+
+        if (!out.good())
+            throw XenCommon::XenCEption("Can't open " + fileName + " for writing.");
+
+        for (unsigned int i = 0; i < nbLines; i++) {
+            out << ptrXR->getTextLine(i) << std::endl;
+
+            if (out.bad())
+                throw XenCommon::XenCEption("Something went wrong in output stream...");
+        }
+
+        out.flush();
+        out.reset();
+    } catch (XenCommon::XenCEption &e) {
+        throw;
+    }
+}
+
 void XenIO::dumpSimilarity(boost::shared_ptr<Corpus> ptrCorp, boost::shared_ptr<Similarity> ptrSim) {
     try {
         std::string outName = ptrCorp->getXenFile()->getPrefix() + ".sim";
@@ -451,4 +500,11 @@ boost::shared_ptr<EvalMap> XenIO::readDist(std::string distFile) {
     } catch (XenCommon::XenCEption &e) {
         throw;
     }
+}
+
+void XenIO::delFile(std::string fileName) {
+    boost::filesystem::wpath f(fileName);
+
+    if(boost::filesystem::exists(f))
+        boost::filesystem::remove(f);
 }

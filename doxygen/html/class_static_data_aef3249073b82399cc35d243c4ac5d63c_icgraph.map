@@ -1,4 +1,4 @@
 <map id="StaticData::getTargetLMs" name="StaticData::getTargetLMs">
-<area shape="rect" id="node2" href="$class_bi_x_entropy.html#a55ad423050eae54a09ce73ca24598ca4" title="Function in charge of launching the filtering mode." alt="" coords="219,5,347,32"/>
-<area shape="rect" id="node3" href="$class_p_t_scoring.html#a51b8eadcb3b7fa0264c09b3a0908f2c0" title="Function in charge of launching the filtering mode." alt="" coords="221,56,344,83"/>
+<area shape="rect" id="node2" href="$class_bi_x_entropy.html#a55ad423050eae54a09ce73ca24598ca4" title="Function in charge of launching the filtering mode. " alt="" coords="224,5,359,31"/>
+<area shape="rect" id="node3" href="$class_p_t_scoring.html#a51b8eadcb3b7fa0264c09b3a0908f2c0" title="Function in charge of launching the filtering mode. " alt="" coords="227,55,357,80"/>
 </map>

@@ -1,4 +1,4 @@
 <map id="XenIO::writeEval" name="XenIO::writeEval">
-<area shape="rect" id="node2" href="$namespace_xen_common.html#ad4f4868634e46d6ee82e57d343a77abe" title="Template converting a value into a string with a precision of 20." alt="" coords="174,5,317,32"/>
-<area shape="rect" id="node3" href="$namespace_xen_common.html#a3b2d08955355a35d07efd74c466b91d1" title="Template converting a value into a string with no precision." alt="" coords="171,56,320,83"/>
+<area shape="rect" id="node2" href="$namespace_xen_common.html#ad4f4868634e46d6ee82e57d343a77abe" title="Template converting a value into a string with a precision of 20. " alt="" coords="178,5,330,31"/>
+<area shape="rect" id="node3" href="$namespace_xen_common.html#a3b2d08955355a35d07efd74c466b91d1" title="Template converting a value into a string with no precision. " alt="" coords="174,55,334,80"/>
 </map>

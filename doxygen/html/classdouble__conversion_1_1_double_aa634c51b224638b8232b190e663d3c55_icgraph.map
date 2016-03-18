@@ -1,0 +1,22 @@
+<map id="double_conversion::Double::AsUint64" name="double_conversion::Double::AsUint64">
+<area shape="rect" id="node2" href="$classdouble__conversion_1_1_double.html#a89c490ea598cec85ab4d9fcdf141b6ac" title="double_conversion::\lDouble::Exponent" alt="" coords="383,131,523,169"/>
+<area shape="rect" id="node8" href="$classdouble__conversion_1_1_double.html#a67732f15bf4b75886b8a43f348df7cdc" title="double_conversion::\lDouble::LowerBoundaryIsCloser" alt="" coords="571,5,785,44"/>
+<area shape="rect" id="node12" href="$classdouble__conversion_1_1_double.html#a82d4fbb98a3beb4410eed342cca9077a" title="double_conversion::\lDouble::Significand" alt="" coords="383,381,523,420"/>
+<area shape="rect" id="node15" href="$classdouble__conversion_1_1_double.html#a72610fddaeed3a34f135eed58d5b6a59" title="double_conversion::\lDouble::IsDenormal" alt="" coords="194,251,335,289"/>
+<area shape="rect" id="node18" href="$classdouble__conversion_1_1_double.html#abc2b742268e87fa1e1a159c0dffc58ee" title="double_conversion::\lDouble::IsSpecial" alt="" coords="383,193,523,232"/>
+<area shape="rect" id="node19" href="$classdouble__conversion_1_1_double.html#a9fbcea5d90dc88b4655688d85078785e" title="double_conversion::\lDouble::IsNan" alt="" coords="194,365,335,404"/>
+<area shape="rect" id="node20" href="$classdouble__conversion_1_1_double.html#ae2390c73e11271cc65fa013dc40fadbe" title="double_conversion::\lDouble::IsInfinite" alt="" coords="194,428,335,467"/>
+<area shape="rect" id="node21" href="$classdouble__conversion_1_1_double.html#aef84a03f3860480c04a55a855d8c3a07" title="double_conversion::\lDouble::Sign" alt="" coords="383,444,523,483"/>
+<area shape="rect" id="node3" href="$classdouble__conversion_1_1_double.html#aa6d20ebb68d96990e922d88121a04596" title="double_conversion::\lDouble::AsDiyFp" alt="" coords="608,256,748,295"/>
+<area shape="rect" id="node6" href="$classdouble__conversion_1_1_double.html#ab5fbb6fae81be5e8a781eb1170acb9fa" title="double_conversion::\lDouble::AsNormalizedDiyFp" alt="" coords="584,131,772,169"/>
+<area shape="rect" id="node7" href="$classdouble__conversion_1_1_double.html#a92f0f0e6cca6b6c6dbf06eda102825d6" title="double_conversion::\lDouble::UpperBoundary" alt="" coords="596,319,760,357"/>
+<area shape="rect" id="node9" href="$classdouble__conversion_1_1_single.html#a3ccf8c9e903e38a343d21659af3ce2bf" title="double_conversion::\lSingle::AsDiyFp" alt="" coords="608,193,748,232"/>
+<area shape="rect" id="node10" href="$classdouble__conversion_1_1_single.html#a13fd3d2560ce5cd7bca7055fed5bdabc" title="double_conversion::\lSingle::UpperBoundary" alt="" coords="598,381,758,420"/>
+<area shape="rect" id="node11" href="$classdouble__conversion_1_1_single.html#ace039ddd219c9dd57b193efb58064d46" title="double_conversion::\lSingle::LowerBoundaryIsCloser" alt="" coords="574,68,782,107"/>
+<area shape="rect" id="node4" href="$classdouble__conversion_1_1_double.html#a8b40e18c1c3b309a5161c8895c640e51" title="double_conversion::\lDouble::NormalizedBoundaries" alt="" coords="833,163,1039,201"/>
+<area shape="rect" id="node5" href="$classdouble__conversion_1_1_single.html#ae9e8d15a9beef8ec82cf3ade30a64601" title="double_conversion::\lSingle::NormalizedBoundaries" alt="" coords="835,53,1036,92"/>
+<area shape="rect" id="node13" href="$classdouble__conversion_1_1_double.html#a251101fa9caa9dc0bbe3f810a746a3ce" title="double_conversion::\lDouble::NextDouble" alt="" coords="608,444,748,483"/>
+<area shape="rect" id="node14" href="$classdouble__conversion_1_1_double.html#a4a7a969f8f8617c19c0f00290a884a71" title="double_conversion::\lDouble::PreviousDouble" alt="" coords="595,507,761,545"/>
+<area shape="rect" id="node16" href="$classdouble__conversion_1_1_single.html#ab41f4c175f0ae26d0073f44145e5a2cc" title="double_conversion::\lSingle::Exponent" alt="" coords="383,319,523,357"/>
+<area shape="rect" id="node17" href="$classdouble__conversion_1_1_single.html#adeccca5c385d6e8348ead14d6e418f7d" title="double_conversion::\lSingle::Significand" alt="" coords="383,256,523,295"/>
+</map>

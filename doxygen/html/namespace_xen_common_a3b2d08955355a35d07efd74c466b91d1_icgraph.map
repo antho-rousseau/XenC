@@ -1,7 +1,7 @@
 <map id="XenCommon::toString0" name="XenCommon::toString0">
-<area shape="rect" id="node2" href="$class_mode.html#a08d61f2bf10a36780a805fd64f43886d" title="Extracts a random sample from a give Corpus." alt="" coords="203,56,344,83"/>
-<area shape="rect" id="node5" href="$class_xen_i_o.html#a507884a2eeb21b0fd3a7816ac2187beb" title="Writes an evaluation/best point distribution file." alt="" coords="215,107,331,133"/>
-<area shape="rect" id="node3" href="$class_bi_x_entropy.html#a55ad423050eae54a09ce73ca24598ca4" title="Function in charge of launching the filtering mode." alt="" coords="403,5,531,32"/>
-<area shape="rect" id="node4" href="$class_mono_x_entropy.html#ab82ba430051ad6ca073f9f4f74dc25ae" title="Function in charge of launching the filtering mode." alt="" coords="392,56,541,83"/>
-<area shape="rect" id="node6" href="$_xen_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title="Main function of XenC." alt="" coords="442,107,491,133"/>
+<area shape="rect" id="node2" href="$class_mode.html#a08d61f2bf10a36780a805fd64f43886d" title="Extracts a random sample from a give Corpus. " alt="" coords="213,55,361,80"/>
+<area shape="rect" id="node5" href="$class_xen_i_o.html#a507884a2eeb21b0fd3a7816ac2187beb" title="Writes an evaluation/best point distribution file. " alt="" coords="227,104,347,129"/>
+<area shape="rect" id="node3" href="$class_bi_x_entropy.html#a55ad423050eae54a09ce73ca24598ca4" title="Function in charge of launching the filtering mode. " alt="" coords="419,5,554,31"/>
+<area shape="rect" id="node4" href="$class_mono_x_entropy.html#ab82ba430051ad6ca073f9f4f74dc25ae" title="Function in charge of launching the filtering mode. " alt="" coords="409,55,565,80"/>
+<area shape="rect" id="node6" href="$_xen_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title="Main function of XenC. " alt="" coords="462,104,512,129"/>
 </map>

@@ -2,14 +2,14 @@
  *  @file simplePPL.cpp
  *  @brief Derived class to handle filtering mode 1: simple perplexity
  *  @author Anthony Rousseau
- *  @version 1.2.0
- *  @date 19 August 2013
+ *  @version 2.0.0
+ *  @date 18 March 2016
  */
 
 /*  This file is part of the cross-entropy tool for data selection (XenC)
  *  aimed at speech recognition and statistical machine translation.
  *
- *  Copyright 2013, Anthony Rousseau, LIUM, University of Le Mans, France
+ *  Copyright 2013-2016, Anthony Rousseau, LIUM, University of Le Mans, France
  *
  *  Development of the XenC tool has been partially funded by the
  *  European Commission under the MateCat project.
@@ -28,7 +28,7 @@
  *  Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
-#include "simplePPL.h"
+#include "../../include/modes/simplePPL.h"
 
 SimplePPL::SimplePPL() {
 
@@ -57,7 +57,7 @@ int SimplePPL::launch() {
     if (opt->getInSLM()->getFileName().compare("") == 0) {
         sD->getSourceLMs()->getPtrInLM()->initialize(sD->getSourceCorps()->getPtrInCorp(), sD->getVocabs()->getPtrSourceVoc());
         sD->getSourceLMs()->getPtrInLM()->createLM();
-        sD->getSourceLMs()->getPtrInLM()->writeLM();
+        //sD->getSourceLMs()->getPtrInLM()->writeLM();
     }
     else {
         sD->getSourceLMs()->getPtrInLM()->initialize(opt->getInSLM(), sD->getVocabs()->getPtrSourceVoc());

@@ -1,23 +1,23 @@
 <map id="sanityCheck" name="sanityCheck">
-<area shape="rect" id="node2" href="$_xen_8h.html#a59cff1fcf7715b591b35b6a17c440a72" title="Computes the output file name." alt="" coords="181,284,275,311"/>
-<area shape="rect" id="node14" href="$class_xen_option.html#a3756f116809ecfec48ad0c7b508d2b25" title="Accessor to the evaluation execution state." alt="" coords="163,563,293,589"/>
-<area shape="rect" id="node15" href="$class_xen_option.html#a47990b37693511cce211889f930c18ba" title="Accessor to the best point execution state." alt="" coords="167,613,289,640"/>
-<area shape="rect" id="node3" href="$class_xen_option.html#a9f6f38c9e6fd7c0f1a57645b3c7fa441" title="Accessor to the filtering mode." alt="" coords="373,5,510,32"/>
-<area shape="rect" id="node10" href="$class_xen_option.html#a9886771703c5b8866be587f50193ac9d" title="Accessor to the source language." alt="" coords="370,411,513,437"/>
-<area shape="rect" id="node11" href="$class_xen_option.html#aaaec9eadf81b57f24f4833be2ff2350a" title="Accessor to the target language." alt="" coords="371,461,512,488"/>
-<area shape="rect" id="node16" href="$class_xen_option.html#a76d6e094092486278bd7f7714d54a3b9" title="Accessor to the in&#45;domain phrase&#45;table file." alt="" coords="150,664,306,691"/>
-<area shape="rect" id="node13" href="$class_xen_option.html#a5e3d99b1c17f5dc609344c7918335d23" title="Accessor to the out&#45;of&#45;domain phrase&#45;table file." alt="" coords="358,512,525,539"/>
-<area shape="rect" id="node17" href="$class_xen_option.html#a74178ef5302c1bf213822ae474c58806" title="Accessor to the source language vocabulary file." alt="" coords="152,715,304,741"/>
-<area shape="rect" id="node18" href="$class_xen_option.html#aa38a1233cc2bcd024964fbc54d5abe5e" title="Accessor to the target language vocabulary file." alt="" coords="153,765,303,792"/>
-<area shape="rect" id="node19" href="$class_xen_option.html#aeb0a67020dfd7e91a7f79b991f07fdfc" title="Accessor to the monolingual or bilingual execution state." alt="" coords="159,816,297,843"/>
-<area shape="rect" id="node20" href="$class_xen_option.html#a17723ab17afa712bfc7a9539719abf94" title="Accessor to the source language in&#45;domain data file." alt="" coords="151,867,305,893"/>
-<area shape="rect" id="node9" href="$class_xen_option.html#a8c54e1795dc493d23fa38d977c09604d" title="Accessor to the source language out&#45;of&#45;domain data file." alt="" coords="359,360,523,387"/>
-<area shape="rect" id="node21" href="$class_xen_option.html#a1bf2ed601d284a3ecc1c60cd8376a22d" title="Accessor to the target language in&#45;domain data file." alt="" coords="153,917,303,944"/>
-<area shape="rect" id="node22" href="$class_xen_option.html#a45a1ac5576924aec7f0fea15e28d0f40" title="Accessor to the target language out&#45;of&#45;domain data file." alt="" coords="147,968,309,995"/>
-<area shape="rect" id="node4" href="$class_xen_option.html#a9eb5309135ec46b588dcc98c196303ea" title="Accessor to the weights file." alt="" coords="373,208,509,235"/>
-<area shape="rect" id="node5" href="$class_xen_option.html#a05e466d2f559f9560458f0b49191d7df" title="Accessor to the log&#45;domain state of values in the weights file." alt="" coords="378,259,505,285"/>
-<area shape="rect" id="node6" href="$class_xen_option.html#a1b9f650f28eee13014332ac9ac6dd0ec" title="Accessor to the reversed filtered output state." alt="" coords="377,309,506,336"/>
-<area shape="rect" id="node7" href="$class_xen_option.html#ad4b6a223068d8c75797e716887b5b9cc" title="Accessor to the inverted filtered output state." alt="" coords="380,56,503,83"/>
-<area shape="rect" id="node8" href="$class_xen_option.html#a049350768fe60ca6d71ec2ebdf3e8586" title="Accessor to the stem mode execution state." alt="" coords="374,107,509,133"/>
-<area shape="rect" id="node12" href="$namespace_xen_common.html#ad4f4868634e46d6ee82e57d343a77abe" title="Template converting a value into a string with a precision of 20." alt="" coords="370,157,513,184"/>
+<area shape="rect" id="node2" href="$_xen_8cpp.html#a59cff1fcf7715b591b35b6a17c440a72" title="Computes the output file name. " alt="" coords="183,273,280,299"/>
+<area shape="rect" id="node3" href="$class_xen_option.html#a9f6f38c9e6fd7c0f1a57645b3c7fa441" title="Accessor to the filtering mode. " alt="" coords="378,5,521,31"/>
+<area shape="rect" id="node9" href="$class_xen_option.html#a8c54e1795dc493d23fa38d977c09604d" title="Accessor to the source language out&#45;of&#45;domain data file. " alt="" coords="365,351,534,376"/>
+<area shape="rect" id="node10" href="$class_xen_option.html#a9886771703c5b8866be587f50193ac9d" title="Accessor to the source language. " alt="" coords="375,400,524,425"/>
+<area shape="rect" id="node11" href="$class_xen_option.html#aaaec9eadf81b57f24f4833be2ff2350a" title="Accessor to the target language. " alt="" coords="376,449,524,475"/>
+<area shape="rect" id="node13" href="$class_xen_option.html#a5e3d99b1c17f5dc609344c7918335d23" title="Accessor to the out&#45;of&#45;domain phrase&#45;table file. " alt="" coords="363,499,536,524"/>
+<area shape="rect" id="node14" href="$class_xen_option.html#a3756f116809ecfec48ad0c7b508d2b25" title="Accessor to the evaluation execution state. " alt="" coords="163,549,299,575"/>
+<area shape="rect" id="node15" href="$class_xen_option.html#a47990b37693511cce211889f930c18ba" title="Accessor to the best point execution state. " alt="" coords="168,599,295,624"/>
+<area shape="rect" id="node16" href="$class_xen_option.html#a76d6e094092486278bd7f7714d54a3b9" title="Accessor to the in&#45;domain phrase&#45;table file. " alt="" coords="150,648,312,673"/>
+<area shape="rect" id="node17" href="$class_xen_option.html#a74178ef5302c1bf213822ae474c58806" title="Accessor to the source language vocabulary file. " alt="" coords="153,697,309,723"/>
+<area shape="rect" id="node18" href="$class_xen_option.html#aa38a1233cc2bcd024964fbc54d5abe5e" title="Accessor to the target language vocabulary file. " alt="" coords="154,747,309,772"/>
+<area shape="rect" id="node19" href="$class_xen_option.html#aeb0a67020dfd7e91a7f79b991f07fdfc" title="Accessor to the monolingual or bilingual execution state. " alt="" coords="160,796,303,821"/>
+<area shape="rect" id="node20" href="$class_xen_option.html#a17723ab17afa712bfc7a9539719abf94" title="Accessor to the source language in&#45;domain data file. " alt="" coords="152,845,311,871"/>
+<area shape="rect" id="node21" href="$class_xen_option.html#a1bf2ed601d284a3ecc1c60cd8376a22d" title="Accessor to the target language in&#45;domain data file. " alt="" coords="152,895,310,920"/>
+<area shape="rect" id="node22" href="$class_xen_option.html#a45a1ac5576924aec7f0fea15e28d0f40" title="Accessor to the target language out&#45;of&#45;domain data file. " alt="" coords="147,944,315,969"/>
+<area shape="rect" id="node4" href="$class_xen_option.html#a9eb5309135ec46b588dcc98c196303ea" title="Accessor to the weights file. " alt="" coords="377,203,522,228"/>
+<area shape="rect" id="node5" href="$class_xen_option.html#a05e466d2f559f9560458f0b49191d7df" title="Accessor to the log&#45;domain state of values in the weights file. " alt="" coords="383,252,516,277"/>
+<area shape="rect" id="node6" href="$class_xen_option.html#a1b9f650f28eee13014332ac9ac6dd0ec" title="Accessor to the reversed filtered output state. " alt="" coords="383,301,517,327"/>
+<area shape="rect" id="node7" href="$class_xen_option.html#ad4b6a223068d8c75797e716887b5b9cc" title="Accessor to the inverted filtered output state. " alt="" coords="386,55,514,80"/>
+<area shape="rect" id="node8" href="$class_xen_option.html#a049350768fe60ca6d71ec2ebdf3e8586" title="Accessor to the stem mode execution state. " alt="" coords="379,104,520,129"/>
+<area shape="rect" id="node12" href="$namespace_xen_common.html#ad4f4868634e46d6ee82e57d343a77abe" title="Template converting a value into a string with a precision of 20. " alt="" coords="373,153,526,179"/>
 </map>

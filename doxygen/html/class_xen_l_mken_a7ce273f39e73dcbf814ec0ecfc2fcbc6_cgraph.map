@@ -1,0 +1,8 @@
+<map id="XenLMken::createLM" name="XenLMken::createLM">
+<area shape="rect" id="node2" href="$class_xen_option.html#a97ad096aee729b4d8ae993b1381d4eec" title="Accessor to the instance of the singleton XenOption object. " alt="" coords="201,5,362,31"/>
+<area shape="rect" id="node3" href="$class_xen_option.html#a67da0cea887ff0da9811ddcec2f68e41" title="Accessor to the order for language models estimation. " alt="" coords="210,55,354,80"/>
+<area shape="rect" id="node4" href="$class_xen_option.html#a6ab0cf83aba2f9c732f12f51bc4ca139" title="Accessor to the memory percentage for LM estimation. " alt="" coords="204,104,359,129"/>
+<area shape="rect" id="node5" href="$class_xen_option.html#a9a83de2b94b53713432e93debb62c09f" title="Accessor to the minimum block size. " alt="" coords="207,153,357,179"/>
+<area shape="rect" id="node6" href="$class_xen_option.html#afe6200e9f6d4380588b1795f9c40267b" title="Accessor to the sort block size. " alt="" coords="205,203,358,228"/>
+<area shape="rect" id="node7" href="$namespace_xen_common.html#ad4f4868634e46d6ee82e57d343a77abe" title="Template converting a value into a string with a precision of 20. " alt="" coords="205,252,358,277"/>
+</map>

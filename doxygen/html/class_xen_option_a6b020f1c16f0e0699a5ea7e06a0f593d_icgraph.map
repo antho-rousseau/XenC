@@ -1,10 +1,10 @@
 <map id="XenOption::getOutName" name="XenOption::getOutName">
-<area shape="rect" id="node2" href="$class_xen_i_o.html#ac4fbd0582c974bb4c11c225ef467f26a" title="Writes monolingual scored/sorted result files." alt="" coords="214,31,375,57"/>
-<area shape="rect" id="node5" href="$class_xen_i_o.html#ad3264b7bde95ba72494ab9db3804ad11" title="Writes bilingual scored/sorted result files." alt="" coords="225,81,365,108"/>
-<area shape="rect" id="node7" href="$class_xen_i_o.html#a6c32040f72b5d39ead7b08874beb65a3" title="Writes a new rescored phrase&#45;table." alt="" coords="228,132,361,159"/>
-<area shape="rect" id="node9" href="$_xen_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title="Main function of XenC." alt="" coords="270,183,319,209"/>
-<area shape="rect" id="node3" href="$class_mono_x_entropy.html#ab82ba430051ad6ca073f9f4f74dc25ae" title="Function in charge of launching the filtering mode." alt="" coords="424,5,573,32"/>
-<area shape="rect" id="node4" href="$class_simple_p_p_l.html#a0cbcec72a693b6bf700c3d1802026be1" title="Function in charge of launching the filtering mode." alt="" coords="435,56,563,83"/>
-<area shape="rect" id="node6" href="$class_bi_x_entropy.html#a55ad423050eae54a09ce73ca24598ca4" title="Function in charge of launching the filtering mode." alt="" coords="435,107,563,133"/>
-<area shape="rect" id="node8" href="$class_p_t_scoring.html#a51b8eadcb3b7fa0264c09b3a0908f2c0" title="Function in charge of launching the filtering mode." alt="" coords="437,157,560,184"/>
+<area shape="rect" id="node2" href="$class_xen_i_o.html#ac4fbd0582c974bb4c11c225ef467f26a" title="Writes monolingual scored/sorted result files. " alt="" coords="221,29,389,55"/>
+<area shape="rect" id="node5" href="$class_xen_i_o.html#ad3264b7bde95ba72494ab9db3804ad11" title="Writes bilingual scored/sorted result files. " alt="" coords="231,79,378,104"/>
+<area shape="rect" id="node7" href="$class_xen_i_o.html#a6c32040f72b5d39ead7b08874beb65a3" title="Writes a new rescored phrase&#45;table. " alt="" coords="236,128,374,153"/>
+<area shape="rect" id="node9" href="$_xen_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title="Main function of XenC. " alt="" coords="280,177,330,203"/>
+<area shape="rect" id="node3" href="$class_mono_x_entropy.html#ab82ba430051ad6ca073f9f4f74dc25ae" title="Function in charge of launching the filtering mode. " alt="" coords="437,5,593,31"/>
+<area shape="rect" id="node4" href="$class_simple_p_p_l.html#a0cbcec72a693b6bf700c3d1802026be1" title="Function in charge of launching the filtering mode. " alt="" coords="448,55,582,80"/>
+<area shape="rect" id="node6" href="$class_bi_x_entropy.html#a55ad423050eae54a09ce73ca24598ca4" title="Function in charge of launching the filtering mode. " alt="" coords="447,104,582,129"/>
+<area shape="rect" id="node8" href="$class_p_t_scoring.html#a51b8eadcb3b7fa0264c09b3a0908f2c0" title="Function in charge of launching the filtering mode. " alt="" coords="450,153,580,179"/>
 </map>

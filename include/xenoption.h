@@ -2,14 +2,14 @@
  *  @file xenoption.h
  *  @brief Singleton class handling XenC options accessors/mutators
  *  @author Anthony Rousseau
- *  @version 1.2.0
- *  @date 19 August 2013
+ *  @version 2.0.0
+ *  @date 18 March 2016
  */
 
 /*  This file is part of the cross-entropy tool for data selection (XenC)
  *  aimed at speech recognition and statistical machine translation.
  *
- *  Copyright 2013, Anthony Rousseau, LIUM, University of Le Mans, France
+ *  Copyright 2013-2016, Anthony Rousseau, LIUM, University of Le Mans, France
  *
  *  Development of the XenC tool has been partially funded by the
  *  European Commission under the MateCat project.
@@ -291,39 +291,47 @@ public:
      *  @return the order for language models estimation
      */
 	int getOrder() const;
-    
+
     /**
-     *  @fn int getDiscount () const
-     *  @brief Accessor to the discounting method for language models estimation
+     *  @fn int getMemPc () const
+     *  @brief Accessor to the memory percentage for LM estimation
      *
-     *  @return the discounting method for language models estimation
+     *  @return the memory percentage for LM estimation
      */
-    int getDiscount() const;
-    
+    std::size_t getMemPc() const;
+
     /**
-     *  @fn bool getToLower () const
-     *  @brief Accessor to the flag for lower case vocabulary mapping in LM estimation
+     *  @fn std::string getTemp () const
+     *  @brief Accessor to the temporary files path
      *
-     *  @return true if lower case vocabulary mapping is requested
+     *  @return the temporary files path
      */
-    bool getToLower() const;
-    
+    std::string getTemp() const;
+
     /**
-     *  @fn bool noUnkIsWord () const
-     *  @brief Accessor to the flag for NOT considering <unk> as a word in LM estimation
+     *  @fn std::size_t getMinBlk () const
+     *  @brief Accessor to the minimum block size
      *
-     *  @return true if <unk> is NOT considered as a word
+     *  @return the minimum block size
      */
-    bool noUnkIsWord() const;
-    
+    std::size_t getMinBlk() const;
+
     /**
-     *  @fn int getBinLM () const
-     *  @brief Accessor to the estimated LMs output format
+     *  @fn std::size_t getSortBlk () const
+     *  @brief Accessor to the sort block size
      *
-     *  @return the estimated LMs output format
+     *  @return the sort block size
      */
-    int getBinLM() const;
-    
+    std::size_t getSortBlk() const;
+
+    /**
+     *  @fn bool getExclOOVs() const
+     *  @brief Accessor to the OOVs exclusion state
+     *
+     *  @return the OOVs exclusion state
+     */
+    bool getExclOOVs() const;
+
     /**
      *  @fn int getSampleSize () const
      *  @brief Accessor to the out-of-domain Corpus current sample size
@@ -429,6 +437,14 @@ public:
     bool getSortOnly() const;
     
     /**
+     *  @fn int getMexEvalPC () const
+     *  @brief Accessor to the maximum eval percentage
+     *
+     *  @return the requested number of threads
+     */
+    int getMaxEvalPC() const;
+    
+    /**
      *  @fn void setSampleSize (int size)
      *  @brief Mutator to the out-of-domain sample size
      *
@@ -443,7 +459,7 @@ public:
      *  @param step :   the evaluation/best point step size
      */
     void setStep(int step);
-    
+
 private:
     /**
      *  @fn XenOption ()

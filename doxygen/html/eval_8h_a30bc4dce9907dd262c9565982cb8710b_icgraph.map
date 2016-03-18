@@ -1,4 +1,0 @@
-<map id="taskEval" name="taskEval">
-<area shape="rect" id="node2" href="$class_eval.html#a0c3f6f4605b2763e8e18a12b54779baf" title="Computes an evaluation bount by the high and low integers (in percentage)" alt="" coords="126,5,221,32"/>
-<area shape="rect" id="node3" href="$class_eval.html#a9f7cf5cbc48c414a0cef2a8ccb27ad56" title="Computes the best theoretical point based on current evaluation." alt="" coords="270,5,357,32"/>
-</map>

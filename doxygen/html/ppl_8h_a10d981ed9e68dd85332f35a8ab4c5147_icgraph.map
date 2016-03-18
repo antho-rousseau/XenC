@@ -1,4 +1,0 @@
-<map id="taskCalcPPL" name="taskCalcPPL">
-<area shape="rect" id="node2" href="$class_p_p_l.html#a7b4657c023618ae0beb8101b82cf3005" title="Computes the perplexity of a Corpus sentence by sentence." alt="" coords="167,5,310,32"/>
-<area shape="rect" id="node3" href="$class_p_p_l.html#a49004246863fdf55c41be3b575f0a443" title="Computes the perplexity of a PhraseTable phrase by phrase." alt="" coords="152,56,325,83"/>
-</map>

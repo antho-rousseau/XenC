@@ -1,5 +1,5 @@
 <map id="include/modes/ptScoring.h" name="include/modes/ptScoring.h">
-<area shape="rect" id="node2" href="$_xen_8h.html" title="Main file of XenC, controls execution." alt="" coords="5,80,101,107"/>
-<area shape="rect" id="node4" href="$pt_scoring_8cpp.html" title="Derived class to handle filtering mode 4: phrase&#45;table cross&#45;entropy." alt="" coords="126,80,287,107"/>
-<area shape="rect" id="node3" href="$_xen_8cpp.html" title="Main file of XenC, controls execution." alt="" coords="9,155,97,181"/>
+<area shape="rect" id="node2" href="$_xen_8h.html" title="Main file of XenC, controls execution. " alt="" coords="5,79,107,104"/>
+<area shape="rect" id="node4" href="$pt_scoring_8cpp.html" title="Derived class to handle filtering mode 4: phrase&#45;table cross&#45;entropy. " alt="" coords="131,79,299,104"/>
+<area shape="rect" id="node3" href="$_xen_8cpp.html" title="Main file of XenC, controls execution. " alt="" coords="11,152,102,177"/>
 </map>

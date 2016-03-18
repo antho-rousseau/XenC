@@ -1,5 +1,6 @@
 <map id="PPL::calcPPLCorpus" name="PPL::calcPPLCorpus">
-<area shape="rect" id="node2" href="$class_xen_option.html#a97ad096aee729b4d8ae993b1381d4eec" title="Accessor to the instance of the singleton XenOption object." alt="" coords="198,5,351,32"/>
-<area shape="rect" id="node3" href="$class_xen_option.html#a1e63941bf583b329394def43e580bbd6" title="Accessor to the requested number of threads." alt="" coords="199,56,350,83"/>
-<area shape="rect" id="node4" href="$ppl_8h.html#a10d981ed9e68dd85332f35a8ab4c5147" title="Thread&#45;safe perplexity computation function." alt="" coords="226,107,323,133"/>
+<area shape="rect" id="node2" href="$class_xen_option.html#a97ad096aee729b4d8ae993b1381d4eec" title="Accessor to the instance of the singleton XenOption object. " alt="" coords="412,5,573,31"/>
+<area shape="rect" id="node3" href="$class_xen_option.html#a1e63941bf583b329394def43e580bbd6" title="Accessor to the requested number of threads. " alt="" coords="199,31,358,56"/>
+<area shape="rect" id="node4" href="$ppl_8cpp.html#a0c876aa154ae0422fad090aad9f79b7f" title="Thread&#45;safe perplexity computation function. " alt="" coords="230,80,328,105"/>
+<area shape="rect" id="node5" href="$class_xen_option.html#a188caff8f2bc09b17895e59afdc4e3b5" title="Accessor to the OOVs exclusion state. " alt="" coords="406,80,578,105"/>
 </map>

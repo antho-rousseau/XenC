@@ -1,0 +1,8 @@
+var searchData=
+[
+  ['read',['read',['../class_xen_i_o.html#ad087c0895d023a9ff0c0a1f794854b5d',1,'XenIO']]],
+  ['readdist',['readDist',['../class_xen_i_o.html#af153c980efc7a1bf6994300ca2a5edc7',1,'XenIO']]],
+  ['removeline',['removeLine',['../class_corpus.html#ac6b8e43e77d7d348fe76a840cbcc57a9',1,'Corpus']]],
+  ['removescore',['removeScore',['../class_score.html#aa4a62e454d7d1bdaf391b8dbd89e2661',1,'Score']]],
+  ['reset',['reset',['../class_xen_common_1_1_splitter.html#a7d9e0fa4bfe66e9e3609454dd855a417',1,'XenCommon::Splitter::reset()'],['../classdouble__conversion_1_1_string_builder.html#a5383d4200be0f361b2d3d49ef4e702f3',1,'double_conversion::StringBuilder::Reset()']]]
+];

@@ -6,43 +6,14 @@
     
 3 - 	You need the following free third-party software to build XenC:
 
-		- gcc version 4.2.1 or higher (older versions might work, 
+		- gcc version 4.5.1 or higher (older versions might work, 
 		  but are untested)
-		- GNU make
+		- CMake 2.8.4 or higher
+		- boost version 1.57.0 or higher
 		- gzip, to read/write compressed files
-		- boost version 1.52.0 or higher (may work with lower versions,
-		  untested)
-		- SRILM version 1.7.0 or higher (older versions won't work, since they are not thread-safe)
 
-4 - 	By default, the Makefile will look into the /usr directory for boost
-	(/usr/include/boost for includes, /usr/lib or /usr/lib64 for libraries), 
-	but you can specify variables on the make command line:
-	
-		- BOOST, for another root directory for includes/libs
-		- INCBOOST, for Boost includes directly
-		- LIBBOOST, for Boost libs directly
+4 - 	In the top-level directory, run:
 
-	The (multithreaded) boost libraries used by XenC are : libboost_filesystem, 
-	libboost_iostreams, libboost_program_options, libboost_regex, libboost_system and libboost_thread.
-
-5 - 	By default, the Makefile will look into the /usr/local directory for SRILM
-	(/usr/local/include for includes, /usr/local/lib for libraries), but you 
-	can specify variables on the make command line:
-	
-		- SRILM, for another root directory for includes/libs
-		- INCSRILM, for SRILM includes directly
-		- LIBSRILM, for SRILM libs directly
-	
-	The SRILM libraries used by XenC are : libdstruct, libmisc
-	and liboolm.
-	
-6 - 	In the top-level directory, run:
-
-		make		or		make debug (with debug symbols)
-
-	optionally with one or more variables described in steps 4 and 5.
-
-
-7 - 	(Optional) To clean the obj directory of object files:
-
-		make clean
+                cmake . (you can add -DBOOST=/path/to/your/boost if not in 
+                        usual places)
+		make

@@ -1,5 +1,5 @@
 <map id="Eval::Eval" name="Eval::Eval">
-<area shape="rect" id="node2" href="$class_xen_i_o.html#af153c980efc7a1bf6994300ca2a5edc7" title="Reads a evaluation/best point distribution file." alt="" coords="134,31,245,57"/>
-<area shape="rect" id="node3" href="$namespace_xen_common.html#a3fd9978be1bd41808ac4605c2e89d816" title="Template converting a value (generally a string) into an integer." alt="" coords="307,5,431,32"/>
-<area shape="rect" id="node4" href="$namespace_xen_common.html#aadf35ed2e4ebb9b556cda62563888113" title="Template converting a value (generally a string) into an double." alt="" coords="293,56,445,83"/>
+<area shape="rect" id="node2" href="$class_xen_i_o.html#af153c980efc7a1bf6994300ca2a5edc7" title="Reads a evaluation/best point distribution file. " alt="" coords="134,31,250,56"/>
+<area shape="rect" id="node3" href="$namespace_xen_common.html#a3fd9978be1bd41808ac4605c2e89d816" title="Template converting a value (generally a string) into an integer. " alt="" coords="312,5,444,31"/>
+<area shape="rect" id="node4" href="$namespace_xen_common.html#aadf35ed2e4ebb9b556cda62563888113" title="Template converting a value (generally a string) into an double. " alt="" coords="298,55,458,80"/>
 </map>

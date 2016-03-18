@@ -1,13 +1,13 @@
 <map id="include/mode.h" name="include/mode.h">
-<area shape="rect" id="node2" href="$bi_x_entropy_8h.html" title="Derived class to handle filtering mode 3: bilingual cross&#45;entropy." alt="" coords="696,80,875,107"/>
-<area shape="rect" id="node6" href="$mono_x_entropy_8h.html" title="Derived class to handle filtering mode 2: monolingual cross&#45;entropy." alt="" coords="27,80,225,107"/>
-<area shape="rect" id="node8" href="$pt_scoring_8h.html" title="Derived class to handle filtering mode 4: phrase&#45;table cross&#45;entropy." alt="" coords="251,80,419,107"/>
-<area shape="rect" id="node10" href="$simple_p_p_l_8h.html" title="Derived class to handle filtering mode 1: simple perplexity." alt="" coords="494,80,671,107"/>
-<area shape="rect" id="node3" href="$_xen_8h.html" title="Main file of XenC, controls execution." alt="" coords="408,155,504,181"/>
-<area shape="rect" id="node12" href="$mode_8cpp.html" title="Abstract class defining the filtering modes architecture." alt="" coords="899,80,997,107"/>
-<area shape="rect" id="node5" href="$bi_x_entropy_8cpp.html" title="Derived class to handle filtering mode 3: bilingual cross&#45;entropy." alt="" coords="723,155,893,181"/>
-<area shape="rect" id="node4" href="$_xen_8cpp.html" title="Main file of XenC, controls execution." alt="" coords="411,229,500,256"/>
-<area shape="rect" id="node7" href="$mono_x_entropy_8cpp.html" title="Derived class to handle filtering mode 2: monolingual cross&#45;entropy." alt="" coords="5,155,197,181"/>
-<area shape="rect" id="node9" href="$pt_scoring_8cpp.html" title="Derived class to handle filtering mode 4: phrase&#45;table cross&#45;entropy." alt="" coords="222,155,383,181"/>
-<area shape="rect" id="node11" href="$simple_p_p_l_8cpp.html" title="Derived class to handle filtering mode 1: simple perplexity." alt="" coords="528,155,699,181"/>
+<area shape="rect" id="node2" href="$bi_x_entropy_8h.html" title="Derived class to handle filtering mode 3: bilingual cross&#45;entropy. " alt="" coords="720,79,906,104"/>
+<area shape="rect" id="node3" href="$_xen_8h.html" title="Main file of XenC, controls execution. " alt="" coords="420,152,523,177"/>
+<area shape="rect" id="node6" href="$mono_x_entropy_8h.html" title="Derived class to handle filtering mode 2: monolingual cross&#45;entropy. " alt="" coords="23,79,232,104"/>
+<area shape="rect" id="node8" href="$pt_scoring_8h.html" title="Derived class to handle filtering mode 4: phrase&#45;table cross&#45;entropy. " alt="" coords="256,79,434,104"/>
+<area shape="rect" id="node10" href="$simple_p_p_l_8h.html" title="Derived class to handle filtering mode 1: simple perplexity. " alt="" coords="509,79,695,104"/>
+<area shape="rect" id="node12" href="$mode_8cpp.html" title="Abstract class defining the filtering modes architecture. " alt="" coords="930,79,1031,104"/>
+<area shape="rect" id="node5" href="$bi_x_entropy_8cpp.html" title="Derived class to handle filtering mode 3: bilingual cross&#45;entropy. " alt="" coords="746,152,922,177"/>
+<area shape="rect" id="node4" href="$_xen_8cpp.html" title="Main file of XenC, controls execution. " alt="" coords="426,225,517,251"/>
+<area shape="rect" id="node7" href="$mono_x_entropy_8cpp.html" title="Derived class to handle filtering mode 2: monolingual cross&#45;entropy. " alt="" coords="5,152,204,177"/>
+<area shape="rect" id="node9" href="$pt_scoring_8cpp.html" title="Derived class to handle filtering mode 4: phrase&#45;table cross&#45;entropy. " alt="" coords="229,152,397,177"/>
+<area shape="rect" id="node11" href="$simple_p_p_l_8cpp.html" title="Derived class to handle filtering mode 1: simple perplexity. " alt="" coords="546,152,722,177"/>
 </map>

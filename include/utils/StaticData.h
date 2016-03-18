@@ -2,14 +2,14 @@
  *  @file StaticData.h
  *  @brief File handling all data objects used by XenC in a static way
  *  @author Anthony Rousseau
- *  @version 1.2.0
- *  @date 19 August 2013
+ *  @version 2.0.0
+ *  @date 18 March 2016
  */
 
 /*  This file is part of the cross-entropy tool for data selection (XenC)
  *  aimed at speech recognition and statistical machine translation.
  *
- *  Copyright 2013, Anthony Rousseau, LIUM, University of Le Mans, France
+ *  Copyright 2013-2016, Anthony Rousseau, LIUM, University of Le Mans, France
  *
  *  Development of the XenC tool has been partially funded by the
  *  European Commission under the MateCat project.
@@ -28,6 +28,8 @@
  *  Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
+#pragma once
+
 #ifndef STATICDATA_H_
 #define STATICDATA_H_
 
@@ -36,12 +38,9 @@
 #include <boost/shared_ptr.hpp>
 #include <boost/make_shared.hpp>
 
-#include "corpus.h"
-#include "XenLMsri.h"
-#include "xenvocab.h"
-#include "ppl.h"
-#include "similarity.h"
-#include "wfile.h"
+#include "../corpus.h"
+#include "../ppl.h"
+#include "../wfile.h"
 
 using namespace boost;
 
@@ -100,8 +99,8 @@ public:
      *  @brief Default constructor
      */
     LMPair() {
-        ptrInLM = boost::make_shared<XenLMsri>();
-        ptrOutLM = boost::make_shared<XenLMsri>();
+        ptrInLM = boost::make_shared<XenLMken>();
+        ptrOutLM = boost::make_shared<XenLMken>();
     }
     
     /**
@@ -113,24 +112,24 @@ public:
     }
     
     /**
-     *  @fn boost::shared_ptr<XenLMsri> getPtrInLM () const
+     *  @fn boost::shared_ptr<XenLMken> getPtrInLM () const
      *  @brief Accessor to the in-domain language model
      *
      *  @return the in-domain language model
      */
-    boost::shared_ptr<XenLMsri> getPtrInLM() const { return ptrInLM; }
+    boost::shared_ptr<XenLMken> getPtrInLM() const { return ptrInLM; }
     
     /**
-     *  @fn boost::shared_ptr<XenLMsri> getPtrOutLM () const
+     *  @fn boost::shared_ptr<XenLMken> getPtrOutLM () const
      *  @brief Accessor to the out-of-domain language model
      *
      *  @return the out-of-domain language model
      */
-    boost::shared_ptr<XenLMsri> getPtrOutLM() const { return ptrOutLM; }
+    boost::shared_ptr<XenLMken> getPtrOutLM() const { return ptrOutLM; }
     
 private:
-    boost::shared_ptr<XenLMsri> ptrInLM;       //!< Shared pointer to the in-domain language model
-    boost::shared_ptr<XenLMsri> ptrOutLM;      //!< Shared pointer to the out-of-domain language model
+    boost::shared_ptr<XenLMken> ptrInLM;       //!< Shared pointer to the in-domain language model
+    boost::shared_ptr<XenLMken> ptrOutLM;      //!< Shared pointer to the out-of-domain language model
 };
 
 /**
@@ -276,8 +275,8 @@ public:
      *  @brief Default constructor
      */
     MeanLMPair() {
-        ptrOutLM2 = boost::make_shared<XenLMsri>();
-        ptrOutLM3 = boost::make_shared<XenLMsri>();
+        ptrOutLM2 = boost::make_shared<XenLMken>();
+        ptrOutLM3 = boost::make_shared<XenLMken>();
     }
     
     /**
@@ -294,7 +293,7 @@ public:
      *
      *  @return the second out-of-domain language model
      */
-    boost::shared_ptr<XenLMsri> getPtrOutLM2() const { return ptrOutLM2; }
+    boost::shared_ptr<XenLMken> getPtrOutLM2() const { return ptrOutLM2; }
     
     /**
      *  @fn boost::shared_ptr<XenLMsri> getPtrOutLM3 () const
@@ -302,11 +301,11 @@ public:
      *
      *  @return the third out-of-domain language model
      */
-    boost::shared_ptr<XenLMsri> getPtrOutLM3() const { return ptrOutLM3; }
+    boost::shared_ptr<XenLMken> getPtrOutLM3() const { return ptrOutLM3; }
     
 private:
-    boost::shared_ptr<XenLMsri> ptrOutLM2;      //!< Shared pointer to the second out-of-domain language model
-    boost::shared_ptr<XenLMsri> ptrOutLM3;      //!< Shared pointer to the third out-of-domain language model
+    boost::shared_ptr<XenLMken> ptrOutLM2;      //!< Shared pointer to the second out-of-domain language model
+    boost::shared_ptr<XenLMken> ptrOutLM3;      //!< Shared pointer to the third out-of-domain language model
     
 };
 

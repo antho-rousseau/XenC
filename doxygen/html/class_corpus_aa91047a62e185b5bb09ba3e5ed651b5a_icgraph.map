@@ -1,5 +1,5 @@
 <map id="Corpus::getWC" name="Corpus::getWC">
-<area shape="rect" id="node2" href="$class_mode.html#a08d61f2bf10a36780a805fd64f43886d" title="Extracts a random sample from a give Corpus." alt="" coords="165,31,307,57"/>
-<area shape="rect" id="node3" href="$class_bi_x_entropy.html#a55ad423050eae54a09ce73ca24598ca4" title="Function in charge of launching the filtering mode." alt="" coords="365,5,493,32"/>
-<area shape="rect" id="node4" href="$class_mono_x_entropy.html#ab82ba430051ad6ca073f9f4f74dc25ae" title="Function in charge of launching the filtering mode." alt="" coords="355,56,504,83"/>
+<area shape="rect" id="node2" href="$class_mode.html#a08d61f2bf10a36780a805fd64f43886d" title="Extracts a random sample from a give Corpus. " alt="" coords="166,31,313,56"/>
+<area shape="rect" id="node3" href="$class_bi_x_entropy.html#a55ad423050eae54a09ce73ca24598ca4" title="Function in charge of launching the filtering mode. " alt="" coords="372,5,507,31"/>
+<area shape="rect" id="node4" href="$class_mono_x_entropy.html#ab82ba430051ad6ca073f9f4f74dc25ae" title="Function in charge of launching the filtering mode. " alt="" coords="361,55,517,80"/>
 </map>

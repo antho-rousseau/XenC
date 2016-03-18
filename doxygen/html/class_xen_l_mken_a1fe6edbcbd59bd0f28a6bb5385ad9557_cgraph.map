@@ -1,0 +1,6 @@
+<map id="XenLMken::getDocumentStats" name="XenLMken::getDocumentStats">
+<area shape="rect" id="node2" href="$class_xen_l_mken.html#af063855dfc32d28dd63457a14c6b544c" title="Computes the KenLM stats of a given sentence. " alt="" coords="256,5,453,31"/>
+<area shape="rect" id="node3" href="$class_xen_option.html#a17723ab17afa712bfc7a9539719abf94" title="Accessor to the source language in&#45;domain data file. " alt="" coords="275,55,434,80"/>
+<area shape="rect" id="node4" href="$namespace_xen_common.html#ad4f4868634e46d6ee82e57d343a77abe" title="Template converting a value into a string with a precision of 20. " alt="" coords="278,104,431,129"/>
+<area shape="rect" id="node5" href="$class_xen_option.html#a67da0cea887ff0da9811ddcec2f68e41" title="Accessor to the order for language models estimation. " alt="" coords="282,153,427,179"/>
+</map>

@@ -1,7 +1,7 @@
 <map id="include/xenvocab.h" name="include/xenvocab.h">
-<area shape="rect" id="node5" href="$common_8h.html" title="File containing all common classes/structures/functions of many classes of XenC." alt="" coords="529,229,633,256"/>
-<area shape="rect" id="node14" href="$corpus_8h.html" title="Class handling corpus&#45;related functionalities." alt="" coords="426,80,496,107"/>
-<area shape="rect" id="node18" href="$xenresult_8h.html" title="Class handling a XenC sorted result file for evaluation/best point." alt="" coords="268,80,351,107"/>
-<area shape="rect" id="node19" href="$xenoption_8h.html" title="Singleton class handling XenC options accessors/mutators." alt="" coords="521,80,607,107"/>
-<area shape="rect" id="node15" href="$xenfile_8h.html" title="Class providing some basic functions around files." alt="" coords="415,155,481,181"/>
+<area shape="rect" id="node6" href="$common_8h.html" title="File containing all common classes/structures/functions of many classes of XenC. " alt="" coords="557,225,668,251"/>
+<area shape="rect" id="node14" href="$corpus_8h.html" title="Class handling corpus&#45;related functionalities. " alt="" coords="438,79,510,104"/>
+<area shape="rect" id="node18" href="$xenresult_8h.html" title="Class handling a XenC sorted result file for evaluation/best point. " alt="" coords="277,79,364,104"/>
+<area shape="rect" id="node19" href="$xenoption_8h.html" title="Singleton class handling XenC options accessors/mutators. " alt="" coords="534,79,625,104"/>
+<area shape="rect" id="node15" href="$xenfile_8h.html" title="Class providing some basic functions around files. " alt="" coords="427,152,498,177"/>
 </map>

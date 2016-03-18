@@ -1,5 +1,5 @@
 <map id="include/modes/monoXEntropy.h" name="include/modes/monoXEntropy.h">
-<area shape="rect" id="node2" href="$_xen_8h.html" title="Main file of XenC, controls execution." alt="" coords="5,80,101,107"/>
-<area shape="rect" id="node4" href="$mono_x_entropy_8cpp.html" title="Derived class to handle filtering mode 2: monolingual cross&#45;entropy." alt="" coords="125,80,317,107"/>
-<area shape="rect" id="node3" href="$_xen_8cpp.html" title="Main file of XenC, controls execution." alt="" coords="9,155,97,181"/>
+<area shape="rect" id="node2" href="$_xen_8h.html" title="Main file of XenC, controls execution. " alt="" coords="5,79,107,104"/>
+<area shape="rect" id="node4" href="$mono_x_entropy_8cpp.html" title="Derived class to handle filtering mode 2: monolingual cross&#45;entropy. " alt="" coords="132,79,331,104"/>
+<area shape="rect" id="node3" href="$_xen_8cpp.html" title="Main file of XenC, controls execution. " alt="" coords="11,152,102,177"/>
 </map>

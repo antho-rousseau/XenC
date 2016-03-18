@@ -2,14 +2,14 @@
  *  @file biXEntropy.h
  *  @brief Derived class to handle filtering mode 3: bilingual cross-entropy
  *  @author Anthony Rousseau
- *  @version 1.2.0
- *  @date 19 August 2013
+ *  @version 2.0.0
+ *  @date 18 March 2016
  */
 
 /*  This file is part of the cross-entropy tool for data selection (XenC)
  *  aimed at speech recognition and statistical machine translation.
  *
- *  Copyright 2013, Anthony Rousseau, LIUM, University of Le Mans, France
+ *  Copyright 2013-2016, Anthony Rousseau, LIUM, University of Le Mans, France
  *
  *  Development of the XenC tool has been partially funded by the
  *  European Commission under the MateCat project.
@@ -33,7 +33,7 @@
 
 #include <boost/make_shared.hpp>
 
-#include "mode.h"       //!< Inherit boost::filesystem from here
+#include "../mode.h"       //!< Inherit boost::filesystem from here
 #include "../utils/StaticData.h"    //!< Inherit boost::shared_ptr from here
 
 using namespace boost;

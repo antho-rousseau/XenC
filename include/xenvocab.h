@@ -2,14 +2,14 @@
  *  @file xenvocab.h
  *  @brief Class handling a XenC vocabulary
  *  @author Anthony Rousseau
- *  @version 1.2.0
- *  @date 19 August 2013
+ *  @version 2.0.0
+ *  @date 18 March 2016
  */
 
 /*  This file is part of the cross-entropy tool for data selection (XenC)
  *  aimed at speech recognition and statistical machine translation.
  *
- *  Copyright 2013, Anthony Rousseau, LIUM, University of Le Mans, France
+ *  Copyright 2013-2016, Anthony Rousseau, LIUM, University of Le Mans, France
  *
  *  Development of the XenC tool has been partially funded by the
  *  European Commission under the MateCat project.
@@ -34,13 +34,12 @@
 #include <boost/algorithm/string.hpp>
 #include <boost/shared_ptr.hpp>
 #include <boost/make_shared.hpp>
+#include <vector>
 
 #include "utils/common.h"
 #include "corpus.h"
 #include "xenresult.h"
 #include "xenoption.h"
-
-#include "Vocab.h"  //!< Include SRILM Vocab.h
 
 using namespace boost;
 using namespace boost::filesystem;
@@ -97,14 +96,6 @@ public:
     ~XenVocab();
 
     /**
-     *  @fn boost::shared_ptr<Vocab> getVocab ()
-     *  @brief Accessor to the SRILM Vocab object
-     *
-     *  @return the SRILM Vocab object
-     */
-    boost::shared_ptr<Vocab> getVocab() const;
-    
-    /**
      *  @fn std::map<std::string, int> getXenVocab()
      *  @brief Accessor to the XenC vocabulary object
      *
@@ -130,7 +121,6 @@ public:
     
 private:
     boost::shared_ptr<XenFile> ptrFile;     //!< Shared pointer on the vocabulary file
-    boost::shared_ptr<Vocab> ptrVocab;      //!< Shared pointer on the SRILM Vocab object
     std::map<std::string, int> voc;         //!< Map holding the XenC vocabulary
 
     /**
@@ -138,7 +128,15 @@ private:
      *  @brief Writes a vocabulary on disk
      */
     void writeVocab();
-    
+
+    /**
+     *  @fn void makeVocab (boost::shared_ptr<XenFile> ptrFile)
+     *  @brief Generates a vocabulary from a file
+
+     *  @param ptrFile :    the file to generate the vocabulary from
+     */
+    void makeVocab(boost::shared_ptr<XenFile> ptrFile);
+
     /**
      *  @fn void makeVocab (boost::shared_ptr<Corpus> ptrCorp)
      *  @brief Generates a vocabulary from a Corpus

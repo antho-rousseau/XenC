@@ -2,14 +2,14 @@
  *  @file xenio.h
  *  @brief Class handling all input/output operations of XenC
  *  @author Anthony Rousseau
- *  @version 1.2.0
- *  @date 19 August 2013
+ *  @version 2.0.0
+ *  @date 18 March 2016
  */
 
 /*  This file is part of the cross-entropy tool for data selection (XenC)
  *  aimed at speech recognition and statistical machine translation.
  *
- *  Copyright 2013, Anthony Rousseau, LIUM, University of Le Mans, France
+ *  Copyright 2013-2016, Anthony Rousseau, LIUM, University of Le Mans, France
  *
  *  Development of the XenC tool has been partially funded by the
  *  European Commission under the MateCat project.
@@ -28,15 +28,20 @@
  *  Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
+#pragma once
+
 #ifndef XENIO_H_
 #define XENIO_H_
 
 #include "common.h"
-#include "eval.h"
-#include "score.h"
-#include "xenoption.h"
-#include "similarity.h"
+#include "../eval.h"
+#include "../score.h"
+#include "../xenoption.h"
+#include "../similarity.h"
 
+#include <boost/range/adaptor/map.hpp>
+#include <boost/range/algorithm/copy.hpp>
+#include <boost/assign.hpp>
 #include <boost/iostreams/filtering_stream.hpp>
 #include <boost/iostreams/filter/gzip.hpp>
 #include <boost/iostreams/device/file.hpp>
@@ -46,9 +51,14 @@
 
 using namespace boost;
 using namespace boost::iostreams;
+using namespace boost::assign;
+using namespace boost::adaptors;
 
 class Corpus;       // Forward declaration
 class PhraseTable;  // Forward declaration
+class XenVocab;     // Forward declaration
+
+typedef std::map<int, double, std::greater<int> > EvalMap;  //!< descending ordered map on integers as keys and doubles as values
 
 /**
  *  @class XenIO
@@ -132,7 +142,26 @@ public:
      *  @param distName :       the distribution file name
      */
     static void writeEval(boost::shared_ptr<EvalMap> ptrEvalMap, std::string distName);
-    
+
+    /**
+     *  @fn static void writeVocab (std::map<std::string, int> voc, std::string fileName)
+     *  @brief Writes a vocab to file
+     *
+     *  @param ptrEvalMap :     the map containing the vocab to write
+     *  @param distName :       the vocab file name
+     */
+    static void writeVocab(std::map<std::string, int> voc, std::string fileName);
+
+    /**
+     *  @fn static void writeXRpart (boost::shared_ptr<XenResult> ptrXR, int pc, std::string fileName = "")
+     *  @brief Writes a part of the text of a XenResult given a percentage
+     *
+     *  @param ptrXR :      the XenResult file to extract the part from
+     *  @param pc :         the percentage to extract
+     *  @param fileName :   the file name for the extraction (optional)
+     */
+    static void writeXRpart(boost::shared_ptr<XenResult> ptrXR, int pc, std::string fileName = "");
+
     /**
      *  @fn static void dumpSimilarity (boost::shared_ptr<Corpus> ptrCorp, boost::shared_ptr<Similarity> ptrSim)
      *  @brief Dumps the Similarity measures of a Corpus
@@ -159,6 +188,14 @@ public:
      *  @return an EvalMap containing the already computed scores
      */
     static boost::shared_ptr<EvalMap> readDist(std::string distFile);
+
+    /**
+     *  @fn static void delFile(std::string fileName)
+     *  @brief Deletes a file from the filesystem
+     *
+     *  @param fileName :   file to delete
+     */
+    static void delFile(std::string fileName);
 };
 
 #endif

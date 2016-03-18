@@ -1,4 +1,8 @@
 <map id="XenCommon::XenCEption::what" name="XenCommon::XenCEption::what">
-<area shape="rect" id="node2" href="$class_xen_i_o.html#ad087c0895d023a9ff0c0a1f794854b5d" title="Reads a file (plain text/gzipped)" alt="" coords="225,12,314,39"/>
-<area shape="rect" id="node3" href="$class_xen_result.html#ac9468fc213c23dffdfeba1f9d0c4d314" title="Initialization function from an already instantiated XenFile." alt="" coords="363,12,491,39"/>
+<area shape="rect" id="node2" href="$class_xen_i_o.html#ad087c0895d023a9ff0c0a1f794854b5d" title="Reads a file (plain text/gzipped) " alt="" coords="231,104,324,129"/>
+<area shape="rect" id="node3" href="$class_corpus.html#ac6b8e43e77d7d348fe76a840cbcc57a9" title="Put the printing status of a line to false. " alt="" coords="386,5,527,31"/>
+<area shape="rect" id="node4" href="$class_phrase_table.html#a131e70dc06b4d9bdda8f566f43714600" title="Accessor to the size of the PhraseTable. " alt="" coords="383,55,530,80"/>
+<area shape="rect" id="node5" href="$class_wfile.html#a481ea084ad9b6b89fb5777ec7221494e" title="Accessor to the size of the weights file. " alt="" coords="405,104,508,129"/>
+<area shape="rect" id="node6" href="$class_xen_result.html#ac9468fc213c23dffdfeba1f9d0c4d314" title="Initialization function from an already instantiated XenFile. " alt="" coords="388,153,526,179"/>
+<area shape="rect" id="node7" href="$class_xen_vocab.html#a11690619c4c7b03e143a07952ab32db7" title="Accessor to the XenC vocabulary object. " alt="" coords="372,203,541,228"/>
 </map>

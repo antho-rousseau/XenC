@@ -1,0 +1,5 @@
+<map id="XenVocab::getXenVocab" name="XenVocab::getXenVocab">
+<area shape="rect" id="node2" href="$class_xen_i_o.html#ac7f7d85d888d510c21ddf217840e20ba" title="Writes a vocab to file. " alt="" coords="222,5,354,31"/>
+<area shape="rect" id="node3" href="$class_xen_i_o.html#ad087c0895d023a9ff0c0a1f794854b5d" title="Reads a file (plain text/gzipped) " alt="" coords="241,55,335,80"/>
+<area shape="rect" id="node4" href="$struct_xen_common_1_1_xen_c_eption.html#a32ca1dc358f84de4e63d73c72e318c42" title="Accessor to the exception message. " alt="" coords="402,48,580,87"/>
+</map>

@@ -2,14 +2,14 @@
  *  @file Xen.cpp
  *  @brief Main file of XenC, controls execution
  *  @author Anthony Rousseau
- *  @version 1.2.0
- *  @date 19 August 2013
+ *  @version 2.0.0
+ *  @date 18 March 2016
  */
 
 /*  This file is part of the cross-entropy tool for data selection (XenC)
  *  aimed at speech recognition and statistical machine translation.
  *
- *  Copyright 2013, Anthony Rousseau, LIUM, University of Le Mans, France
+ *  Copyright 2013-2016, Anthony Rousseau, LIUM, University of Le Mans, France
  *
  *  Development of the XenC tool has been partially funded by the
  *  European Commission under the MateCat project.
@@ -28,9 +28,27 @@
  *  Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
-#include "Xen.h"
+#include "../include/Xen.h"
 
-const string version = "1.2.0";
+const std::string version = "2.0.0";
+
+namespace {
+    class SizeNotify {
+    public:
+        SizeNotify(std::size_t &out) : behind_(out) { }
+
+        void operator()(const std::string &from) {
+            behind_ = util::ParseSize(from);
+        }
+
+    private:
+        std::size_t &behind_;
+    };
+
+    boost::program_options::typed_value <std::string> *SizeOption(std::size_t &to, const char *default_value) {
+        return boost::program_options::value<std::string>()->notifier(SizeNotify(to))->default_value(default_value);
+    }
+}
 
 int main(int argc, char* argv[]) {
     po::options_description desc("XenC options", 200);
@@ -70,16 +88,16 @@ int main(int argc, char* argv[]) {
         ("in-tlm", po::value<std::string>(&opt.inTLM)->default_value(""), "in-domain target language model (LM). Will be estimated if not present")
         ("out-tlm", po::value<std::string>(&opt.outTLM)->default_value(""), "out-of-domain target language model (LM). Will be estimated if not present")
         ("order", po::value<int>(&opt.order)->default_value(4), "order for LMs. Default is 4")
-        ("discount", po::value<int>(&opt.discount)->default_value(0), "discounting method for LM estimation. Default is modified KneserNey (0). 1 is GoodTuring, 2 is WittenBell.")
-        ("to-lower", po::value<bool>(&opt.toLower)->default_value(false), "maps vocabulary to lower case for LM estimation. Useful for ASR. Default is false.")
-        ("no-unkisword", po::value<bool>(&opt.noUnkIsWord)->default_value(false), "DO NOT consider <unk> and its probability as a word. Default is false, with respect to common practice.")
-        ("bin-lm", po::value<int>(&opt.binLM)->default_value(1), "whether you want to estimate arpa.gz (0) or binary (1) LMs. Default is 1 (binary)")
+        ("mem", SizeOption(opt.memPC, util::GuessPhysicalMemory() ? "70%" : "1G"), "Percentage of memory usage")
+        ("temp", po::value<std::string>(&opt.temp)->default_value("."), "Directory for temporary files")
+        ("exclude-oovs", po::value<bool>(&opt.exclOOVs)->zero_tokens()->default_value(false), "Exclude OOVs from PPL computation")
         ("w-file", po::value<std::string>(&opt.wFile)->default_value(""), "filename for weighting the final score (one value per line)")
         ("log", po::value<bool>(&opt.log)->zero_tokens()->default_value(false), "switch to consider weights in w-file as log values")
         ("rev", po::value<bool>(&opt.rev)->zero_tokens()->default_value(false), "switch to require descending order sorted output")
         ("inv", po::value<bool>(&opt.inv)->zero_tokens()->default_value(false), "switch to require inversed calibrated scores (1 - score)")
         ("threads", po::value<int>(&opt.threads)->default_value(2), "number of threads to run for various operations (eval, sim, ...). Default is 2")
         ("sorted-only", po::value<bool>(&opt.sortOnly)->zero_tokens()->default_value(false), "switch to save space & time by only outputing the sorted scores file")
+        ("max-evalpc", po::value<int>(&opt.maxEvalPC)->default_value(50), "maximum percentage of corpus to evaluate (means it will evaluate between 0 and n, default is 0-50)")
         ("help,h", "displays this help message")
         ("version,v", "displays program version");
         
@@ -89,7 +107,7 @@ int main(int argc, char* argv[]) {
             po::store(po::parse_command_line(argc, argv, desc), vm);
             
             if (vm.count("help") || argc == 1) {
-                std::cout << "XenC version " + version + " PUBLIC RELEASE. Copyright 2013, Anthony Rousseau, LIUM, University of Le Mans, France." << std::endl << std::endl;
+                std::cout << "XenC version " + version + " PUBLIC RELEASE. Copyright 2013-2016, Anthony Rousseau, LIUM, University of Le Mans, France." << std::endl << std::endl;
                 
                 std::cout << desc << std::endl;
                 
@@ -98,7 +116,7 @@ int main(int argc, char* argv[]) {
                 std::cout << "For every text file used, max words per line is 16384 and max chars per line is max words * 16." << std::endl << std::endl;
                 std::cout << "Also, if no vocabularies and no language models are provided, they will be generated with the following parameters:" << std::endl;
                 std::cout << "\t- vocabs:\tvocabularies will be created from words of in-domain bitexts." << std::endl;
-                std::cout << "\t- LMs:\t\torder 4, modified kn-int smoothing, 0-0-0-0 cut-offs, sblm (binary) output format." << std::endl << std::endl;
+                std::cout << "\t- LMs:\t\torder 4, Kneser-Ney interpolated, 0 cut-offs, arpa output format." << std::endl << std::endl;
                 std::cout << "\t1:" << std::endl;
                 std::cout << "\tSimple source language perplexity filtering. (Gao & al. 2002)" << std::endl;
                 std::cout << "\tWill sort the out-of-domain bitext sentences (ascending order)" << std::endl;
@@ -123,7 +141,7 @@ int main(int argc, char* argv[]) {
             }
             
             if (vm.count("version")) {
-                std::cout << "XenC version " + version + " PUBLIC RELEASE. Copyright 2013, Anthony Rousseau, LIUM, University of Le Mans, France." << std::endl;
+                std::cout << "XenC version " + version + " PUBLIC RELEASE. Copyright 2013-2016, Anthony Rousseau, LIUM, University of Le Mans, France." << std::endl;
                 return 0;
             }
             
@@ -140,7 +158,22 @@ int main(int argc, char* argv[]) {
     opt.pc = 0;
     opt.inToks = 0;
     opt.outToks = 0;
-    
+
+    opt.minblk = 8192;
+    opt.sortblk = 67108864;
+
+    uint64_t mem = util::GuessPhysicalMemory();
+    if (mem) {
+        std::cerr << "This machine has " << mem << " bytes of memory." << std::endl;
+    } else {
+        std::cerr << "Unable to determine the amount of memory on this machine." << std::endl;
+    }
+
+    std::cout << "Memory engaged: " << opt.memPC << std::endl;
+
+    std::cout << "Min block size: " << opt.minblk << std::endl;
+    std::cout << "Sort block size: " << opt.sortblk << std::endl;
+
     if (opt.dev.compare("") == 0) {
         if (boost::filesystem::exists(opt.inSData)) {
             opt.dev = opt.inSData;
@@ -270,7 +303,7 @@ int main(int argc, char* argv[]) {
             if (xOpt->getEval()) {
                 boost::shared_ptr<Eval> ptrEval = boost::make_shared<Eval>();
                 
-                ptrEval->doEval(100, 0);
+                ptrEval->doEval(xOpt->getMaxEvalPC(), 0);
                 int oldStep = xOpt->getStep();
                 xOpt->setStep(2);
                 ptrEval->doEval(8, 0);
@@ -286,7 +319,7 @@ int main(int argc, char* argv[]) {
                     ptrEval = boost::make_shared<Eval>(distName);
                 else {
                     ptrEval = boost::make_shared<Eval>();
-                    ptrEval->doEval(100, 0);
+                    ptrEval->doEval(xOpt->getMaxEvalPC(), 0);
                     int oldStep = xOpt->getStep();
                     xOpt->setStep(2);
                     ptrEval->doEval(8, 0);
@@ -296,6 +329,9 @@ int main(int argc, char* argv[]) {
                 
                 ptrEval->doBP();
                 XenIO::writeEval(ptrEval->getDist(), bpName);
+
+                int bp = ptrEval->getBP();
+                XenIO::writeXRpart(sD->getXenResult(), bp);
             }
             else { return 1; }
         }

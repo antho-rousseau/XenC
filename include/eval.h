@@ -2,14 +2,14 @@
  *  @file eval.h
  *  @brief Class handling evaluation system
  *  @author Anthony Rousseau
- *  @version 1.2.0
- *  @date 19 August 2013
+ *  @version 2.0.0
+ *  @date 18 March 2016
  */
 
 /*  This file is part of the cross-entropy tool for data selection (XenC)
  *  aimed at speech recognition and statistical machine translation.
  *
- *  Copyright 2013, Anthony Rousseau, LIUM, University of Le Mans, France
+ *  Copyright 2013-2016, Anthony Rousseau, LIUM, University of Le Mans, France
  *
  *  Development of the XenC tool has been partially funded by the
  *  European Commission under the MateCat project.
@@ -38,9 +38,10 @@
 #include "utils/threadpool.hpp"
 #include "corpus.h"
 #include "xenoption.h"
-#include "XenLMsri.h"
+#include "XenLMken.h"
 #include "ppl.h"
 #include "xenresult.h"
+#include "xenvocab.h"
 
 class StaticData;   /// Forward declaration
 
@@ -50,16 +51,16 @@ using namespace boost;
 typedef std::map<int, double, std::greater<int> > EvalMap;  //!< descending ordered map on integers as keys and doubles as values
 
 /**
- *  @fn void taskEval(int pc, boost::shared_ptr<XenResult> ptrXR, boost::shared_ptr<XenVocab> ptrVoc, boost::shared_ptr<Corpus> ptrDevCorp, boost::shared_ptr<EvalMap> ptrDist)
+ *  @fn void taskEval(int pc, boost::shared_ptr<Corpus> ptrCorp, boost::shared_ptr<XenVocab> ptrVoc, boost::shared_ptr<Corpus> ptrDevCorp, boost::shared_ptr<EvalMap> ptrDist)
  *  @brief Thread-safe evaluation function
  *
  *  @param pc :         integer representing the percentage of the scored out-of-domain corpus to take
- *  @param ptrXR :      shared pointer on the XenResult object representing the selection result file
+ *  @param ptrCorp :      shared pointer on the Corpus object representing the part of selection result file
  *  @param ptrVoc :     shared pointer on the XenVocab object representing the vocabulary to use for eval
  *  @param ptrDevCorp : shared pointer on the Corpus object representing the development set
  *  @param ptrDist :    shared pointer on the EvalMap type containing the evaluation scores
  */
-void taskEval(int pc, boost::shared_ptr<XenResult> ptrXR, boost::shared_ptr<XenVocab> ptrVoc, boost::shared_ptr<Corpus> ptrDevCorp, boost::shared_ptr<EvalMap> ptrDist);
+void taskEval(int pc, boost::shared_ptr<Corpus> ptrCorp, boost::shared_ptr<XenVocab> ptrVoc, boost::shared_ptr<Corpus> ptrDevCorp, boost::shared_ptr<EvalMap> ptrDist);
 
 /**
  *  @class Eval
@@ -114,7 +115,14 @@ public:
      *  @return shared pointer on EvalMap containing all the evaluation results
      */
     boost::shared_ptr<EvalMap> getDist() const;
-    
+
+    /**
+     *  @fn int getBP ()
+     *  @brief Accessor to the determined best point
+     *
+     *  @return integer representing the percentage for the best point
+     */
+    int getBP();
     
 private:
     boost::shared_ptr<EvalMap> ptrDist;     //!< Shared pointer on a EvalMap wrapping the reference to the map containing the evaluation results */

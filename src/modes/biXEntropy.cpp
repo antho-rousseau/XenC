@@ -2,14 +2,14 @@
  *  @file biXEntropy.cpp
  *  @brief Derived class to handle filtering mode 3: bilingual cross-entropy
  *  @author Anthony Rousseau
- *  @version 1.2.0
- *  @date 19 August 2013
+ *  @version 2.0.0
+ *  @date 18 March 2016
  */
 
 /*  This file is part of the cross-entropy tool for data selection (XenC)
  *  aimed at speech recognition and statistical machine translation.
  *
- *  Copyright 2013, Anthony Rousseau, LIUM, University of Le Mans, France
+ *  Copyright 2013-2016, Anthony Rousseau, LIUM, University of Le Mans, France
  *
  *  Development of the XenC tool has been partially funded by the
  *  European Commission under the MateCat project.
@@ -28,7 +28,7 @@
  *  Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
-#include "biXEntropy.h"
+#include "../../include/modes/biXEntropy.h"
 
 BiXEntropy::BiXEntropy() {
 
@@ -71,7 +71,7 @@ int BiXEntropy::launch() {
     if (opt->getInSLM()->getFileName().compare("") == 0) {
         sD->getSourceLMs()->getPtrInLM()->initialize(sD->getSourceCorps()->getPtrInCorp(), sD->getVocabs()->getPtrSourceVoc());
         sD->getSourceLMs()->getPtrInLM()->createLM();
-        sD->getSourceLMs()->getPtrInLM()->writeLM();
+        //sD->getSourceLMs()->getPtrInLM()->writeLM();
     }
     else {
         sD->getSourceLMs()->getPtrInLM()->initialize(opt->getInSLM(), sD->getVocabs()->getPtrSourceVoc());
@@ -82,7 +82,7 @@ int BiXEntropy::launch() {
     if (opt->getInTLM()->getFileName().compare("") == 0) {
         sD->getTargetLMs()->getPtrInLM()->initialize(sD->getTargetCorps()->getPtrInCorp(), sD->getVocabs()->getPtrTargetVoc());
         sD->getTargetLMs()->getPtrInLM()->createLM();
-        sD->getTargetLMs()->getPtrInLM()->writeLM();
+        //sD->getTargetLMs()->getPtrInLM()->writeLM();
     }
     else {
         sD->getTargetLMs()->getPtrInLM()->initialize(opt->getInTLM(), sD->getVocabs()->getPtrTargetVoc());
@@ -96,7 +96,7 @@ int BiXEntropy::launch() {
         boost::shared_ptr<Corpus> ptrOutLMCorp = boost::make_shared<Corpus>(Mode::extractSample(sD->getSourceCorps()->getPtrOutCorp(), opt->getSampleSize(), opt->getMean()));
         sD->getSourceLMs()->getPtrOutLM()->initialize(ptrOutLMCorp, sD->getVocabs()->getPtrSourceVoc());
         sD->getSourceLMs()->getPtrOutLM()->createLM();
-        sD->getSourceLMs()->getPtrOutLM()->writeLM();
+        //sD->getSourceLMs()->getPtrOutLM()->writeLM();
     }
     else {
         sD->getSourceLMs()->getPtrOutLM()->initialize(opt->getOutSLM(), sD->getVocabs()->getPtrSourceVoc());
@@ -110,7 +110,7 @@ int BiXEntropy::launch() {
         boost::shared_ptr<Corpus> ptrOutLMCorp = boost::make_shared<Corpus>(Mode::extractSample(sD->getTargetCorps()->getPtrOutCorp(), opt->getSampleSize(), opt->getMean()));
         sD->getTargetLMs()->getPtrOutLM()->initialize(ptrOutLMCorp, sD->getVocabs()->getPtrTargetVoc());
         sD->getTargetLMs()->getPtrOutLM()->createLM();
-        sD->getTargetLMs()->getPtrOutLM()->writeLM();
+        //sD->getTargetLMs()->getPtrOutLM()->writeLM();
     }
     else {
         sD->getTargetLMs()->getPtrOutLM()->initialize(opt->getOutSLM(), sD->getVocabs()->getPtrTargetVoc());
@@ -128,22 +128,22 @@ int BiXEntropy::launch() {
         boost::shared_ptr<Corpus> ptrSourceOutLMCorp2 = boost::make_shared<Corpus>(Mode::extractSample(sD->getSourceCorps()->getPtrOutCorp(), opt->getSampleSize(), opt->getMean()));
         sD->getMeanSourceLMs()->getPtrOutLM2()->initialize(ptrSourceOutLMCorp2, sD->getVocabs()->getPtrSourceVoc());
         sD->getMeanSourceLMs()->getPtrOutLM2()->createLM();
-        sD->getMeanSourceLMs()->getPtrOutLM2()->writeLM();
+        //sD->getMeanSourceLMs()->getPtrOutLM2()->writeLM();
         
         boost::shared_ptr<Corpus> ptrTargetOutLMCorp2 = boost::make_shared<Corpus>(Mode::extractSample(sD->getTargetCorps()->getPtrOutCorp(), opt->getSampleSize(), opt->getMean()));
         sD->getMeanTargetLMs()->getPtrOutLM2()->initialize(ptrTargetOutLMCorp2, sD->getVocabs()->getPtrTargetVoc());
         sD->getMeanTargetLMs()->getPtrOutLM2()->createLM();
-        sD->getMeanTargetLMs()->getPtrOutLM2()->writeLM();
+        //sD->getMeanTargetLMs()->getPtrOutLM2()->writeLM();
         
         boost::shared_ptr<Corpus> ptrSourceOutLMCorp3 = boost::make_shared<Corpus>(Mode::extractSample(sD->getSourceCorps()->getPtrOutCorp(), opt->getSampleSize(), opt->getMean()));
         sD->getMeanSourceLMs()->getPtrOutLM3()->initialize(ptrSourceOutLMCorp3, sD->getVocabs()->getPtrSourceVoc());
         sD->getMeanSourceLMs()->getPtrOutLM3()->createLM();
-        sD->getMeanSourceLMs()->getPtrOutLM3()->writeLM();
+        //sD->getMeanSourceLMs()->getPtrOutLM3()->writeLM();
         
         boost::shared_ptr<Corpus> ptrTargetOutLMCorp3 = boost::make_shared<Corpus>(Mode::extractSample(sD->getTargetCorps()->getPtrOutCorp(), opt->getSampleSize(), opt->getMean()));
         sD->getMeanTargetLMs()->getPtrOutLM3()->initialize(ptrTargetOutLMCorp3, sD->getVocabs()->getPtrTargetVoc());
         sD->getMeanTargetLMs()->getPtrOutLM3()->createLM();
-        sD->getMeanTargetLMs()->getPtrOutLM3()->writeLM();
+        //sD->getMeanTargetLMs()->getPtrOutLM3()->writeLM();
         
         if (!boost::filesystem::exists(sD->getMeanSourceLMs()->getPtrOutLM2()->getFileName())) { std::cout << "Error: LM file " + sD->getMeanSourceLMs()->getPtrOutLM2()->getFileName() + " does not exists!" << std::endl; return 1; }
         if (!boost::filesystem::exists(sD->getMeanTargetLMs()->getPtrOutLM2()->getFileName())) { std::cout << "Error: LM file " + sD->getMeanTargetLMs()->getPtrOutLM2()->getFileName() + " does not exists!" << std::endl; return 1; }
@@ -163,23 +163,23 @@ int BiXEntropy::launch() {
 
         sD->getStemSourceLMs()->getPtrInLM()->initialize(sD->getStemSourceCorps()->getPtrInCorp(), sD->getStemVocabs()->getPtrSourceVoc());
         sD->getStemSourceLMs()->getPtrInLM()->createLM();
-        sD->getStemSourceLMs()->getPtrInLM()->writeLM();
+        //sD->getStemSourceLMs()->getPtrInLM()->writeLM();
         
         sD->getStemTargetLMs()->getPtrInLM()->initialize(sD->getStemTargetCorps()->getPtrInCorp(), sD->getStemVocabs()->getPtrTargetVoc());
         sD->getStemTargetLMs()->getPtrInLM()->createLM();
-        sD->getStemTargetLMs()->getPtrInLM()->writeLM();
+        //sD->getStemTargetLMs()->getPtrInLM()->writeLM();
         
         opt->setSampleSize(Mode::findSampleSize(sD->getStemSourceCorps()->getPtrInCorp(), sD->getStemSourceCorps()->getPtrOutCorp()));
         boost::shared_ptr<Corpus> ptrOutSourceStemCorp = boost::make_shared<Corpus>(Mode::extractSample(sD->getStemSourceCorps()->getPtrOutCorp(), opt->getSampleSize(), false));
         sD->getStemSourceLMs()->getPtrOutLM()->initialize(ptrOutSourceStemCorp, sD->getStemVocabs()->getPtrSourceVoc());
         sD->getStemSourceLMs()->getPtrOutLM()->createLM();
-        sD->getStemSourceLMs()->getPtrOutLM()->writeLM();
+        //sD->getStemSourceLMs()->getPtrOutLM()->writeLM();
         
         opt->setSampleSize(Mode::findSampleSize(sD->getStemTargetCorps()->getPtrInCorp(), sD->getStemTargetCorps()->getPtrOutCorp()));
         boost::shared_ptr<Corpus> ptrOutTargetStemCorp = boost::make_shared<Corpus>(Mode::extractSample(sD->getStemTargetCorps()->getPtrOutCorp(), opt->getSampleSize(), false));
         sD->getStemTargetLMs()->getPtrOutLM()->initialize(ptrOutTargetStemCorp, sD->getStemVocabs()->getPtrTargetVoc());
         sD->getStemTargetLMs()->getPtrOutLM()->createLM();
-        sD->getStemTargetLMs()->getPtrOutLM()->writeLM();
+        //sD->getStemTargetLMs()->getPtrOutLM()->writeLM();
         
         if (!boost::filesystem::exists(sD->getStemSourceLMs()->getPtrInLM()->getFileName())) { std::cout << "Error: LM file " + sD->getStemSourceLMs()->getPtrInLM()->getFileName() + " does not exists!" << std::endl; return 1; }
         if (!boost::filesystem::exists(sD->getStemTargetLMs()->getPtrInLM()->getFileName())) { std::cout << "Error: LM file " + sD->getStemTargetLMs()->getPtrInLM()->getFileName() + " does not exists!" << std::endl; return 1; }

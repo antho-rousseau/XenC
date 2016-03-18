@@ -1,4 +1,4 @@
 <map id="XenVocab::initialize" name="XenVocab::initialize">
-<area shape="rect" id="node2" href="$class_xen_option.html#a97ad096aee729b4d8ae993b1381d4eec" title="Accessor to the instance of the singleton XenOption object." alt="" coords="185,5,338,32"/>
-<area shape="rect" id="node3" href="$class_xen_option.html#a9886771703c5b8866be587f50193ac9d" title="Accessor to the source language." alt="" coords="190,56,333,83"/>
+<area shape="rect" id="node2" href="$class_xen_option.html#a97ad096aee729b4d8ae993b1381d4eec" title="Accessor to the instance of the singleton XenOption object. " alt="" coords="190,5,351,31"/>
+<area shape="rect" id="node3" href="$class_xen_option.html#a9886771703c5b8866be587f50193ac9d" title="Accessor to the source language. " alt="" coords="196,55,345,80"/>
 </map>

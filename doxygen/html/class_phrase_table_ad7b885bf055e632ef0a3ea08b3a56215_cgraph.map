@@ -1,6 +1,6 @@
 <map id="PhraseTable::initialize" name="PhraseTable::initialize">
-<area shape="rect" id="node2" href="$class_xen_option.html#a97ad096aee729b4d8ae993b1381d4eec" title="Accessor to the instance of the singleton XenOption object." alt="" coords="211,5,365,32"/>
-<area shape="rect" id="node3" href="$namespace_xen_common.html#a3fd9978be1bd41808ac4605c2e89d816" title="Template converting a value (generally a string) into an integer." alt="" coords="226,56,350,83"/>
-<area shape="rect" id="node4" href="$namespace_xen_common.html#ab8c7a51d6bf68d64848f1ca9bc3805d0" title="Executes a system command and returns the output." alt="" coords="197,107,379,149"/>
-<area shape="rect" id="node5" href="$class_xen_option.html#a0fa3ea5f0f0cfed980710a9cf73917d9" title="Accessor to the local score for phrase&#45;table scoring execution state." alt="" coords="221,173,355,200"/>
+<area shape="rect" id="node2" href="$class_xen_option.html#a97ad096aee729b4d8ae993b1381d4eec" title="Accessor to the instance of the singleton XenOption object. " alt="" coords="221,5,381,31"/>
+<area shape="rect" id="node3" href="$namespace_xen_common.html#a3fd9978be1bd41808ac4605c2e89d816" title="Template converting a value (generally a string) into an integer. " alt="" coords="235,55,367,80"/>
+<area shape="rect" id="node4" href="$namespace_xen_common.html#ab8c7a51d6bf68d64848f1ca9bc3805d0" title="Executes a system command and returns the output. " alt="" coords="204,104,398,143"/>
+<area shape="rect" id="node5" href="$class_xen_option.html#a0fa3ea5f0f0cfed980710a9cf73917d9" title="Accessor to the local score for phrase&#45;table scoring execution state. " alt="" coords="230,167,372,192"/>
 </map>

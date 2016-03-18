@@ -1,9 +1,0 @@
-<map id="src/XenLMsri.cpp" name="src/XenLMsri.cpp">
-<area shape="rect" id="node2" href="$_xen_l_msri_8h.html" title="Class handling SRI LM estimation, loading, querying..." alt="" coords="533,80,616,107"/>
-<area shape="rect" id="node8" href="$corpus_8h.html" title="Class handling corpus&#45;related functionalities." alt="" coords="694,229,764,256"/>
-<area shape="rect" id="node21" href="$xenvocab_8h.html" title="Class handling a XenC vocabulary." alt="" coords="447,155,536,181"/>
-<area shape="rect" id="node23" href="$xenoption_8h.html" title="Singleton class handling XenC options accessors/mutators." alt="" coords="531,229,617,256"/>
-<area shape="rect" id="node22" href="$xenresult_8h.html" title="Class handling a XenC sorted result file for evaluation/best point." alt="" coords="227,229,309,256"/>
-<area shape="rect" id="node9" href="$common_8h.html" title="File containing all common classes/structures/functions of many classes of XenC." alt="" coords="517,379,621,405"/>
-<area shape="rect" id="node18" href="$xenfile_8h.html" title="Class providing some basic functions around files." alt="" coords="415,304,481,331"/>
-</map>

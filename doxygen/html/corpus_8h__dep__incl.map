@@ -1,33 +1,33 @@
 <map id="include/corpus.h" name="include/corpus.h">
-<area shape="rect" id="node2" href="$eval_8h.html" title="Class handling evaluation system." alt="" coords="421,304,520,331"/>
-<area shape="rect" id="node23" href="$_xen_l_msri_8h.html" title="Class handling SRI LM estimation, loading, querying..." alt="" coords="638,155,764,181"/>
-<area shape="rect" id="node27" href="$xenvocab_8h.html" title="Class handling a XenC vocabulary." alt="" coords="840,80,971,107"/>
-<area shape="rect" id="node24" href="$ppl_8h.html" title="Class handling the perplexity/cross&#45;entropy computations." alt="" coords="749,229,840,256"/>
-<area shape="rect" id="node31" href="$mode_8h.html" title="Abstract class defining the filtering modes architecture." alt="" coords="1210,528,1315,555"/>
-<area shape="rect" id="node5" href="$_static_data_8h.html" title="File handling all data objects used by XenC in a static way." alt="" coords="842,528,1000,555"/>
-<area shape="rect" id="node28" href="$similarity_8h.html" title="Class taking care of all the similarity measure computations." alt="" coords="1055,155,1175,181"/>
-<area shape="rect" id="node19" href="$corpus_8cpp.html" title="Class handling corpus&#45;related functionalities." alt="" coords="5,453,109,480"/>
-<area shape="rect" id="node21" href="$xenio_8cpp.html" title="Class handling all input/output operations of XenC." alt="" coords="185,453,308,480"/>
-<area shape="rect" id="node3" href="$xenio_8h.html" title="Class handling all input/output operations of XenC." alt="" coords="410,379,539,405"/>
-<area shape="rect" id="node7" href="$_xen_8h.html" title="Main file of XenC, controls execution." alt="" coords="912,677,1008,704"/>
-<area shape="rect" id="node16" href="$eval_8cpp.html" title="Class handling evaluation system." alt="" coords="433,603,524,629"/>
-<area shape="rect" id="node4" href="$wfile_8h.html" title="Class handling a file with values intended at weighting XenC scores." alt="" coords="433,453,532,480"/>
-<area shape="rect" id="node20" href="$phrasetable_8cpp.html" title="Class handling phrase&#45;table related functionalities." alt="" coords="557,453,691,480"/>
-<area shape="rect" id="node22" href="$xenresult_8cpp.html" title="Class handling a XenC sorted result file for evaluation/best point." alt="" coords="716,453,833,480"/>
-<area shape="rect" id="node18" href="$wfile_8cpp.html" title="Class handling a file with values intended at weighting XenC scores." alt="" coords="437,528,528,555"/>
-<area shape="rect" id="node6" href="$bi_x_entropy_8h.html" title="Derived class to handle filtering mode 3: bilingual cross&#45;entropy." alt="" coords="999,603,1177,629"/>
-<area shape="rect" id="node10" href="$mono_x_entropy_8h.html" title="Derived class to handle filtering mode 2: monolingual cross&#45;entropy." alt="" coords="775,603,973,629"/>
-<area shape="rect" id="node12" href="$pt_scoring_8h.html" title="Derived class to handle filtering mode 4: phrase&#45;table cross&#45;entropy." alt="" coords="1252,603,1420,629"/>
-<area shape="rect" id="node14" href="$simple_p_p_l_8h.html" title="Derived class to handle filtering mode 1: simple perplexity." alt="" coords="1445,603,1621,629"/>
-<area shape="rect" id="node17" href="$_static_data_8cpp.html" title="File handling all data objects used by XenC in a static way." alt="" coords="548,603,700,629"/>
-<area shape="rect" id="node9" href="$bi_x_entropy_8cpp.html" title="Derived class to handle filtering mode 3: bilingual cross&#45;entropy." alt="" coords="1032,677,1203,704"/>
-<area shape="rect" id="node8" href="$_xen_8cpp.html" title="Main file of XenC, controls execution." alt="" coords="915,752,1004,779"/>
-<area shape="rect" id="node11" href="$mono_x_entropy_8cpp.html" title="Derived class to handle filtering mode 2: monolingual cross&#45;entropy." alt="" coords="696,677,888,704"/>
-<area shape="rect" id="node13" href="$pt_scoring_8cpp.html" title="Derived class to handle filtering mode 4: phrase&#45;table cross&#45;entropy." alt="" coords="1255,677,1416,704"/>
-<area shape="rect" id="node15" href="$simple_p_p_l_8cpp.html" title="Derived class to handle filtering mode 1: simple perplexity." alt="" coords="1448,677,1619,704"/>
-<area shape="rect" id="node26" href="$_xen_l_msri_8cpp.html" title="Class handling SRI LM estimation, loading, querying..." alt="" coords="554,229,672,256"/>
-<area shape="rect" id="node25" href="$ppl_8cpp.html" title="Class handling the perplexity/cross&#45;entropy computations." alt="" coords="748,304,833,331"/>
-<area shape="rect" id="node30" href="$xenvocab_8cpp.html" title="Class handling a XenC vocabulary." alt="" coords="906,155,1029,181"/>
-<area shape="rect" id="node29" href="$similarity_8cpp.html" title="Class taking care of all the similarity measure computations." alt="" coords="1061,229,1173,256"/>
-<area shape="rect" id="node32" href="$mode_8cpp.html" title="Abstract class defining the filtering modes architecture." alt="" coords="1647,603,1745,629"/>
+<area shape="rect" id="node2" href="$eval_8h.html" title="Class handling evaluation system. " alt="" coords="354,299,457,324"/>
+<area shape="rect" id="node5" href="$_static_data_8h.html" title="File handling all data objects used by XenC in a static way. " alt="" coords="722,519,889,544"/>
+<area shape="rect" id="node19" href="$corpus_8cpp.html" title="Class handling corpus&#45;related functionalities. " alt="" coords="881,445,989,471"/>
+<area shape="rect" id="node24" href="$_xen_l_mken_8h.html" title="Class handling KenLM estimation, loading, querying... " alt="" coords="501,152,643,177"/>
+<area shape="rect" id="node25" href="$ppl_8h.html" title="Class handling the perplexity/cross&#45;entropy computations. " alt="" coords="597,225,693,251"/>
+<area shape="rect" id="node28" href="$xenvocab_8h.html" title="Class handling a XenC vocabulary. " alt="" coords="752,79,888,104"/>
+<area shape="rect" id="node29" href="$similarity_8h.html" title="Class taking care of all the similarity measure computations. " alt="" coords="861,152,990,177"/>
+<area shape="rect" id="node31" href="$mode_8h.html" title="Abstract class defining the filtering modes architecture. " alt="" coords="1023,519,1135,544"/>
+<area shape="rect" id="node3" href="$xenio_8h.html" title="Class handling all input/output operations of XenC. " alt="" coords="450,372,588,397"/>
+<area shape="rect" id="node7" href="$_xen_8h.html" title="Main file of XenC, controls execution. " alt="" coords="624,665,726,691"/>
+<area shape="rect" id="node16" href="$eval_8cpp.html" title="Class handling evaluation system. " alt="" coords="155,592,248,617"/>
+<area shape="rect" id="node4" href="$wfile_8h.html" title="Class handling a file with values intended at weighting XenC scores. " alt="" coords="603,445,709,471"/>
+<area shape="rect" id="node20" href="$phrasetable_8cpp.html" title="Class handling phrase&#45;table related functionalities. " alt="" coords="144,445,282,471"/>
+<area shape="rect" id="node21" href="$xenio_8cpp.html" title="Class handling all input/output operations of XenC. " alt="" coords="306,445,433,471"/>
+<area shape="rect" id="node22" href="$xenresult_8cpp.html" title="Class handling a XenC sorted result file for evaluation/best point. " alt="" coords="458,445,580,471"/>
+<area shape="rect" id="node23" href="$xenvocab_8cpp.html" title="Class handling a XenC vocabulary. " alt="" coords="732,445,857,471"/>
+<area shape="rect" id="node18" href="$wfile_8cpp.html" title="Class handling a file with values intended at weighting XenC scores. " alt="" coords="603,519,698,544"/>
+<area shape="rect" id="node6" href="$bi_x_entropy_8h.html" title="Derived class to handle filtering mode 3: bilingual cross&#45;entropy. " alt="" coords="1207,592,1393,617"/>
+<area shape="rect" id="node10" href="$mono_x_entropy_8h.html" title="Derived class to handle filtering mode 2: monolingual cross&#45;entropy. " alt="" coords="974,592,1183,617"/>
+<area shape="rect" id="node12" href="$pt_scoring_8h.html" title="Derived class to handle filtering mode 4: phrase&#45;table cross&#45;entropy. " alt="" coords="509,592,688,617"/>
+<area shape="rect" id="node14" href="$simple_p_p_l_8h.html" title="Derived class to handle filtering mode 1: simple perplexity. " alt="" coords="712,592,898,617"/>
+<area shape="rect" id="node17" href="$_static_data_8cpp.html" title="File handling all data objects used by XenC in a static way. " alt="" coords="278,592,434,617"/>
+<area shape="rect" id="node9" href="$bi_x_entropy_8cpp.html" title="Derived class to handle filtering mode 3: bilingual cross&#45;entropy. " alt="" coords="1212,665,1388,691"/>
+<area shape="rect" id="node8" href="$_xen_8cpp.html" title="Main file of XenC, controls execution. " alt="" coords="629,739,721,764"/>
+<area shape="rect" id="node11" href="$mono_x_entropy_8cpp.html" title="Derived class to handle filtering mode 2: monolingual cross&#45;entropy. " alt="" coords="979,665,1178,691"/>
+<area shape="rect" id="node13" href="$pt_scoring_8cpp.html" title="Derived class to handle filtering mode 4: phrase&#45;table cross&#45;entropy. " alt="" coords="432,665,600,691"/>
+<area shape="rect" id="node15" href="$simple_p_p_l_8cpp.html" title="Derived class to handle filtering mode 1: simple perplexity. " alt="" coords="750,665,925,691"/>
+<area shape="rect" id="node27" href="$_xen_l_mken_8cpp.html" title="Class handling KenLM estimation, loading, querying... " alt="" coords="442,225,574,251"/>
+<area shape="rect" id="node26" href="$ppl_8cpp.html" title="Class handling the perplexity/cross&#45;entropy computations. " alt="" coords="602,299,688,324"/>
+<area shape="rect" id="node30" href="$similarity_8cpp.html" title="Class taking care of all the similarity measure computations. " alt="" coords="870,225,989,251"/>
+<area shape="rect" id="node32" href="$mode_8cpp.html" title="Abstract class defining the filtering modes architecture. " alt="" coords="1417,592,1519,617"/>
 </map>

@@ -1,5 +1,5 @@
 <map id="XenOption::getLocal" name="XenOption::getLocal">
-<area shape="rect" id="node2" href="$class_p_t_scoring.html#a51b8eadcb3b7fa0264c09b3a0908f2c0" title="Function in charge of launching the filtering mode." alt="" coords="381,23,504,49"/>
-<area shape="rect" id="node3" href="$class_phrase_table.html#ad7b885bf055e632ef0a3ea08b3a56215" title="Initialization function from an already instanciated XenFile." alt="" coords="190,23,333,49"/>
-<area shape="rect" id="node4" href="$class_xen_i_o.html#a6c32040f72b5d39ead7b08874beb65a3" title="Writes a new rescored phrase&#45;table." alt="" coords="195,73,328,100"/>
+<area shape="rect" id="node2" href="$class_p_t_scoring.html#a51b8eadcb3b7fa0264c09b3a0908f2c0" title="Function in charge of launching the filtering mode. " alt="" coords="394,23,524,49"/>
+<area shape="rect" id="node3" href="$class_phrase_table.html#ad7b885bf055e632ef0a3ea08b3a56215" title="Initialization function from an already instanciated XenFile. " alt="" coords="195,23,346,49"/>
+<area shape="rect" id="node4" href="$class_xen_i_o.html#a6c32040f72b5d39ead7b08874beb65a3" title="Writes a new rescored phrase&#45;table. " alt="" coords="201,73,340,98"/>
 </map>

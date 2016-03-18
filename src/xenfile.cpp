@@ -2,14 +2,14 @@
  *  @file xenfile.cpp
  *  @brief Class providing some basic functions around files
  *  @author Anthony Rousseau
- *  @version 1.2.0
- *  @date 19 August 2013
+ *  @version 2.0.0
+ *  @date 18 March 2016
  */
 
 /*  This file is part of the cross-entropy tool for data selection (XenC)
  *  aimed at speech recognition and statistical machine translation.
  *
- *  Copyright 2013, Anthony Rousseau, LIUM, University of Le Mans, France
+ *  Copyright 2013-2016, Anthony Rousseau, LIUM, University of Le Mans, France
  *
  *  Development of the XenC tool has been partially funded by the
  *  European Commission under the MateCat project.
@@ -28,7 +28,7 @@
  *  Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
-#include "xenfile.h"
+#include "../include/xenfile.h"
 
 XenFile::XenFile() : fileName(""), dirName("") {
 
@@ -78,7 +78,7 @@ bool XenFile::isGZ() const {
     file = std::fopen(getFullPath().c_str(), "rb");
     
     unsigned char magicNumber[2];
-    std::fread(&magicNumber, 2, 1, file);
+    size_t res = std::fread(&magicNumber, 2, 1, file);
     std::fclose(file);
 
     if((magicNumber[0] == 0x1f && magicNumber[1] == 0x8b) || (magicNumber[1] == 0x1f && magicNumber[0] == 0x8b))

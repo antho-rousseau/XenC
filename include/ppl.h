@@ -2,14 +2,14 @@
  *  @file ppl.h
  *  @brief Class handling the perplexity/cross-entropy computations
  *  @author Anthony Rousseau
- *  @version 1.2.0
- *  @date 19 August 2013
+ *  @version 2.0.0
+ *  @date 18 March 2016
  */
 
 /*  This file is part of the cross-entropy tool for data selection (XenC)
  *  aimed at speech recognition and statistical machine translation.
  *
- *  Copyright 2013, Anthony Rousseau, LIUM, University of Le Mans, France
+ *  Copyright 2013-2016, Anthony Rousseau, LIUM, University of Le Mans, France
  *
  *  Development of the XenC tool has been partially funded by the
  *  European Commission under the MateCat project.
@@ -31,15 +31,21 @@
 #ifndef PPL_H_
 #define PPL_H_
 
+#include <math.h>
+
 #include "utils/threadpool.hpp"
 #include "corpus.h"
 #include "phrasetable.h"
-#include "XenLMsri.h"
+#include "XenLMken.h"
+
+#ifndef M_LN10
+#define M_LN10	2.30258509299404568402
+#endif
 
 using namespace boost::threadpool;
 
 /**
- *  @fn void taskCalcPPL (int numLine, std::string line, boost::shared_ptr<std::vector<double> > ptrPPL, boost::shared_ptr<XenLMsri> ptrLM)
+ *  @fn void taskCalcPPL (int numLine, std::string line, boost::shared_ptr<std::vector<double> > ptrPPL, boost::shared_ptr<XenLMken> ptrLM)
  *  @brief Thread-safe perplexity computation function
  *
  *  @param numLine :        integer to the line number to compute perplexity for
@@ -47,7 +53,7 @@ using namespace boost::threadpool;
  *  @param ptrPPL :         shared pointer on the vector of doubles containing the perplexity scores
  *  @param ptrLM :          shared pointer on the language model to compute perplexity and cross-entropy from
  */
-void taskCalcPPL(int numLine, std::string line, boost::shared_ptr<std::vector<double> > ptrPPL, boost::shared_ptr<XenLMsri> ptrLM);
+void taskCalcPPL(int numLine, std::string line, boost::shared_ptr<std::vector<double> > ptrPPL, boost::shared_ptr<XenLMken> ptrLM);
 
 /**
  *  @class PPL
@@ -71,7 +77,7 @@ public:
      *  @param ptrCorp :    shared pointer on a Corpus to compute perplexity for
      *  @param ptrLM :      shared pointer on a XenLMsri object to compute perplexity from
      */
-    void initialize(boost::shared_ptr<Corpus> ptrCorp, boost::shared_ptr<XenLMsri> ptrLM);
+    void initialize(boost::shared_ptr<Corpus> ptrCorp, boost::shared_ptr<XenLMken> ptrLM);
     
     /**
      *  @fn void initialize (boost::shared_ptr<PhraseTable> ptrPT, boost::shared_ptr<XenLMsri> ptrLM, bool source)
@@ -81,7 +87,7 @@ public:
      *  @param ptrLM :      shared pointer on a XenLMsri object to compute perplexity from
      *  @param source :     boolean indicating if we are on source (true) or target (false) side of the PhraseTable
      */
-    void initialize(boost::shared_ptr<PhraseTable> ptrPT, boost::shared_ptr<XenLMsri> ptrLM, bool source);
+    void initialize(boost::shared_ptr<PhraseTable> ptrPT, boost::shared_ptr<XenLMken> ptrLM, bool source);
     
     /**
      *  @fn ~PPL ()
@@ -135,7 +141,7 @@ public:
     void calcPPLPhraseTable();
 
 private:
-    boost::shared_ptr<XenLMsri> ptrLM;                  //!< Shared pointer on the XenLMsri object figuring the language model
+    boost::shared_ptr<XenLMken> ptrLM;                  //!< Shared pointer on the XenLMsri object figuring the language model
     boost::shared_ptr<Corpus> ptrCorp;                  //!< Shared pointer on the Corpus object to compute perplexity for
     boost::shared_ptr<PhraseTable> ptrPT;               //!< Shared pointer on the PhraseTable object to compute perplexity for
     bool source;                                        //!< Boolean indicating if we are working on source or target side (for the PhraseTable)

@@ -1,28 +1,28 @@
 <map id="SimplePPL::launch" name="SimplePPL::launch">
-<area shape="rect" id="node2" href="$class_xen_option.html#a97ad096aee729b4d8ae993b1381d4eec" title="Accessor to the instance of the singleton XenOption object." alt="" coords="411,5,565,32"/>
-<area shape="rect" id="node3" href="$class_static_data.html#a3cc0816b2220ee3f827cdd00971e010d" title="Accessor to the instance of the singleton StaticData object." alt="" coords="194,245,347,272"/>
-<area shape="rect" id="node4" href="$class_static_data.html#a60a4636843c37cbb31780ec4d185a06d" title="Accessor to the source language Corpus Pair." alt="" coords="181,296,360,323"/>
-<area shape="rect" id="node5" href="$class_xen_option.html#a17723ab17afa712bfc7a9539719abf94" title="Accessor to the source language in&#45;domain data file." alt="" coords="194,347,347,373"/>
-<area shape="rect" id="node6" href="$class_xen_option.html#a9886771703c5b8866be587f50193ac9d" title="Accessor to the source language." alt="" coords="199,397,342,424"/>
-<area shape="rect" id="node7" href="$class_xen_option.html#a8c54e1795dc493d23fa38d977c09604d" title="Accessor to the source language out&#45;of&#45;domain data file." alt="" coords="189,448,353,475"/>
-<area shape="rect" id="node8" href="$class_xen_option.html#a74178ef5302c1bf213822ae474c58806" title="Accessor to the source language vocabulary file." alt="" coords="195,499,347,525"/>
-<area shape="rect" id="node9" href="$class_xen_option.html#a02ab4cb865a93cf7c48f76f68f7b6ae9" title="Accessor to the global vocabulary execution state." alt="" coords="190,549,351,576"/>
-<area shape="rect" id="node10" href="$class_static_data.html#a0a84fa1648aed88951cf2870a9f39b4d" title="Accessor to the vocabularies." alt="" coords="195,600,346,627"/>
-<area shape="rect" id="node11" href="$class_xen_option.html#a1eb0d4f4b3d29749f6ac70e71c9fa01b" title="Accessor to the source language in&#45;domain language model file." alt="" coords="199,651,342,677"/>
-<area shape="rect" id="node12" href="$class_static_data.html#a3104f8fe8394b6456f12f8ddca6a3f07" title="Accessor to the source language models." alt="" coords="186,701,355,728"/>
-<area shape="rect" id="node13" href="$class_static_data.html#a292e282fda19f6ee5d7fc770c66f4ddc" title="Accessor to the source language PPL objects." alt="" coords="183,752,359,779"/>
-<area shape="rect" id="node14" href="$class_xen_option.html#a9eb5309135ec46b588dcc98c196303ea" title="Accessor to the weights file." alt="" coords="203,803,339,829"/>
-<area shape="rect" id="node15" href="$class_static_data.html#a629e38d09dd808708b0be118b7f9a6d0" title="Accessor to the weights file." alt="" coords="186,853,355,880"/>
-<area shape="rect" id="node16" href="$class_static_data.html#a0209ea694e46c5eb62e68a17b7eca7d1" title="Accessor to the ScoreHolder object." alt="" coords="198,904,343,931"/>
-<area shape="rect" id="node17" href="$class_xen_option.html#ad4b6a223068d8c75797e716887b5b9cc" title="Accessor to the inverted filtered output state." alt="" coords="209,955,332,981"/>
-<area shape="rect" id="node18" href="$class_xen_option.html#aaaec9eadf81b57f24f4833be2ff2350a" title="Accessor to the target language." alt="" coords="200,1005,341,1032"/>
-<area shape="rect" id="node19" href="$namespace_xen_common.html#ad4f4868634e46d6ee82e57d343a77abe" title="Template converting a value into a string with a precision of 20." alt="" coords="417,208,559,235"/>
-<area shape="rect" id="node20" href="$class_xen_i_o.html#ab9a2f3c55823d6f5bf73e291fb51030d" title="Monolingual corpus cleaning (ensures no empty lines)" alt="" coords="187,1056,355,1083"/>
-<area shape="rect" id="node21" href="$class_xen_i_o.html#ac4fbd0582c974bb4c11c225ef467f26a" title="Writes monolingual scored/sorted result files." alt="" coords="190,144,351,171"/>
-<area shape="rect" id="node25" href="$class_xen_option.html#a45a1ac5576924aec7f0fea15e28d0f40" title="Accessor to the target language out&#45;of&#45;domain data file." alt="" coords="189,1107,352,1133"/>
-<area shape="rect" id="node26" href="$class_xen_i_o.html#a19e9b18d89fa44de07082e50899e9c42" title="Bilingual corpus cleaning (ensures no empty lines)" alt="" coords="197,1157,344,1184"/>
-<area shape="rect" id="node27" href="$class_xen_i_o.html#ad3264b7bde95ba72494ab9db3804ad11" title="Writes bilingual scored/sorted result files." alt="" coords="201,93,341,120"/>
-<area shape="rect" id="node22" href="$class_xen_option.html#a6b020f1c16f0e0699a5ea7e06a0f593d" title="Accessor to the output name for the filtered files." alt="" coords="408,56,568,83"/>
-<area shape="rect" id="node23" href="$class_xen_option.html#acf6b028eb04afc2c9a6fe9a16ea6af3a" title="Accessor to whether we output the scored file." alt="" coords="411,107,565,133"/>
-<area shape="rect" id="node24" href="$class_xen_option.html#a1b9f650f28eee13014332ac9ac6dd0ec" title="Accessor to the reversed filtered output state." alt="" coords="423,157,553,184"/>
+<area shape="rect" id="node2" href="$class_xen_option.html#a97ad096aee729b4d8ae993b1381d4eec" title="Accessor to the instance of the singleton XenOption object. " alt="" coords="425,63,586,88"/>
+<area shape="rect" id="node3" href="$class_static_data.html#a3cc0816b2220ee3f827cdd00971e010d" title="Accessor to the instance of the singleton StaticData object. " alt="" coords="201,211,360,236"/>
+<area shape="rect" id="node4" href="$class_static_data.html#a60a4636843c37cbb31780ec4d185a06d" title="Accessor to the source language Corpus Pair. " alt="" coords="187,260,374,285"/>
+<area shape="rect" id="node5" href="$class_xen_option.html#a17723ab17afa712bfc7a9539719abf94" title="Accessor to the source language in&#45;domain data file. " alt="" coords="201,309,360,335"/>
+<area shape="rect" id="node6" href="$class_xen_option.html#a9886771703c5b8866be587f50193ac9d" title="Accessor to the source language. " alt="" coords="206,359,355,384"/>
+<area shape="rect" id="node7" href="$class_xen_option.html#a8c54e1795dc493d23fa38d977c09604d" title="Accessor to the source language out&#45;of&#45;domain data file. " alt="" coords="196,408,365,433"/>
+<area shape="rect" id="node8" href="$class_xen_option.html#a74178ef5302c1bf213822ae474c58806" title="Accessor to the source language vocabulary file. " alt="" coords="202,457,359,483"/>
+<area shape="rect" id="node9" href="$class_xen_option.html#a02ab4cb865a93cf7c48f76f68f7b6ae9" title="Accessor to the global vocabulary execution state. " alt="" coords="196,507,365,532"/>
+<area shape="rect" id="node10" href="$class_static_data.html#a0a84fa1648aed88951cf2870a9f39b4d" title="Accessor to the vocabularies. " alt="" coords="204,556,357,581"/>
+<area shape="rect" id="node11" href="$class_xen_option.html#a1eb0d4f4b3d29749f6ac70e71c9fa01b" title="Accessor to the source language in&#45;domain language model file. " alt="" coords="206,605,355,631"/>
+<area shape="rect" id="node12" href="$class_static_data.html#a3104f8fe8394b6456f12f8ddca6a3f07" title="Accessor to the source language models. " alt="" coords="193,655,369,680"/>
+<area shape="rect" id="node13" href="$class_static_data.html#a292e282fda19f6ee5d7fc770c66f4ddc" title="Accessor to the source language PPL objects. " alt="" coords="189,704,372,729"/>
+<area shape="rect" id="node14" href="$class_xen_option.html#a9eb5309135ec46b588dcc98c196303ea" title="Accessor to the weights file. " alt="" coords="208,753,353,779"/>
+<area shape="rect" id="node15" href="$class_static_data.html#a629e38d09dd808708b0be118b7f9a6d0" title="Accessor to the weights file. " alt="" coords="192,803,370,828"/>
+<area shape="rect" id="node16" href="$class_static_data.html#a0209ea694e46c5eb62e68a17b7eca7d1" title="Accessor to the ScoreHolder object. " alt="" coords="205,852,357,877"/>
+<area shape="rect" id="node17" href="$class_xen_option.html#ad4b6a223068d8c75797e716887b5b9cc" title="Accessor to the inverted filtered output state. " alt="" coords="217,901,345,927"/>
+<area shape="rect" id="node18" href="$class_xen_option.html#aaaec9eadf81b57f24f4833be2ff2350a" title="Accessor to the target language. " alt="" coords="207,951,355,976"/>
+<area shape="rect" id="node19" href="$namespace_xen_common.html#ad4f4868634e46d6ee82e57d343a77abe" title="Template converting a value into a string with a precision of 20. " alt="" coords="429,13,582,39"/>
+<area shape="rect" id="node20" href="$class_xen_i_o.html#ab9a2f3c55823d6f5bf73e291fb51030d" title="Monolingual corpus cleaning (ensures no empty lines) " alt="" coords="193,1000,368,1025"/>
+<area shape="rect" id="node21" href="$class_xen_i_o.html#ac4fbd0582c974bb4c11c225ef467f26a" title="Writes monolingual scored/sorted result files. " alt="" coords="197,161,365,187"/>
+<area shape="rect" id="node25" href="$class_xen_option.html#a45a1ac5576924aec7f0fea15e28d0f40" title="Accessor to the target language out&#45;of&#45;domain data file. " alt="" coords="197,1049,365,1075"/>
+<area shape="rect" id="node26" href="$class_xen_i_o.html#a19e9b18d89fa44de07082e50899e9c42" title="Bilingual corpus cleaning (ensures no empty lines) " alt="" coords="204,1099,357,1124"/>
+<area shape="rect" id="node27" href="$class_xen_i_o.html#ad3264b7bde95ba72494ab9db3804ad11" title="Writes bilingual scored/sorted result files. " alt="" coords="207,112,354,137"/>
+<area shape="rect" id="node22" href="$class_xen_option.html#a6b020f1c16f0e0699a5ea7e06a0f593d" title="Accessor to the output name for the filtered files. " alt="" coords="422,112,589,137"/>
+<area shape="rect" id="node23" href="$class_xen_option.html#acf6b028eb04afc2c9a6fe9a16ea6af3a" title="Accessor to whether we output the scored file. " alt="" coords="425,161,587,187"/>
+<area shape="rect" id="node24" href="$class_xen_option.html#a1b9f650f28eee13014332ac9ac6dd0ec" title="Accessor to the reversed filtered output state. " alt="" coords="439,211,573,236"/>
 </map>

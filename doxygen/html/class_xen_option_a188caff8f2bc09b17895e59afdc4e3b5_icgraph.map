@@ -1,0 +1,6 @@
+<map id="XenOption::getExclOOVs" name="XenOption::getExclOOVs">
+<area shape="rect" id="node2" href="$ppl_8cpp.html#a0c876aa154ae0422fad090aad9f79b7f" title="Thread&#45;safe perplexity computation function. " alt="" coords="240,29,337,55"/>
+<area shape="rect" id="node5" href="$class_p_p_l.html#a664161b9bda71de84617947fae966d3b" title="Accessor to the document&#45;level perplexity score. " alt="" coords="225,79,352,104"/>
+<area shape="rect" id="node3" href="$class_p_p_l.html#a7b4657c023618ae0beb8101b82cf3005" title="Computes the perplexity of a Corpus sentence by sentence. " alt="" coords="415,5,561,31"/>
+<area shape="rect" id="node4" href="$class_p_p_l.html#a49004246863fdf55c41be3b575f0a443" title="Computes the perplexity of a PhraseTable phrase by phrase. " alt="" coords="400,55,577,80"/>
+</map>
