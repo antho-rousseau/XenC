@@ -14,3 +14,10 @@
 
 # Mac OS files
 *.DS_Store
+
+# Compilation results
+CMakeCache.txt
+CMakeFiles
+Makefile
+XenC
+cmake_install.cmake
