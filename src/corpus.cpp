@@ -41,10 +41,14 @@ void Corpus::initialize(boost::shared_ptr<XenFile> ptrData, std::string lg) {
     
     try {
         if (boost::filesystem::exists(ptrFile->getFullPath().c_str())) {
-            std::cout << "Specified corpus " << ptrFile->getFullPath() << " exists! We continue..." << std::endl;
-            
-            loadText();
-            wc = Corpus::wordCount();
+            if (boost::filesystem::file_size(ptrFile->getFullPath().c_str()) > 0) {
+                std::cout << "Specified corpus " << ptrFile->getFullPath() << " exists! We continue..." << std::endl;
+
+                loadText();
+                wc = Corpus::wordCount();
+            }
+            else
+                throw XenCommon::XenCEption("Specified corpus " + ptrFile->getFullPath() + " has a null size! Exiting.");
         }
         else
             throw XenCommon::XenCEption("Specified corpus " + ptrFile->getFullPath() + " does not exists! Exiting.");
@@ -60,10 +64,14 @@ void Corpus::initialize(std::string filePath, std::string lg) {
     
     try {
         if (boost::filesystem::exists(ptrFile->getFullPath().c_str())) {
-            std::cout << "Specified corpus " << ptrFile->getFullPath() << " exists! We continue..." << std::endl;
-            
-            loadText();
-            wc = Corpus::wordCount();
+            if (boost::filesystem::file_size(ptrFile->getFullPath().c_str()) > 0) {
+                std::cout << "Specified corpus " << ptrFile->getFullPath() << " exists! We continue..." << std::endl;
+
+                loadText();
+                wc = Corpus::wordCount();
+            }
+            else
+                throw XenCommon::XenCEption("Specified corpus " + ptrFile->getFullPath() + " has a null size! Exiting.");
         }
         else
             throw XenCommon::XenCEption("Specified corpus " + ptrFile->getFullPath() + " does not exists! Exiting.");
@@ -81,7 +89,7 @@ boost::shared_ptr<XenFile> Corpus::getXenFile() const {
 }
 
 std::string Corpus::getLine(int line) {
-	return ptrText->operator[](line);
+	return ptrText->operator[]((unsigned long) line);
 }
 
 unsigned int Corpus::getSize() const {
@@ -93,10 +101,7 @@ std::string Corpus::getLang() const {
 }
 
 bool Corpus::getPrint(int line) {
-    if (ptrPrint->operator[](line) == 0)
-        return false;
-    else
-        return true;
+    return ptrPrint->operator[]((unsigned long) line) != 0;
 }
 
 int Corpus::getWC() const {
@@ -104,7 +109,7 @@ int Corpus::getWC() const {
 }
 
 void Corpus::removeLine(int line) {
-    ptrPrint->operator[](line) = 0;
+    ptrPrint->operator[]((unsigned long) line) = 0;
 }
 
 void Corpus::loadText() {
