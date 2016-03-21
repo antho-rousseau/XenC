@@ -21,3 +21,6 @@ CMakeFiles
 Makefile
 XenC
 cmake_install.cmake
+
+# IDE Files
+.idea
